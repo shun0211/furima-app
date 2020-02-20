@@ -27,6 +27,8 @@
 - belongs_to :category
 
 ## Likesテーブル
+|column|type|option|
+|------|----|------|
 |user_id|references|foreign_key :true|
 |item_id|references|foreign_key: true|
 
@@ -35,6 +37,8 @@
 - belongs_to :user
 
 ## Commentsテーブル
+|column|type|option|
+|------|----|------|
 |user_id|references|foreign_key: true|
 |item_id|references|foreign_key: ture|
 |text|stirng|null: false|
@@ -44,6 +48,8 @@
 - belongs_to :user
 
 ## Product_images
+|column|type|option|
+|------|----|------|
 |image|string|null: false|
 |item_id|references|foreign_key: true|
 
@@ -51,6 +57,8 @@
 - belongs_to :item
 
 ## Categorysテーブル
+|column|type|option|
+|------|----|------|
 |category|string|null: false|
 |ancestry|string|index:true|
 
