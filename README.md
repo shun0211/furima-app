@@ -1,7 +1,7 @@
 # README
 
 ## Itemsテーブル
-|column|type|option|
+|Column|Type|Options|
 |------|----|------|
 |product_name|string|null: false, index: true|
 |product_information|text|null:false|
@@ -27,7 +27,7 @@
 - belongs_to :category
 
 ## Likesテーブル
-|column|type|option|
+|Column|Type|Options|
 |------|----|------|
 |user_id|references|foreign_key :true|
 |item_id|references|foreign_key: true|
@@ -37,7 +37,7 @@
 - belongs_to :user
 
 ## Commentsテーブル
-|column|type|option|
+|Column|Type|Options|
 |------|----|------|
 |user_id|references|foreign_key: true|
 |item_id|references|foreign_key: ture|
@@ -48,7 +48,7 @@
 - belongs_to :user
 
 ## Product_images
-|column|type|option|
+|Column|Type|Options|
 |------|----|------|
 |image|string|null: false|
 |item_id|references|foreign_key: true|
@@ -57,7 +57,7 @@
 - belongs_to :item
 
 ## Categorysテーブル
-|column|type|option|
+|Column|Type|Options|
 |------|----|------|
 |category|string|null: false|
 |ancestry|string|index:true|
