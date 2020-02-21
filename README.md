@@ -105,8 +105,8 @@
 |item_id|references|null: false, foregin_key: true|
 
 ### Association
-- belongs_to user
-- belongs_to item
+- belongs_to :user
+- belongs_to :item
 
 ## sell_historysテーブル
 |Coloumn|Type|Options|
@@ -115,8 +115,8 @@
 |item_id|references|null: false, foregin_key: true|
 
 ### Associaton
-- belongs_to user
-- belongs_to item
+- belongs_to :user
+- belongs_to :item
 
 ## credit_cardsテーブル
 |Coloumn|Type|Options|
@@ -127,7 +127,7 @@
 |user_id|references|null: false, foreigin_key: true|
 
 ### Associaton
-- belongs_to user
+- belongs_to :user
 
 ## evaluationsテーブル
 |Coloumn|Type|Options|
@@ -138,5 +138,5 @@
 |item_id|references|null: false,foreign_key: true|
 
 ### Associaton
-- belongs_to user
-- belongs_to item
+- belongs_to :user
+- belongs_to :item
