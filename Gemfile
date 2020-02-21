@@ -62,3 +62,5 @@ group :production do
 end
 
 gem 'rename'
+gem 'carrierwave'
+gem 'fog-aws'
