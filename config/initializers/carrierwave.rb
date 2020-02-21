@@ -10,8 +10,8 @@ CarrierWave.configure do |config|
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
       provider: 'AWS',     #AWSのアクセスキーとシークレットキーを環境変数で定義する
-      aws_access_key_id: Rails.application.credentials.aws[:access_key_id], #credentails.ymlに鍵の本体がある
-      aws_secret_access_key: Rails.application.credentials.aws[:secret_access_key],  #credentails.ymlに鍵の本体がある
+      aws_access_key_id: Rails.application.sercret.aws[:access_key_id], #credentails.ymlに鍵の本体がある
+      aws_secret_access_key: Rails.application.sercret.aws[:secret_access_key],  #credentails.ymlに鍵の本体がある
       region: 'ap-northeast-1'
     }
     config.fog_directory  = 'ecappimage'
