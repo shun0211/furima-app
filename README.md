@@ -7,12 +7,11 @@
 |product_information|text|null:false|
 |product_status|string|null: false|
 |price|integer|null: false|
-|product_image_id|references|foreign_key: true|
 |product_condition|string|null: false|
 |shipping_charge|integer|null: false|
 |days_of_ship|string|null: false|
 |seller_id|references|null:false, foreign_key: true|
-|buyer_id|references|foreign_key: true|
+|buyer_id|references|null: false, foreign_key: true|
 |brand|string|  |
 |size|string|  |
 
@@ -29,8 +28,8 @@
 ## Likesテーブル
 |Column|Type|Options|
 |------|----|------|
-|user_id|references|foreign_key :true|
-|item_id|references|foreign_key: true|
+|user_id|references|null: false, foreign_key :true|
+|item_id|references|null: false, foreign_key: true|
 
 ###　Association
 - belongs_to :item
@@ -39,8 +38,8 @@
 ## Commentsテーブル
 |Column|Type|Options|
 |------|----|------|
-|user_id|references|foreign_key: true|
-|item_id|references|foreign_key: ture|
+|user_id|references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: ture|
 |text|stirng|null: false|
 
 ### Association
@@ -51,7 +50,7 @@
 |Column|Type|Options|
 |------|----|------|
 |image|string|null: false|
-|item_id|references|foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
@@ -73,12 +72,7 @@
 |familyname|string|null: false|
 |firstname(kana)|string|null: false|
 |familyname(kana)|string|null: false|
-|postal_code|integer|null: false|
-|prefectures|string|null: false|
-|municipality|string|null: false|
-|address|string|null: false|
-|building_name|string|null: false|
-|phone_number|integer|null: false,    unique:true|
+|phone_number|integer|null: false, unique:true|
 |profile_image|string|
 |nickname|string|null: false|
 |profile_text|text|
@@ -95,8 +89,22 @@
 - has_many :likes
 - has_many :comments
 - has_many :purchase_historys
-- has_many :credit_card
+- has_many :credit_cards
 - has_many :evaliations
+- has_one :address
+
+## addressesテーブル
+|Coloumn|Type|Options|
+|-------|----|-------|
+|postal_code|integer|null: false|
+|prefectures|string|null: false|
+|municipality|string|null: false|
+|address|string|null: false|
+|building_name|string|null: false|
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
 
 ## purchase_hidtorysテーブル
 |Coloumn|Type|Options|
@@ -121,9 +129,9 @@
 ## credit_cardsテーブル
 |Coloumn|Type|Options|
 |------|----|------|
-|credit_card_number|integer|null: false|
-|credit_card_expiration_date|integer|null: false|
-|credit_card_security_code|integer|null: false|
+|number|integer|null: false|
+|expiration_date|integer|null: false|
+|security_code|integer|null: false|
 |user_id|references|null: false, foreigin_key: true|
 
 ### Associaton
