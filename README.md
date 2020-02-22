@@ -14,6 +14,7 @@
 |buyer_id|references|null: false, foreign_key: true|
 |brand|string|  |
 |size|string|  |
+|category_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :buyer, class_name "User"
