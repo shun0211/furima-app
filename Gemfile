@@ -64,3 +64,6 @@ end
 gem 'rename'
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'font-awesome-sass'
+gem 'haml-rails'
+gem 'devise'
