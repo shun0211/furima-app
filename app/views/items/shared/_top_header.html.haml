@@ -1,0 +1,24 @@
+.top-header
+  .top-header__inner
+    .top-header__inner__main
+      %h1.top-header__inner__log
+        = link_to image_tag("logo.png", size: "134x36", class: "logo"), root_path
+      .top-header__inner__main--search
+        %form.top-header__inner__main--search--form
+          %input.search-form{name: "", placeholder: "キーワードから探す", type: "text", value: ""}/
+          %button.search-button
+            %i.fas.fa-search
+
+    .top-header__information
+      %ul.top-header--items-left
+        %li.top-header--items-left--item-first
+          カテゴリー
+        %li.top-header--items-left--item-second
+          ブランド
+      %ul.top-header--items-right
+        %li.top-header--items-right--login
+          = link_to "#" do
+            ログイン
+        %li.top-header--items-right--new
+          = link_to "#" do
+            新規会員登録
