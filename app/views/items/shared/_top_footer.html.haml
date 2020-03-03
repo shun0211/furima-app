@@ -1,0 +1,56 @@
+.top-app__content
+  .top-app__content-inner
+    %h2.top-app__content-inner--title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.top-app__content-inner--text
+      今すぐ無料ダウンロード!
+    .top-app__content-inner--icon
+      = link_to image_tag("sozai-02.png")
+      = link_to image_tag("sozai-05.png")
+.top-footer__information
+  %ul.top-footer__information--contents
+    %li.top-footer__information--contents-content
+      %h2.top-footer__content
+        FURIMAについて
+      %ul
+        %li
+          %a{href: '#' } 会社概要(運営会社)
+        %li
+          %a{href: '#' } プライバシーポリシー
+        %li
+          %a{href: '#'} FURIMA利用規約
+        %li
+          %a{href: '#'} ポイントに関する規約
+    %li.top-footer__information--contents-content
+      %h2.top-footer__content
+        FURIMAを見る
+      %ul
+        %li
+          = link_to "#" do
+            カテゴリー一覧
+        %li
+          = link_to "#" do
+            ブランド一覧
+    %li.top-footer__information--contents-content
+      %h2.top-footer__content
+        ヘルプ&ガイド
+      %ul
+        %li
+          = link_to "#" do
+            FURIMAガイド
+        %li
+          = link_to "#" do
+            FURIMAロゴ利用ガイドライン
+        %li
+          = link_to "#" do
+            お知らせ
+  .top-footer__logo
+    = link_to image_tag("logo-white.png")
+    %p
+      ©︎ FURIMA
+    .body-function__button
+      = link_to "#" do
+        %span.body-function__button-text
+          出品する
+        = image_tag("icon_camera.png")
+
