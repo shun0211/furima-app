@@ -1,7 +1,7 @@
 .top-header {
   height: 100px;
   padding: 0 60px;
-  background-color:white;
+  background-color: $white;
   &__inner {
     max-width: 1040px;
     width: 100%;
@@ -27,8 +27,8 @@
           .search-button {
             width: 36px;
             font-size: 20px;
-            color: white;
-            background-color: #3ccace;
+            color: $white;
+            background-color: $blue;
           }
         }
       }
@@ -80,14 +80,14 @@
       &__title {
         font-size: 60px;
         line-height: 1.2;
-        color: #fff;
-        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        color: $white;
+        text-shadow: $text-shadow;
       }
       &__text {
         font-size: 18px;
         margin-top: 15px;
-        color: #fff;
-        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        color: $white;
+        text-shadow: $text-shadow;
       }
       &__button {
         margin: 24px 0 0 0 ;
@@ -114,14 +114,7 @@
       position: relative;
     }
     .top-main__introduction-subtitle::after {
-      content: "";
-      width: 70px;
-      height: 4px;
-      background-color: #3ccace;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      @include blue-line
     }
     .top-main__lists {
       max-width: 1020px;
@@ -133,8 +126,7 @@
         width: 30%;
         margin: 16px 5% 0 0;
         text-align: left;
-        display: flex;
-        flex-direction: column;
+        @include df-fdc;
         align-items: center;
         .top-list__picture {
           margin-bottom: 20px;
@@ -149,8 +141,8 @@
             text-align: center;
             margin: 0 5px 0 0;
             padding: 10px 20px;
-            background-color: #3ccace;
-            color: #fff;
+            background-color: $blue;
+            color:$white;
           }
           img {
             width: 100%;
@@ -163,7 +155,7 @@
           font-size: 24px;
           font-weight: bold;
           span {
-            color: #3ccace;
+            color: $blue;
           }
         }
         .top-list__description {
@@ -175,8 +167,7 @@
         width: 30%;
         margin: 16px 5% 0 0;
         text-align: left;
-        display: flex;
-        flex-direction: column;
+        @include df-fdc;
         align-items: center;
         .top-list__picture {
           margin-bottom: 20px;
@@ -191,8 +182,8 @@
             text-align: center;
             margin: 0 5px 0 0;
             padding: 10px 20px;
-            background-color: #3ccace;
-            color: #fff;
+            background-color: $blue;
+            color: $white;
           }
           img {
             width: 100%;
@@ -205,7 +196,7 @@
           font-size: 24px;
           font-weight: bold;
           span {
-            color: #3ccace;
+            color: $blue;
           }
         }
         .top-list__description {
@@ -217,8 +208,7 @@
         width: 30%;
         margin: 16px 0 0;
         text-align: left;
-        display: flex;
-        flex-direction: column;
+        @include df-fdc;
         align-items: center;
         .top-list__picture {
           margin-bottom: 20px;
@@ -233,8 +223,8 @@
             text-align: center;
             margin: 0 5px 0 0;
             padding: 10px 20px;
-            background-color: #3ccace;
-            color: #fff;
+            background-color: $blue;
+            color: $white;
           }
           img {
             width: 100%;
@@ -247,7 +237,7 @@
           font-size: 24px;
           font-weight: bold;
           span {
-            color: #3ccace;
+            color: $blue;
           }
         }
         .top-list__description {
@@ -268,8 +258,8 @@
       max-width: 1040px;
       width: 100%;
       margin: 0 auto;
-      color: #fff;
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      color: $white;
+      text-shadow: $text-shadow;
       text-align: left;
       .top-main__introduction-title {
         font-size: 27px;
@@ -303,14 +293,7 @@
       position: relative;
     }
     .top-main__introduction-title::after {
-      content: "";
-      width: 70px;
-      height: 4px;
-      background-color: #3ccace;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      @include blue-line
     }
     .top-main__introduction-items {
       max-width: calc(1040px + 20px);
@@ -321,8 +304,7 @@
       .top-main__item {
         width: calc(1 / 3 * 100%);
         padding: 0 20px;
-        display: flex;
-        flex-direction: column;
+        @include df-fdc;
         text-align: center;
         .top-main__item-image {
           width: 70%;
@@ -360,7 +342,7 @@
           font-size: 22px;
           font-weight: bold;
           text-align: center;
-          color: #3ccace;
+          color: $blue;
         }
       }
       .top-main__pickupcategory--lists {
@@ -379,7 +361,7 @@
             margin: 0;
             z-index: auto;
             a {
-              background-color: #fff;
+              background-color: $white;
               display: inline-block;
               img {
                 width: 100%;
@@ -390,13 +372,12 @@
                 right: 0;
                 bottom: 0;
                 z-index: auto;
-                // object-fit: cover;
               }
             }
           }
           &--text {
             padding: 16px;
-            background-color: white;
+            background-color: $white;
             .name {
               font-size: 15px;
               line-height: 1.5;
@@ -427,15 +408,15 @@
     background-position: center;
     &-inner {
       text-align: center;
-      color: #fff;
+      color: $white;
       &--title {
         font-size: 25px;
         font-weight: bold;
-        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        text-shadow: $text-shadow;
       }
       &--text {
         font-size: 35px;
-        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        text-shadow: $text-shadow;
       }
       &--icon {
         margin: 20px auto 0;
@@ -451,7 +432,7 @@
   }
   .top-footer__information {
     padding: 60px 0;
-    color: #fff;
+    color: $white;
     background-color: #272727;
     text-align: center;
     &--contents {
@@ -461,8 +442,7 @@
       &-content {
         width: calc(1 / 3 * 100%);
         margin: 0 15px 0 0;
-        display: flex;
-        flex-direction: column;
+        @include df-fdc;
         .top-footer__content {
           margin-bottom: 20px;
           font-size: 15px;
@@ -471,7 +451,7 @@
           a {
             font-size: 12px;
             line-height: 32px;
-            color: #fff;
+            color: $white;
             text-decoration: none;
           }
       }
@@ -494,18 +474,17 @@
     right: 32px;
     padding: 15px;
     position: fixed;
-    background-color: #3ccace;
+    background-color: $blue;
     text-align: center;
     .body-function__button-text {
       margin-bottom: 5px;
       font-size: 18px;
       text-decoration: none;
       display: block;
-      color: #fff;
+      color: $white;
     }
     img {
       width: 60%;
     }
-
-  }
+ }
 }

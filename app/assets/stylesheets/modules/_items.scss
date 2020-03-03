@@ -1,3 +1,20 @@
+$white:#fff;
+$blue: #3ccace;
+$text-shadow: 0 0 5px rgba(0,0,0,0.4);
+@mixin blue-line {
+  content: "";
+      width: 70px;
+      height: 4px;
+      background-color: $blue;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+}
+@mixin df-fdc {
+  display: flex;
+  flex-direction: column;
+} 
 * {
   box-sizing: border-box;
   .top-main__pickupcategory--lists:last-child {
