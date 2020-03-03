@@ -476,15 +476,18 @@
     position: fixed;
     background-color: $blue;
     text-align: center;
-    .body-function__button-text {
-      margin-bottom: 5px;
-      font-size: 18px;
+    a {
       text-decoration: none;
-      display: block;
-      color: $white;
-    }
-    img {
-      width: 60%;
-    }
+      .body-function__button-text {
+        margin-bottom: 5px;
+        font-size: 18px;
+        text-decoration: none;
+        display: block;
+        color: $white;
+      }
+      img {
+        width: 60%;
+      }
+  }
  }
 }

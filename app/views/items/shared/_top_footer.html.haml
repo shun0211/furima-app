@@ -26,26 +26,31 @@
         FURIMAを見る
       %ul
         %li
-          %a{href: '#'} カテゴリー一覧
+          = link_to "#" do
+            カテゴリー一覧
         %li
-          %a{href: '#'} ブランド一覧
+          = link_to "#" do
+            ブランド一覧
     %li.top-footer__information--contents-content
       %h2.top-footer__content
         ヘルプ&ガイド
       %ul
         %li
-          %a{href: '#'} FURIMAガイド
+          = link_to "#" do
+            FURIMAガイド
         %li
-          %a{href: '#'} FURIMAロゴ利用ガイドライン
+          = link_to "#" do
+            FURIMAロゴ利用ガイドライン
         %li
-          %a{href: '#'} お知らせ
+          = link_to "#" do
+            お知らせ
   .top-footer__logo
     = link_to image_tag("logo-white.png")
     %p
       ©︎ FURIMA
-  %a{href: "#"}
     .body-function__button
-      %span.body-function__button-text
-        出品する
-      = image_tag("icon_camera.png")
+      = link_to "#" do
+        %span.body-function__button-text
+          出品する
+        = image_tag("icon_camera.png")
 
