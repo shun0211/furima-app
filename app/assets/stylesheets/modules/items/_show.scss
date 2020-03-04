@@ -11,27 +11,27 @@ box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
 padding: 0 60px;
 position: relative;
 
-ul {
+  ul {
   padding: 17px 0 16px;
   width: 100%;
   font-size: 14px;
   margin: 0 auto;
   display: flex;
 
-  li {
-    padding: 0 10px 0 0;
-    float: left;
+    li {
+      padding: 0 10px 0 0;
+      float: left;
 
-    a {
-      text-decoration: none;
-      color: #333;
-    }
+      a {
+        text-decoration: none;
+        color: #333;
+      }
 
-    a:hover {
-      color: #3CCACE;
+      a:hover {
+        color: #3CCACE;
+      }
     }
   }
-}
 }
 
 
