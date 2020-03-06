@@ -1,5 +1,5 @@
-.item-detail__header
-  = render partial: 'items/shared/top_header'
+.item-detail-header
+  = render partial: "items/shared/top_header"
 %nav.bread-crumbs
   %ul
     %li
@@ -89,14 +89,14 @@
                   %th 発送日の目安
                   %td 1-2日で発送
           .optional-area
-            %ul
+            %ul.optional-area__contents
               %li.like-button
-                = link_to  "＃" do
+                = link_to  "＃", class: "like-button--link" do
                   %i.fa.fa-star
                   お気に入り 0
-            %ul.optional
+            %ul.optional-area__contents
               %li.optional-button
-                %a{href: "#"}
+                = link_to  "＃" do
                   %i.fa.fa-flag
                   不適切な商品の通報
         .comment-box
@@ -124,7 +124,14 @@
       .related-items
         = link_to  "＃" do
           レディースをもっと見る
-      .purchase-button
-        %span.purchase-button--text
-          出品する
-        = link_to image_tag("/assets/icon_camera.png", class: "purchase-button--icon"), "＃"
+%aside.app-banner
+  .inner
+    %h2.inner__title だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text 今すぐ無料ダウンロード！
+    .inner__icon
+    = link_to image_tag("sozai-02.png", class: "app-button", width: "180"), "＃"
+    = link_to image_tag("sozai-05.png", class: "google-button", width: "180"), "＃"
+.footer
+  = render partial: "items/shared/item-detail-footer"
+.purchase-button
+  = render partial: "items/shared/purchase-button"
