@@ -1,1 +1,137 @@
-商品詳細ページのビュー
+.item-detail-header
+  = render partial: "items/shared/top_header"
+%nav.bread-crumbs
+  %ul
+    %li
+      = link_to  "＃" do
+        FURIMA
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to  "＃" do
+        レディース
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to "＃" do
+        トップス
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to "＃" do
+        Tシャツ/カットソー(半袖/袖なし)
+    %li
+      %i.fa.fa-angle-right
+    %li
+      %p product1
+
+.item-detail
+  .item-detail__main
+    .item-content
+      .item-content__top
+        .item-box
+          %h2.item-box--name product1
+          .item-box__body
+            %ul
+              %li
+                = image_tag("/assets/curry.png", size: "560x346")
+                %ul
+                  %li
+                    = image_tag("/assets/curry.png", size: "140x87")
+                  %li
+                    = image_tag("/assets/eggplant.png", size: "140x87")
+                  %li
+                    = image_tag("/assets/yosenabe.png", size: "140x87")
+          .item-box__price
+            %span.price
+              ¥10000
+            .item-box__price-detail
+              %span
+                (税込)
+              %span
+                送料込み
+          .item-box--title product1
+          .item-box__table
+            %table
+              %tbody
+                %tr
+                  %th 出品者
+                  %td hoge
+                %tr
+                  %th カテゴリー
+                  %td 
+                    = link_to  "＃" do
+                      レディース
+                    %br
+                    = link_to  "＃" do
+                      トップス
+                    %br
+                    = link_to  "＃" do
+                      Tシャツ/カットソー(半袖/袖なし)
+                %tr.item-brand
+                  %th ブランド
+                  %td
+                %tr.item-size
+                  %th 商品のサイズ
+                  %td
+                %tr.item-condition
+                  %th 商品の状態
+                  %td 新品/未使用
+                %tr.item-shipping-cost
+                  %th 配送料の負担
+                  %td 送料込み（出品者負担）
+                %tr.item-shipping-origin
+                  %th 発送元の地域
+                  %td
+                    = link_to  "＃" do
+                      青森県
+                %tr.item-shipping-day
+                  %th 発送日の目安
+                  %td 1-2日で発送
+          .optional-area
+            %ul.optional-area__contents
+              %li.like-button
+                = link_to  "＃", class: "like-button--link" do
+                  %i.fa.fa-star
+                  お気に入り 0
+            %ul.optional-area__contents
+              %li.optional-button
+                = link_to  "＃" do
+                  %i.fa.fa-flag
+                  不適切な商品の通報
+        .comment-box
+          %ul.comment-box__content
+          %form.new_comment
+            %input{name: "", type: "hidden", value: ""}
+            %textarea.comment-body
+            %p.notice-message
+              相手のことを考え丁寧なコメントを心がけましょう。
+              %br
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %br
+            %button.comment-button{name: "button", type: "submit"}
+              %i.fa.fa-comment
+              コメントする
+      %ul.links
+        %li
+          = link_to  "＃" do
+            %i.fa.fa-angle-left
+              %span 前の商品
+        %li
+          = link_to  "＃" do
+            %span 後ろの商品
+            %i.fa.fa-angle-right
+      .related-items
+        = link_to  "＃" do
+          レディースをもっと見る
+%aside.app-banner
+  .inner
+    %h2.inner__title だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text 今すぐ無料ダウンロード！
+    .inner__icon
+    = link_to image_tag("sozai-02.png", class: "app-button", width: "180"), "＃"
+    = link_to image_tag("sozai-05.png", class: "google-button", width: "180"), "＃"
+.footer
+  = render partial: "items/shared/item-detail-footer"
+.purchase-button
+  = render partial: "items/shared/purchase-button"
