@@ -1,0 +1,48 @@
+.singin-header
+  .singin-header__inner
+    %h1.singin-header__inner__log
+      = link_to image_tag("logo.png", class: "header-logo"), root_path
+.singin-contents
+  .singin-contents__body
+    .singin-contents__body-head
+      アカウントをお持ちでない方はこちら
+      = link_to "", class: "singin-contents__body-head__icon singin-contents__body-head__icon-mail" do
+        = icon('far','envelope', class: "singin-contents__body-head--icon")
+        新規会員登録
+    .singin-contents__body-icon
+      = link_to "https://www.facebook.com/", class: "singin-contents__body-btn singin-contents__body-btn--facebook" do
+        = icon('fab','facebook-square', class: "singin-contents__body-btn--icon")
+        Facebookでログイン
+      = link_to "", class: "singin-contents__body-btn singin-contents__body-btn--google" do
+        = icon('fab','google', class: "singin-contents__body-btn--icon")
+        Googleでログイン
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field-input-email
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'メールアドレス'
+        .field-input-password
+          = f.password_field :password, autocomplete: "current-password", placeholder: 'パスワード'
+        - if devise_mapping.rememberable?
+          .field-check
+            = f.check_box :remember_me
+            私はロボットではありません
+        .actions
+          = f.submit "ログイン", class: 'singin-btn'
+        .new_password_path
+          - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+            = link_to "パスワードをお忘れの方", new_password_path(resource_name)
+.signin-footer
+  .signin-footer__inner
+    %ul.clearfix
+      %li
+        = link_to '#' do
+          プライバシーポリシー
+      %li
+        = link_to '#' do
+          FURIMA利用規約
+      %li
+        = link_to '#' do
+          特定商取引に関する表記
+      %br/
+      = link_to image_tag("logo-white.png", class: "footer-logo")
+      %p
+        ©︎ FURIMA
