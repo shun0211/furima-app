@@ -5,46 +5,68 @@
   .side-bar
     %section
       .side-bar__mypage-menu
-        .mypage-menu
+        %h3.mypage-menu
           マイページメニュー
         %ul.mypage-menu__lists
-          %li.like-list
-            いいね一覧
-          %li.todo-list
-            やることリスト
-          %li.evaluation-list
-            評価一覧
+          %li.like-list.side-bar__common
+            = link_to '#' do
+              いいね一覧
+              %i.fas.fa-chevron-right
+          %li.todo-list.side-bar__common
+            = link_to '#' do
+              やることリスト
+              %i.fas.fa-chevron-right
+          %li.evaluation-list.side-bar__common
+            = link_to '#' do
+              評価一覧
+              %i.fas.fa-chevron-right
     %section
       .side-bar__selling-item
         .selling-item
           商品を出品する
         %ul.selling-item__lists
-          %li.selling-item--now
-            商品を出品する
-          %li.selled-item--now
-            出品した商品-出品中
-          %li.selled-item--trading
-            出品した商品-取引中
-          %li.selled-item--sold
-            出品した商品-売却済み
+          %li.selling-item--now.side-bar__common
+            = link_to '#' do 
+              商品を出品する
+              %i.fas.fa-chevron-right
+          %li.selled-item--now.side-bar__common
+            = link_to '#' do
+              出品した商品 - 出品中
+              %i.fas.fa-chevron-right
+          %li.selled-item--trading.side-bar__common
+            = link_to '#' do
+              出品した商品 - 取引中
+              %i.fas.fa-chevron-right
+          %li.selled-item--sold.side-bar__common
+            = link_to '#' do
+              出品した商品 - 売却済み
+              %i.fas.fa-chevron-right
     %section
       .side-bar__buying-item
         .buying-item
           商品を購入する
         %ul.buying-item__lists
-          %li.buyed-item--trading
-            購入した商品-取引中
-          %li.buyed-item--past
-            購入した商品-過去の取引
+          %li.buyed-item--trading.side-bar__common
+            = link_to '#' do 
+              購入した商品 - 取引中
+              %i.fas.fa-chevron-right
+          %li.buyed-item--past.side-bar__common
+            = link_to '#' do
+              購入した商品 - 過去の取引
+              %i.fas.fa-chevron-right
     %section
       .side-bar__setting
         .setting
           設定
         %ul.setting__lists
-          %li.method__payment
-            支払い方法
-          %li.logout
-            ログアウト
+          %li.method__payment.side-bar__common
+            = link_to '#' do
+              支払い方法
+              %i.fas.fa-chevron-right
+          %li.logout.side-bar__common
+            = link_to '#' do
+              ログアウト
+              %i.fas.fa-chevron-right
   %main.content
     %section.mypage_user_icon
       = link_to '#' do
@@ -76,7 +98,7 @@
           %li
             = link_to '#', class: :mypage__item__link do
               %figure
-                = image_tag 'logo.png', width: 48, height: 48
+                = image_tag 'logo(アイコンのみ).png', width: 48, height: 48
               .mypage-item-body
                 .mypage-item-text
                   CM放送中!! たくさん出品して１億円ポイント山分けしちゃおう
@@ -88,7 +110,7 @@
           %li
             = link_to '#', class: :mypage__item__link do
               %figure
-                = image_tag 'logo.png', width: 50, height: 50
+                = image_tag 'logo(アイコンのみ).png', width: 50, height: 50
               .mypage-item-body
                 .mypage-item-text
                   事務所から個別メッセージ「本日締め切り!! 今メルペイ登録でP１５００プレゼント
@@ -100,7 +122,7 @@
           %li
             = link_to '#', class: :mypage__item__link do
               %figure
-                = image_tag 'logo.png', width: 50, height: 50
+                = image_tag 'logo(アイコンのみ).png', width: 50, height: 50
               .mypage-item-body
                 .mypage-item-text
                   売れたらお家で待つだけ!!梱包・発送たのメル便が新登場♪
