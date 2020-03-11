@@ -5,6 +5,6 @@ class Item < ApplicationRecord
   has_many :likes
   has_many :comments
   has_one :purchase_history
-  has_one :sell_histry
+  has_one :sell_history
   belongs_to :category
 end
