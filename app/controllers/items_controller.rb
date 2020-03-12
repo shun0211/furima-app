@@ -4,6 +4,9 @@ class ItemsController < ApplicationController
 
   def new
   end
+
+  def verification
+  end
   
   def show
   end

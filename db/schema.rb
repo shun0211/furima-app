@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20200307121400) do
     t.datetime "updated_at",                        null: false
     t.index ["product_name"], name: "index_items_on_product_name", using: :btree
   end
-ActiveRecord::Schema.define(version: 20200306082448) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                default: "", null: false
