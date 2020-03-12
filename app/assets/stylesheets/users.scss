@@ -1,0 +1,319 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  line-height: inherit;
+  font-size: 14px;
+}
+
+@mixin side-bar__lists{
+  background-color: #fff;
+  height: 50px;
+  width: 100%;
+  padding-left: 10px;
+  line-height: 50px;
+  border-bottom: solid 1px #f5f5f5;
+}
+@mixin side-bar__lists__aタグ{
+  color: black;
+  text-decoration: none;
+  position: relative;
+  display: block;
+}
+@mixin side-bar__lists__aタグ__fa-chevron-right{
+  position: absolute;
+  right: 20px;
+  line-height: 50px;
+}
+
+.mypage-main{
+  display: flex;
+  background-color: #fafafa;
+  .side-bar{
+    width: 340px;
+    margin: 40px 40px 40px 120px; 
+    .side-bar__mypage-menu{
+      margin-bottom: 40px;
+      .mypage-menu{
+       font-size: 16px;
+       font-weight: bold;
+       height: 30px;
+       line-height: 30px;
+      }
+      .mypage-menu__lists{
+        .side-bar__common{
+          @include side-bar__lists;
+          a{
+            @include side-bar__lists__aタグ;
+            .fa-chevron-right{
+              @include side-bar__lists__aタグ__fa-chevron-right;
+            }
+          }
+        }
+        .like-list{
+        }
+        .todo-list{ 
+        }
+        .evaluation-list{
+        }
+      }
+    }
+    .side-bar__selling-item{
+      margin-bottom: 40px;
+      .selling-item{
+        font-size: 16px;
+        font-weight: bold;
+        height: 30px;
+        line-height: 30px;
+      }
+      .selling-item__lists{
+        .side-bar__common{
+          @include side-bar__lists;
+          a{
+            @include side-bar__lists__aタグ;
+            .fa-chevron-right{
+              @include side-bar__lists__aタグ__fa-chevron-right;
+            }
+          }
+        }
+        .selling-item--now{
+         }
+        .selled-item--now{
+        }
+        .selled-item--trading{
+        }
+        .selled-item--sold{
+        }
+      }
+    }
+    .side-bar__buying-item{
+      margin-bottom: 40px;
+      .buying-item{
+        font-size: 16px;
+        font-weight: bold;
+        height: 30px;
+        line-height: 30px;
+      }
+      .buying-item__lists{
+        .side-bar__common{
+          @include side-bar__lists;
+          a{
+            @include side-bar__lists__aタグ;
+            .fa-chevron-right{
+              @include side-bar__lists__aタグ__fa-chevron-right;
+            }
+          }
+        }
+        .buyed-item--trading{
+        }
+        .buyed-item--past{
+        }
+      }
+    }
+    .side-bar__setting{
+      .setting{
+        font-size: 16px;
+        font-weight: bold;
+        height: 30px;
+        line-height: 30px;
+      }
+      .setting__lists{
+        .side-bar__common{
+          @include side-bar__lists;
+          a{
+            @include side-bar__lists__aタグ;
+            .fa-chevron-right{
+              @include side-bar__lists__aタグ__fa-chevron-right;
+            }
+          }
+        }
+        .method__payment{
+         }
+        .logout{
+        }
+      }
+    }
+  }
+  .content{
+   width: calc(100vw - 500px);
+   background-color: #fafafa;
+   margin: 40px 120px 40px 0;
+    .mypage_user_icon{
+      height: 200px;
+      text-align: center;
+      background-image: url(背景.jpg);
+      // background-repeat: no-repeat;
+      position: relative;
+      a{
+        position: absolute;
+        top: 22%;
+        left: 0;
+        right: 0;
+        text-decoration: none;
+        figure{
+          overflow: hidden;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          margin: 0 auto;
+        }
+        .nickname{
+          margin-top: 8px;
+          font-size: 14px;
+          color: black;
+          font-weight: 600;
+        }
+        .user-data{
+          display: inline-block;
+          color: black;
+          margin: 8px 0 0;
+         
+          div{
+            font-size: 14px;
+            margin-left: 16px;
+            display: inline-block;
+            span{
+              margin-left: 8px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+    .mypage-tab-container-notification-todo{
+      background-color: white;
+      .mypage-tabs{
+        display: flex;
+        font-size: 16px;
+        background-color: #eee;
+        height: 50px;
+        color: black;
+        text-align: center;
+        .notification{
+          width: 50%;
+          text-align: center;
+          background-color: #fff;
+          border-top: 2px solid#ea352d;
+          a{
+            text-decoration: none;
+            color: black;
+            line-height: 50px;
+            display:block;
+            font-weight: bold;
+          }
+        }
+        .todo{
+          width: 50%;
+          a{
+            text-decoration: none;
+            color: black;
+            line-height: 50px;
+            display:block;
+            font-weight: bold;
+          }
+        }
+      }
+      
+      .tab-content{
+        background-color: #fff;
+        .notification__lists{
+          li{
+            .mypage__item__link{
+             padding: 16px;
+             display: flex;
+             min-height: 80px;
+             text-decoration: none;
+             position: relative;
+             border-bottom: 1px solid #eee;
+              figure{
+                height: 48px;
+                width: 48px;
+                margin: 0;
+              
+              }
+              .mypage-item-body {
+                margin: 0 40px 0 20px;
+                color: black;
+                .mypage-item-text{
+                }
+                .time{
+                  color: #888;
+                }
+              }
+              .fa-chevron-right{
+                line-height: 48px;
+                position: absolute;
+                right: 20px;
+                color: black;
+              }            
+            }
+          }
+          .mypage-go-link{
+            padding: 16px;
+            height: 80px;
+            text-decoration: none;
+            text-align: center;
+            line-height: 48px;
+            a{
+              display: block;
+              height: 48px;
+              background-color: #eee;
+              text-decoration: none;
+              color: black;
+            }
+          }
+        }
+      }
+    }
+    .mypage-tab-container{
+      margin: 40px 0 0;
+      background-color: #fff;
+      .mypage-tab-head{
+        padding: 0 16px;
+        height: 80px;
+        line-height: 80px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .mypage-tabs{
+        display: flex;
+        font-size: 16px;
+        background-color: #eee;
+        height: 50px;
+        color: black;
+        text-align: center;
+        line-height: 50px;
+        width: calc(100vw - 500px);
+        li{
+          width: 50%; 
+          .transaction__now{
+            text-decoration: none;
+            color: black;
+            h3{
+              background-color: white;
+              border-top: 2px solid#ea352d;
+              font-weight: bold;
+            }          
+          }
+          .transaction__old{
+            text-decoration: none;
+            color: black;
+            h3{
+              font-weight: bold;
+            }
+          }
+        }
+      }
+      .tab-content{
+        height: 236px;
+        color: #ccc;
+        .tab-content__transaction-now{
+          .mypage-item-not-found{
+            padding: 160px 0 60px;
+            text-align: center;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
