@@ -1,0 +1,35 @@
+.password-header
+  .password-header__inner
+    %h1.password-header__inner__log
+      = link_to image_tag("logo.png", class: "password-logo"), root_path
+.password-content
+  .password-content__question
+    %h2 パスワードをお忘れの方
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .password-form
+        %p.email メールアドレス
+        .field-email
+          = f.email_field :email, class: "field-email__input", autocomplete: "email", placeholder: "ご登録されたメールアドレス"
+        %p.description ご登録されたメールアドレスにパスワード再設定のご案内が送信されます       
+      - if devise_mapping.rememberable?
+        .field-check
+          = f.check_box :remember_me
+          私はロボットではありません
+      .login-submit
+        = f.submit "送信する", class: "password-submit__btn"
+.password-footer
+  .password-footer__inner
+    %ul.clearfix
+      %li
+        = link_to '#' do
+          プライバシーポリシー
+      %li
+        = link_to '#' do
+          FURIMA利用規約
+      %li
+        = link_to '#' do
+          特定商取引に関する表記
+      %br/
+      = link_to image_tag("logo-white.png", class: "footer-logo")
+      %p
+        ©︎ FURIMA
