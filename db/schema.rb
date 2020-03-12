@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20200306082448) do
     t.index ["item_id"], name: "index_sell_histories_on_item_id", using: :btree
     t.index ["user_id"], name: "index_sell_histories_on_user_id", using: :btree
   end
+ActiveRecord::Schema.define(version: 20200301010829) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                default: "", null: false
@@ -142,17 +143,4 @@ ActiveRecord::Schema.define(version: 20200306082448) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "addresses", "users"
-  add_foreign_key "comments", "items"
-  add_foreign_key "comments", "users"
-  add_foreign_key "credit_cards", "users"
-  add_foreign_key "evaluations", "items"
-  add_foreign_key "evaluations", "users"
-  add_foreign_key "likes", "items"
-  add_foreign_key "likes", "users"
-  add_foreign_key "product_images", "items"
-  add_foreign_key "purchase_histories", "items"
-  add_foreign_key "purchase_histories", "users"
-  add_foreign_key "sell_histories", "items"
-  add_foreign_key "sell_histories", "users"
 end
