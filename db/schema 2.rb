@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 20200308093016) do
     t.string   "days_of_ship",                      null: false
     t.integer  "seller_id",                         null: false
     t.integer  "buyer_id",                          null: false
-    t.string   "brand"
     t.string   "size"
     t.integer  "category_id",                       null: false
     t.datetime "created_at",                        null: false
@@ -120,24 +119,14 @@ ActiveRecord::Schema.define(version: 20200308093016) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email",                                default: "", null: false
-    t.string   "encrypted_password",                   default: "", null: false
-    t.string   "firstname",                                         null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "firstname",                           null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
-    t.string   "familyname",                                        null: false
-    t.string   "firstname_kana",                                    null: false
-    t.string   "familyname_kana",                                   null: false
-    t.integer  "phone_number",                                      null: false
-    t.string   "profile_image"
-    t.string   "nickname",                                          null: false
-    t.text     "profile_text",           limit: 65535
-    t.integer  "birth_year",                                        null: false
-    t.integer  "birth_month",                                       null: false
-    t.integer  "birth_day",                                         null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -148,8 +137,6 @@ ActiveRecord::Schema.define(version: 20200308093016) do
   add_foreign_key "credit_cards", "users"
   add_foreign_key "evaluations", "items"
   add_foreign_key "evaluations", "users"
-  add_foreign_key "items", "users", column: "buyer_id"
-  add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
   add_foreign_key "product_images", "items"
