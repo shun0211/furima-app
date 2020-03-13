@@ -8,8 +8,8 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.string :product_condition, null: false
       t.integer :shipping_charge, null: false
       t.string :days_of_ship, null: false
-      t.references :seller, null: false
-      t.references :buyer, null: false
+      t.references :seller, null: false, foreign_key: { to_table: :users }
+      t.references :buyer, null: false, foreign_key: { to_table: :users }
       t.string :size
       t.references :category, null: false
       t.timestamps
