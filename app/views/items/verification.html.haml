@@ -1,0 +1,64 @@
+.verification-wrapper
+  .verification-header
+    .verification-header__icon
+      = image_tag("logo.png")
+  .verification-content
+    .verification-content__item
+      %h2.verification-content__item__title
+        購入内容の確認
+      %sectonc.verification-content__item__body
+        .verification-content__item__body__caption
+          .verification-content__item__body__caption--center
+            .verification-content__item__image
+              = image_tag("sozai-09.png")
+            .verification-content__item__detail
+              %p.verification-content__item__detail__name
+                星
+              %p.verification-content__item__detail__price
+                %span
+                  ￥1,000
+                %span
+                  (税込) 送料込み
+      %section.verification-content__item--payment
+        .verification-content__item--payment-body
+          %form.verification-form
+            %ul.verification-form__content
+              %li.verification-form__content__list
+                .verification-form__content__list__title
+                  支払い金額
+                .verification-form__content__list__price
+                  %span
+                    ￥1,000
+            %section.verification-form--payment
+              .verification-form--payment__body
+                %h3
+                  支払い方法
+                = link_to "#" do
+                  %i.fas.fa-plus-circle
+                  %span
+                    登録してください
+            %section.verification-form__address
+              .verification-form__address__body
+                %h3
+                  配送先
+                = link_to "#" do
+                  %i.fas.fa-plus-circle
+                  %span
+                    登録してください
+            %section.verification-form__button
+              = link_to "#" do
+                %button{type: "button"}
+                  購入する
+  .verification-footer__information
+    %ul.verification-footer__information--lists
+      %li.verification-footer__information--list
+        = link_to "プライバシーポリシー"
+      %li.verification-footer__information--list
+        = link_to "フリマ利用規約"
+      %li.verification-footer__information--list
+        = link_to "特定商取引に関する表記"
+    .verification-footer__information__logo
+      = link_to image_tag("logo-white.png")
+      %p
+        ©︎ FURIMA
+
