@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200308093016) do
+ActiveRecord::Schema.define(version: 20200314043753) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "postal_code",   null: false
@@ -138,6 +138,10 @@ ActiveRecord::Schema.define(version: 20200308093016) do
     t.integer  "birth_year",                                        null: false
     t.integer  "birth_month",                                       null: false
     t.integer  "birth_day",                                         null: false
+    t.integer  "credit_id"
+    t.integer  "credit_card_id"
+    t.index ["credit_card_id"], name: "index_users_on_credit_card_id", using: :btree
+    t.index ["credit_id"], name: "index_users_on_credit_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -157,4 +161,5 @@ ActiveRecord::Schema.define(version: 20200308093016) do
   add_foreign_key "purchase_histories", "users"
   add_foreign_key "sell_histories", "items"
   add_foreign_key "sell_histories", "users"
+  add_foreign_key "users", "credit_cards"
 end
