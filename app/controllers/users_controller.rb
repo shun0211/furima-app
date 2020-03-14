@@ -6,7 +6,7 @@ def new
 end
 
 def sms
-  
+  @user = User.new
 end
 
 end

@@ -1,4 +1,22 @@
 .sms-header
   = render partial: 'users/shared/user_header'
+.sms-contents
+  .sms-contents__header
+    %h2 電話番号の確認
+    .sms-contents__form
+      = form_for @user do |f|
+        .field
+          = f.label :携帯電話の番号
+          .form-number
+          = f.text_field :phone_number, class: "forms", placeholder: '携帯電話の番号を入力してください'
+          %p 本人確認のため、携帯電話のSMS（ショートメッセージサービス）を利用して認証を行います。
+        .sms-submit
+          = f.submit "SMSを送信する", class: "sms-submit__btn"
+          %p ＊電話番号は本人確認や不正利用防止のため利用防止のために利用します。他のユーザーに公開されることはありません。
+        .sms__form-text
+          %p
+            = link_to '#' do
+              電話番号の確認が必要な理由
+              = icon 'fas', 'chevron-right'
 .sms-footer
   = render partial: 'users/shared/user_footer'
