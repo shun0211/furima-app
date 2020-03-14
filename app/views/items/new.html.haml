@@ -2,156 +2,153 @@
   .exhibition-header
     .exhibition-header__icon
       = image_tag("logo.png")
-  .exhibition-contents
-    .exhibition-content__caption
-      .exhibition-content__caption--title
-        %label
-          出品画像 
-        %span  
-          必須
-      %p.exhibition-content__caption--text
-        最大10枚までアップロードできます
-      .exhibition-content__caption--image
-        .exhibition-content__caption--image--icon
-          %label{class: "input-box"}
-            %i.fas.fa-camera
-            %input{type: "file"}
-              %p.exhibition-content__caption--image--icon--caution
-                %br
-                ドラッグアンドドロップ
-                %br
-                またはクリックしてファイルをアップロード
-    .exhibition-content__product
-      .exhibition-content__product--title
-        %label
-          商品名
-        %span
-          必須
-        %form.exhibition-content__product--form
-          %input.exhibition__product--name{name: "", placeholder: "40字まで", type: "text", maxlength: "40"}/
-      .exhibition-content__product--description
-        %label
-          商品の説明
-        %span
-          必須
-        %form.exhibition-content__product--description--form
-        %textarea.exhibition--description--text{name: "", cols: "62", rows: "6", maxlength: "1000", placeholder: "商品の説明 (必須 1,000文字以内)\n (色、素材、重さ、定価、注意点など)\n\n例) 2010年頃に1万円でこうにゅうしたジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
-        .exhibition--description--text--counter
-          %span.counter 0/1000
-    .exhibition-content__details
-      %p.exhibition-content__details--heading
-        商品の詳細
-      .exhibition-content__details--category
-        .exhibition-content__details--category--title
+  = form_for @item do |f|
+    .exhibition-contents
+
+      .exhibition-content__caption
+        .exhibition-content__caption--title
           %label
-            カテゴリー
+            出品画像 
+          %span  
+            必須
+        %p.exhibition-content__caption--text
+          最大10枚までアップロードできます
+        = f.fields_for :product_image do |s|
+          = s.text_field :image, class: 'exhibition-content__caption--image'
+      
+            
+      .exhibition-content__product
+        .exhibition-content__product--title
+          %label
+            商品名
           %span
             必須
-        %form.exhibition-content__details--category--form
-          %select
-            %option{value: "0"} 選択してください
-            %option{value: "1"} レディース
-            %option{value: "2"} メンズ
-        .exhibition-content__details--brand
-          .exhibition-content__details--brand--title
+          %form.exhibition-content__product--form
+            %input.exhibition__product--name{name: "", placeholder: "40字まで", type: "text", maxlength: "40"}/
+        .exhibition-content__product--description
+          %label
+            商品の説明
+          %span
+            必須
+          %form.exhibition-content__product--description--form
+          %textarea.exhibition--description--text{name: "", cols: "62", rows: "6", maxlength: "1000", placeholder: "商品の説明 (必須 1,000文字以内)\n (色、素材、重さ、定価、注意点など)\n\n例) 2010年頃に1万円でこうにゅうしたジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
+          .exhibition--description--text--counter
+            %span.counter 0/1000
+      .exhibition-content__details
+        %p.exhibition-content__details--heading
+          商品の詳細
+        .exhibition-content__details--category
+          .exhibition-content__details--category--title
             %label
-              ブランド
-            %span.brand
-              任意
-        %form.exhibition-content__details--brand--form
-          %input.exhibition__details--name{placeholder: "例) シャネル"}
-        .exhibition-content__details--Status
-          .exhibition-content__details--Status--title
-            %label
-              商品の状態
+              カテゴリー
             %span
               必須
-        %form.exhibition-content__details--Status--form
-          %select
-            %option{value: "0"} 選択してください
-    .exhibition-content__delivery
-      %p.exhibition-content__delivery--heading
-        配送について
-        = link_to "#" do
-          %i.far.fa-question-circle
-      .exhibition-content__delivery--burden
-        %label
-          配送料の負担
-        %span
-          必須
-        %form.exhibition-content__delivery--form
-          %select
-            %option{value: "0"} 選択してください
-      .exhibition-content__delivery--area
-        %label
-          発送元の地域
-        %span
-          必須
-        %form.exhibition-content__delivery--area
-          %select
-            %option{value: "0"} 選択してください
-      .exhibition-content__delivery--days
-        %label
-          発送までの日数
-        %span
-          必須
-        %form.exhibition-content__delivery--days
-          %select
-            %option{value: "0"} 選択してください
-    .exhibitin-content__price
-      %p.exhibitin-content__price--heading
-        価格 (￥300~9,999,999)
-        = link_to "#" do
-          %i.far.fa-question-circle
-      .exhibitin-content__price--selling
-        .exhibitin-content__price--selling--title
+          %form.exhibition-content__details--category--form
+            %select
+              %option{value: "0"} 選択してください
+              %option{value: "1"} レディース
+              %option{value: "2"} メンズ
+          .exhibition-content__details--brand
+            .exhibition-content__details--brand--title
+              %label
+                ブランド
+              %span.brand
+                任意
+          %form.exhibition-content__details--brand--form
+            %input.exhibition__details--name{placeholder: "例) シャネル"}
+          .exhibition-content__details--Status
+            .exhibition-content__details--Status--title
+              %label
+                商品の状態
+              %span
+                必須
+          %form.exhibition-content__details--Status--form
+            %select
+              %option{value: "0"} 選択してください
+      .exhibition-content__delivery
+        %p.exhibition-content__delivery--heading
+          配送について
+          = link_to "#" do
+            %i.far.fa-question-circle
+        .exhibition-content__delivery--burden
           %label
-            販売価格
-          %span.selling-span
+            配送料の負担
+          %span
             必須
-          %form.exhibitin-content__price--selling--form
+          %form.exhibition-content__delivery--form
+            %select
+              %option{value: "0"} 選択してください
+        .exhibition-content__delivery--area
+          %label
+            発送元の地域
+          %span
+            必須
+          %form.exhibition-content__delivery--area
+            %select
+              %option{value: "0"} 選択してください
+        .exhibition-content__delivery--days
+          %label
+            発送までの日数
+          %span
+            必須
+          %form.exhibition-content__delivery--days
+            %select
+              %option{value: "0"} 選択してください
+      .exhibitin-content__price
+        %p.exhibitin-content__price--heading
+          価格 (￥300~9,999,999)
+          = link_to "#" do
+            %i.far.fa-question-circle
+        .exhibitin-content__price--selling
+          .exhibitin-content__price--selling--title
+            %label
+              販売価格
+            %span.selling-span
+              必須
+            %form.exhibitin-content__price--selling--form
+              %span
+                ￥
+              %input{type: "number",placeholder: "0"}
+          .exhibitin-content__price--fee
+            .exhibitin-content__price--fee-label
+              販売手数料 (10%)
             %span
-              ￥
-            %input{type: "number",placeholder: "0"}
-        .exhibitin-content__price--fee
-          .exhibitin-content__price--fee-label
-            販売手数料 (10%)
-          %span
-            ー
-        .exhibitin-content__price--revenue
-          .exhibitin-content__price--revenue-label
-            販売利益
-          %span
-            ー
-        .exhibitin-content__price--listing
-          = link_to "#" do
-            %button{type: "button"}
-              出品する
-        .exhibitin-content__price--return
-          = link_to "#" do
-            %button{type: "button"}
-              もどる
-        %p.exhibitin-content__price--caution
-          禁止されている
-          = link_to "行為" 
-          および
-          = link_to "出品物"
-          を必ずご確認ください。
-          = link_to "偽ブランド品"
-          や
-          = link_to "盗品物"
-          などの販売は犯罪であり、法律により処罰される可能性があります。 また、 出品をもちまして
-          = link_to "加盟店規約"
-          に同意したことになります。
-    .exhibitin-footer__information
-      %ul.exhibitin-footer__information--lists
-        %li.exhibitin-footer__information--list
-          = link_to "プライバシーポリシー"
-        %li.exhibitin-footer__information--list
-          = link_to "フリマ利用規約"
-        %li.exhibitin-footer__information--list
-          = link_to "特定商取引に関する表記"
-      .exhibitin-footer__information__logo
-        = link_to image_tag("logo-white.png")
-        %p
-          ©︎ FURIMA
+              ー
+          .exhibitin-content__price--revenue
+            .exhibitin-content__price--revenue-label
+              販売利益
+            %span
+              ー
+          .exhibitin-content__price--listing
+            = link_to "#" do
+              %button{type: "button"}
+                出品する
+          .exhibitin-content__price--return
+            = link_to "#" do
+              %button{type: "button"}
+                もどる
+          %p.exhibitin-content__price--caution
+            禁止されている
+            = link_to "行為" 
+            および
+            = link_to "出品物"
+            を必ずご確認ください。
+            = link_to "偽ブランド品"
+            や
+            = link_to "盗品物"
+            などの販売は犯罪であり、法律により処罰される可能性があります。 また、 出品をもちまして
+            = link_to "加盟店規約"
+            に同意したことになります。
+          = f.submit '提出'
+  .exhibitin-footer__information
+    %ul.exhibitin-footer__information--lists
+      %li.exhibitin-footer__information--list
+        = link_to "プライバシーポリシー"
+      %li.exhibitin-footer__information--list
+        = link_to "フリマ利用規約"
+      %li.exhibitin-footer__information--list
+        = link_to "特定商取引に関する表記"
+    .exhibitin-footer__information__logo
+      = link_to image_tag("logo-white.png")
+      %p
+        ©︎ FURIMA
