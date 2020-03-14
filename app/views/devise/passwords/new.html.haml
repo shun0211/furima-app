@@ -1,7 +1,5 @@
 .password-header
-  .password-header__inner
-    %h1.password-header__inner__log
-      = link_to image_tag("logo.png", class: "password-logo"), root_path
+  = render partial: 'users/shared/user_header'
 .password-content
   .password-content__question
     %h2 パスワードをお忘れの方

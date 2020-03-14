@@ -1,7 +1,5 @@
 .presingup-header
-  .presingup-header__inner
-    %h1.presingup-header__inner__log
-      = link_to image_tag("logo.png", class: "presingup-logo"), root_path
+  = render partial: 'users/shared/user_header'
 .presingup-contents
   .presingup-contents__body
     .presingup-contents__body-head

@@ -1,0 +1,13 @@
+.user-header {
+  height:128px;
+  background-color: #f5f5f5;
+  text-align: center;
+  &__inner{
+    height:128px;
+    padding-top: 40px;
+    .user-logo{
+      width: 193px;
+      height: 49px;
+    }
+  }
+}
