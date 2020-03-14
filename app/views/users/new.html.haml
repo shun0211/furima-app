@@ -15,18 +15,4 @@
         = icon('fab','google', class: "presingup-contents__body-btn--icon")
         Googleで登録する
 .presingup-footer
-  .presingup-footer__inner
-    %ul.clearfix
-      %li
-        = link_to '#' do
-          プライバシーポリシー
-      %li
-        = link_to '#' do
-          FURIMA利用規約
-      %li
-        = link_to '#' do
-          特定商取引に関する表記
-      %br/
-      = link_to image_tag("logo-white.png", class: "footer-logo")
-      %p
-        ©︎ FURIMA
+  = render partial: 'users/shared/user_footer'
