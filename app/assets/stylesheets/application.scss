@@ -2,6 +2,7 @@
 @import "singin";
 @import "password";
 @import "singup";
+@import "sms";
 @import "presingup";
 @import "modules/items";
 @import "font-awesome-sprockets";
@@ -11,3 +12,5 @@
 @import "users";
 @import "modules/items/new";
 @import "modules/items/verification";
+@import "modules/users/header";
+@import "modules/users/footer";

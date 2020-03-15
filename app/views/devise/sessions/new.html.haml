@@ -1,7 +1,5 @@
 .singin-header
-  .singin-header__inner
-    %h1.singin-header__inner__log
-      = link_to image_tag("logo.png", class: "header-logo"), root_path
+  = render partial: 'users/shared/user_header'
 .singin-contents
   .singin-contents__body
     .singin-contents__body-head
@@ -30,18 +28,4 @@
       .new_password_path
         = link_to 'パスワードをお忘れの方', new_user_password_path
 .singin-footer
-  .singin-footer__inner
-    %ul.clearfix
-      %li
-        = link_to '#' do
-          プライバシーポリシー
-      %li
-        = link_to '#' do
-          FURIMA利用規約
-      %li
-        = link_to '#' do
-          特定商取引に関する表記
-      %br/
-      = link_to image_tag("logo-white.png", class: "footer-logo"), root_path
-      %p
-        ©︎ FURIMA
+  = render partial: 'users/shared/user_footer'
