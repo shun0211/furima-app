@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new] do
     collection do
       get 'sms'
+      get 'sms_input'
+      get 'completed'
     end
   end
   root "items#index"

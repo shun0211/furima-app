@@ -9,4 +9,10 @@ def sms
   @user = User.new
 end
 
+def sms_input
+end
+
+def completed
+end
+
 end
