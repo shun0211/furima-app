@@ -2,6 +2,25 @@
   = render partial: 'users/shared/user_header'
 .completed-contents
   .completed-contents__header
-    %h2 登録完了（仮）
+    %h2 会員登録完了
+  .completed-contents__body
+    .completed-contents__body__fild
+      %h3 ありがとうございます。
+      %h3 会員登録が完了しました。
+    .completed-contents__body__link
+      = link_to('FURIMAをはじめる', {})
+  .completed-contents__bottom
+    %section.completed-contents__bottom__visual
+      .completed-contents__bottom-content
+        %h2.completed-contents__bottom-content__title
+          %br
+          人生を変えるフリマアプリ
+        %p.completed-contents__bottom-content__text
+          FURIMAはだれでもかんたんに出品・購入できる
+          %br
+          フリマアプリです
+        .completed-contents__bottom-content__button
+          = link_to image_tag("sozai-02.png")
+          = link_to image_tag("sozai-05.png")
 .completed-footer
   = render partial: 'users/shared/user_footer'
