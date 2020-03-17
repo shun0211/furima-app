@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :new, :show] do
     collection do
       get :verification
+      get :verification_address
+      get :credit
     end
   end
   resources :users, only: [:index, :new] do

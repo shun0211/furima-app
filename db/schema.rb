@@ -132,10 +132,8 @@ ActiveRecord::Schema.define(version: 20200314043753) do
     t.integer  "birth_year",                                        null: false
     t.integer  "birth_month",                                       null: false
     t.integer  "birth_day",                                         null: false
-    t.integer  "credit_id"
     t.integer  "credit_card_id"
     t.index ["credit_card_id"], name: "index_users_on_credit_card_id", using: :btree
-    t.index ["credit_id"], name: "index_users_on_credit_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

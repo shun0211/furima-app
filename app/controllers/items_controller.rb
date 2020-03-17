@@ -7,6 +7,12 @@ class ItemsController < ApplicationController
 
   def verification
   end
+
+  def verification_address
+  end
+
+  def credit
+  end
   
   def show
   end
