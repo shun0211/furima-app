@@ -22,38 +22,38 @@
         text-align: center;
         border-width: 1px;
         border-bottom-style: solid;
-        border-color: rgb(204, 204, 204);
-        background-color: #fff;
+        border-color: $gray204;
+        background-color: $white;
       }
     }
   }
   .verification-address-content__product {
     max-width: 650px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: $white;
     .verification-address-content__product--title {
       padding: 30px 145px 5px;
       label {
         font-size: 14px;
         font-weight: 600;
-        background-color:#fff;
+        background-color:$white;
       }
       span {
         padding: 1.5px 4px;
         font-size: 12px;
         font-weight: 600;
-        color:#fff;
+        color:$white;
         background-color: red;
       }
       .any {
-        color: #fff;
-        background-color: #ccc;
+        color: $white;
+        background-color: $lightgray;
       }
     } 
     .verification-address-content__product--form {
       text-align: center;
       input {
-        border: 1px solid #ccc;
+        border: 1px solid $lightgray;
         border-radius: 4px;
         box-sizing: border-box;
         font-family: inherit;
@@ -75,10 +75,10 @@
         font-size: 93%;
         line-height: 1.1em;
         border-radius: 3px;
-        border: 1px solid #ccc;
+        border: 1px solid $lightgray;
         background-image: image-url("sozai-08.png");
         color: #7d7776;
-        background-color: #fff;
+        background-color: $white;
         background-repeat: no-repeat;
         background-size: 20px;
         background-position: right 10px center;
@@ -94,10 +94,10 @@
         margin-bottom: 24px;
         font-size: 17px;
         font-weight: 600;
-        border: 1px solid #ccc;
+        border: 1px solid $lightgray;
         border-radius: 4px;
-        color: #fff;
-        background-color: red;
+        color: $white;
+        background-color: $blue
       }
     }
   }
