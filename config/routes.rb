@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :new] do
     collection do
-      get 'sms'
-      get 'sms_input'
-      get 'completed'
+      get :sms
+      get :sms_input
+      get :completed
     end
   end
   root "items#index"
