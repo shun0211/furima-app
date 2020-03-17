@@ -72,15 +72,5 @@
     .credit-content__register
       %button{type: "button"}
         登録する
-  .verification-footer__information
-  %ul.verification-footer__information--lists
-    %li.verification-footer__information--list
-      = link_to "プライバシーポリシー"
-    %li.verification-footer__information--list
-      = link_to "フリマ利用規約"
-    %li.verification-footer__information--list
-      = link_to "特定商取引に関する表記"
-  .verification-footer__information__logo
-    = link_to image_tag("logo-white.png")
-    %p
-      ©︎ FURIMA
+  .verification_footer
+    = render partial: 'items/shared/verification_footer'
