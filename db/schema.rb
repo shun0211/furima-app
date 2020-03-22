@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 20200315105720) do
     t.string   "product_condition",                 null: false
     t.integer  "shipping_charge",                   null: false
     t.string   "days_of_ship",                      null: false
-    t.integer  "seller_id",                         null: false
-    t.integer  "buyer_id",                          null: false
+    t.integer  "seller_id"
+    t.integer  "buyer_id"
     t.string   "brand"
     t.string   "size"
     t.integer  "category_id",                       null: false
