@@ -30,7 +30,7 @@
     .item-content
       .item-content__top
         .item-box
-          %h2.item-box--name product1
+          %h2.item-box--name #{@items.name}
           .item-box__body
             %ul
               %li
@@ -44,7 +44,6 @@
                     = image_tag("yosenabe.png", size: "140x87")
           .item-box__price
             %span.price
-              ¥10000
             .item-box__price-detail
               %span
                 (税込)

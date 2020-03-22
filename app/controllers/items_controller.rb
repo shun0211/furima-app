@@ -3,12 +3,14 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
   end
 
   def verification
   end
   
   def show
+    @items = Item.all
   end
   
 end
