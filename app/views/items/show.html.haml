@@ -35,17 +35,17 @@
           .item-box__body
             %ul
               %li
-                = image_tag("curry.png", size: "560x346")
+                = image_tag("curry.png", size: "560x346", class: "item-main-photo")
                 %ul
                   %li
-                    = image_tag("curry.png", size: "140x87")
+                    = image_tag("curry.png", size: "140x87", class: "item-change-photo")
                   %li
-                    = image_tag("eggplant.png", size: "140x87")
+                    = image_tag("eggplant.png", size: "140x87", class: "item-change-photo")
                   %li
-                    = image_tag("yosenabe.png", size: "140x87")
+                    = image_tag("yosenabe.png", size: "140x87", class: "item-change-photo")
           .item-box__price
             %span.price
-              = "¥#{@item.price}"
+              = "¥#{@item.price} "
             .item-box__price-detail
               %span
                 (税込)
