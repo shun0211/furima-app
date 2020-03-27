@@ -1,3 +1,24 @@
+@mixin input_form{
+  margin-top: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 48px;
+  margin-bottom: 20px;
+  padding: 7px 30px 7px 10px;
+  font-size: inherit;
+  line-height: 1.1em;
+  border-radius: 3px;
+  border: 1px solid $lightgray;
+  background-image: url("sozai-08.png");
+  background-color: $white;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: right 10px center;
+  outline: none;
+}
+
 .exhibition-wrapper {
   height: 100%;
   background-color: #f2f2f2;
@@ -38,25 +59,61 @@
         margin: 16px 0 16px 0;
         font-size: 14px;
       }
-      .exhibition-content__caption--image {
-        height:23vh;
-        border-width: 1px;
-        border-style: dashed;
-        border-color: rgb(204, 204, 204);
-        border-image:initial;
-        background-color: #f2f2f2;
-        &--icon {
-          height: 100%;
-          font-size: 20px;
+      .exhibition-content__caption--image--box {
+        display: flex;
+        flex-direction: row-reverse;
+        .exhibition-content__caption--image{
+          height:23vh;
+          border-width: 1px;
+          border-style: dashed;
+          border-color: rgb(204, 204, 204);
+          border-image:initial;
+          background-color: #f2f2f2;
           text-align: center;
-          padding-top: 28px;
-            input {
-              display: none;
-            }
-          &--caution {
-            font-size: 10px;
+          cursor: pointer;
+          width: 100%;
+          .fa-camera{
+            padding: 45px 0 8px;
+            font-size: 20px;
+          }
+          p{
+            font-size: 12px;
             font-weight: 500;
-            line-height: 1.1;
+            line-height: 1.4;
+          }
+          &--default{
+           display: none; 
+          }
+        }
+        .file_choice_default{
+          display: none;
+        }
+        .item-image{
+          height: 23vh;
+          text-align: center;
+          background-color: #f2f2f2;
+          width: 20%;
+          .item-image__content{
+            display: flex;
+            align-items: center;
+            height: calc(100% - 20px);
+            border-width: 1px;
+            border-style: dashed;
+            border-color: rgb(204, 204, 204);
+            border-image:initial;
+          }
+          .item-image__operation{
+            height: 20px;
+            font-size: 12px;
+            border-width: 1px;
+            border-style: dashed;
+            border-color: rgb(204, 204, 204);
+            border-image:initial;
+            &--delete{
+              text-decoration: none;
+              color: #0099FF;
+              cursor: pointer;
+            }
           }
         }
       }
@@ -96,25 +153,37 @@
           width: 100%;
         }
       }
-      .exhibition-content__product--description--form {
-        padding-top: 15px;
-      }
-      .exhibition--description--text {
-        resize: vertical;
-        border: 1px solid $lightgray;
-        border-radius: 4px;
-        box-sizing: border-box;
-      }
-      .exhibition--description--text--counter {
-        text-align: end;
-        .counter {
-          font-size: 8px;
-          font-weight: 500;
-          color: black;
-          background-color: $white;
+      .exhibition-content__product--description{
+        padding-top: 20px;
+        .exhibition--description--text {
+          border: 1px solid $lightgray;
+          border-radius: 4px;
+          outline: none;
+          display: block;
+          width: 100%;
+          margin-top: 15px; 
+          padding: 13px 16px;
+        }
+        .exhibition--description--text--counter {
+          text-align: end;
+          .counter {
+            font-size: 8px;
+            font-weight: 500;
+            color: black;
+            background-color: $white;
+          }
+          .count_over{
+            color: red;
+          }
+        }
+        .exhibition-content__product--description--alert{
+          color: red;
+          height: 48px;
+          line-height: 48px;
         }
       }
     }
+
     .exhibition-content__details {
       max-width: 650px;
       height: 50%;
@@ -142,48 +211,9 @@
             color: $white;
             background-color: red;
           }
-          form {
-            padding-top: 10px;
-          select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            width: 100%;
-            height: 48px;
-            margin-bottom: 20px;
-            padding: 7px 30px 7px 10px;
-            font-size: 93%;
-            line-height: 1.1em;
-            border-radius: 3px;
-            border: 1px solid $lightgray;
-            background-image: url("sozai-08.png");
-            background-color: $white;
-            background-repeat: no-repeat;
-            background-size: 20px;
-            background-position: right 10px center;
-          }
-        }
-        .brand {
-          background-color: $lightgray;
-        }
-      .exhibition__details--name {
-        border: 1px solid $lightgray;
-        border-radius: 4px;
-        box-sizing: border-box;
-        font-family: inherit;
-        font-size: inherit;
-        height: 48px;
-        margin: 0;
-        outline: none;
-        padding: 0 16px;
-        width: 100%;
-      }
-      &--Status--title {
-        padding-top: 20px;
-      }
-      &--Status--form {
-        padding-top: 10px;
-        select {
+      &--category{
+        &--form{
+          margin-top: 10px;
           -webkit-appearance: none;
           -moz-appearance: none;
           appearance: none;
@@ -202,6 +232,20 @@
           background-position: right 10px center;
         }
       }
+      .exhibition-content__details--brand{
+        .exhibition-content__details--brand--form{
+          @include input_form
+        }
+      }
+      .brand {
+          background-color: $lightgray;
+        }
+      &--Status{
+        &--form{
+          @include input_form
+        }
+      }
+
     }
     .exhibition-content__delivery {
       max-width: 650px;
@@ -233,29 +277,17 @@
           color: $white;
           background-color: red;
         }
-        form {
-          padding-top: 10px;
-          select {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          width: 100%;
-          height: 48px;
-          margin-bottom: 20px;
-          padding: 7px 30px 7px 10px;
-          font-size: 93%;
-          line-height: 1.1em;
-          border-radius: 3px;
-          border: 1px solid $lightgray;
-          background-image: url("sozai-08.png");
-          background-color: $white;
-          background-repeat: no-repeat;
-          background-size: 20px;
-          background-position: right 10px center;
-          }
-        }
+      &--burden--form{
+        @include input_form
+      }
+      &--area--form{
+        @include input_form
+      }
+      &--days--form{
+        @include input_form
+      }
     }
-    .exhibitin-content__price {
+    .exhibition-content__price {
       max-width: 650px;
       height: 60%;
       padding: 40px;
@@ -273,106 +305,110 @@
         .far {
           color: #0095ee;
         }
-        &--selling--title {
-          padding-bottom: 20px;
-          line-height: 50px;
-          label {
-            padding-right: 6px;
-            font-size: 14px;
-            font-weight: 600;
-          }
-          .selling-span {
-            padding: 1.5px 4px;
-            font-size: 12px;
-            font-weight: 600;
-            color: $white;
-            background-color: red;
-          }
-            .exhibitin-content__price--selling--form {
-              float: right;
-              input {
-                width: inherit;
-                height: 48px;
-                padding: 0 16px;
-                border: 1px solid $lightgray;
-                border-radius: 4px;
-                text-align: end;
-              }
-            }
+      &--selling--title {
+        padding-bottom: 20px;
+        line-height: 50px;
+        label {
+          padding-right: 6px;
+          font-size: 14px;
+          font-weight: 600;
         }
-        &--fee {
-          line-height: 48px;
-          padding: 10px 0;
-          border-bottom: 1px solid rgb(204, 204, 204);
-          display: flex;
-          justify-content: space-between;
-        }
-        &--revenue {
-          line-height: 48px;
-          padding: 10px 0;
-          display: flex;
-          justify-content: space-between;
-        }
-        .exhibitin-content__price--listing {
-          padding-top: 30px;
-          line-height: 48px;
-          text-align: center;
-          button {
-            width: 53%;
-            height: 48px;
-            padding: 0 24px;
-            margin-bottom: 24px;
-            font-size: 17px;
-            font-weight: 600;
-            border: 1px solid $lightgray;
-            border-radius: 4px;
-            color: $white;
-            background-color: red;
-          }
-        }
-        .exhibitin-content__price--return {
-          line-height: 48px;
-          text-align: center;
-          button {
-            width: 53%;
-            height: 48px;
-            padding: 0 24px;
-            margin-bottom: 24px;
-            font-size: 17px;
-            font-weight: 600;
-            border: 1px solid $lightgray;
-            border-radius: 4px;
-            color: $white;
-            background-color: red;
-          }
-        }
-        .exhibitin-content__price--caution {
+        .selling-span {
+          padding: 1.5px 4px;
           font-size: 12px;
-          a {
-            text-decoration: none;
-            color: #0095ee;
-          }
+          font-weight: 600;
+          color: $white;
+          background-color: red;
         }
-    }
-    .exhibitin-footer__information {
-      padding: 40px 0;
-      font-size: 12px;
-      text-align: center;
-      &--lists {
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        a {
-          padding-right: 15px;
-          text-decoration: none;
-          color: black;
+        // span{
+        //   float: right;
+        // }
+        .exhibition-content__price--selling--unity {
+          float: right;
+          .exhibition-content__price--selling--form{
+            width: 270px;
+            height: 48px;
+            padding: 0 16px;
+            border: 1px solid $lightgray;
+            border-radius: 4px;
+            text-align: end;
+            outline: none;
+          }
         }
       }
-      &__logo {
-        padding-top: 35px;
-        img {
-          width: 180px;
+      &--fee {
+        line-height: 48px;
+        padding: 10px 0;
+        border-bottom: 1px solid rgb(204, 204, 204);
+        display: flex;
+        justify-content: space-between;
+      }
+      &--revenue {
+        line-height: 48px;
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+      }
+      .exhibition-content__price--listing {
+        padding-top: 30px;
+        line-height: 48px;
+        text-align: center;
+        .button {
+          width: 53%;
+          height: 48px;
+          padding: 0 24px;
+          margin-bottom: 24px;
+          font-size: 17px;
+          font-weight: 600;
+          border: 1px solid $lightgray;
+          border-radius: 4px;
+          color: $white;
+          background-color: red;
         }
+      }
+      .exhibition-content__price--return {
+        line-height: 48px;
+        text-align: center;
+        button {
+          width: 53%;
+          height: 48px;
+          padding: 0 24px;
+          margin-bottom: 24px;
+          font-size: 17px;
+          font-weight: 600;
+          border: 1px solid $lightgray;
+          border-radius: 4px;
+          color: $white;
+          background-color: red;
+        }
+      }
+      .exhibition-content__price--caution {
+        font-size: 12px;
+        a {
+          text-decoration: none;
+          color: #0095ee;
+        }
+      }
+    }
+  }
+  .exhibition-footer__information {
+    padding: 40px 0;
+    font-size: 12px;
+    text-align: center;
+    &--lists {
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      a {
+        padding-right: 15px;
+        text-decoration: none;
+        color: black;
+      }
+    }
+    &__logo {
+      padding-top: 35px;
+      img {
+        width: 180px;
       }
     }
   }

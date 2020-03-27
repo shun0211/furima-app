@@ -4,11 +4,14 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.build_product_image
+    # Buildメソッドを用いて@itemにproduct_imageの情報を入れることのできるインスタンスを生成
+    5.times{
+      @item.product_image.build
+    }
   end
   
   def create
-    Item.create(item_params)
+    Item.create!(item_params)
     redirect_to verification_items_path
   end
 
@@ -27,12 +30,15 @@ class ItemsController < ApplicationController
       :price,
       :product_condition,
       :shipping_charge,
+      :prefecture_id,
       :days_of_ship, 
       :brand,
       :size,
+      # :category_id,
+      # attributesを用いてparamsの中にproduct_imageの情報が入ることを許可
       product_image_attributes: [:id, 
                                  :image,
-                                 :item_id]
-    )
+                                 :item],)
+      # ).merge(seller_id: current_user.id)
   end
 end
