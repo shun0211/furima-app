@@ -14,11 +14,11 @@
       = link_to "", class: "singin-contents__body-btn singin-contents__body-btn--google" do
         = icon('fab','google', class: "singin-contents__body-btn--icon")
         Googleでログイン
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = form_for(:session, url: user_session_path) do |f|
         .field-input-email
           = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'メールアドレス'
         .field-input-password
-          = f.password_field :password, autocomplete: "current-password", placeholder: 'パスワード'
+          = f.password_field :encrypted_password, autocomplete: "current-password", placeholder: 'パスワード'
         - if devise_mapping.rememberable?
           .field-check
             = f.check_box :remember_me
