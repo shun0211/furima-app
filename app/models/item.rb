@@ -13,9 +13,10 @@ class Item < ApplicationRecord
   belongs_to :category, optional: true
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
-end
 
-# class Item < ActiveRecord::Base
-#   extend ActiveHash::Associations::ActiveRecordExtensions
-#   belongs_to :prefecture
-# end
+  # バリデーション
+  validates :product_name, :product_information, :product_status, :price, :product_condition, :shipping_charge, :days_of_ship, :prefecture_id, presence: true
+  validates :product_name, length: { maximum: 40 }
+  validates :product_information, length: { maximum: 1000 }
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+end

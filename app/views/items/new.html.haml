@@ -2,7 +2,7 @@
   .exhibition-header
     .exhibition-header__icon
       = image_tag("logo.png")
-  = form_for @item do |f|
+  = form_for @item, html: {name: 'new_item'} do |f|
     .exhibition-contents
       .exhibition-content__caption
         .exhibition-content__caption--title
@@ -11,34 +11,36 @@
           %span  
             必須
         %p.exhibition-content__caption--text
-          最大10枚までアップロードできます
+          最大５枚までアップロードできます
         .exhibition-content__caption--image--box
           .exhibition-content__caption--image
             = icon('fas', 'camera')
-            -# %p
-            -#   ドラッグアンドドロップ
-            -# %p
-            -#   またはクリックしてファイルをアップロード
           = f.fields_for :product_image do |s|
             = s.file_field :image, class: 'exhibition-content__caption--image--default'
             -# ここにプレビューのコードを挿入
+        -# ここにエラーメッセージを挿　入
       .exhibition-content__product
-        .exhibition-content__product--title
-          %label
-            商品名
-          %span
-            必須
-          .exhibition-content__product--form
+        .exhibition-content__product--name
+          .exhibition-content__product--name--title
+            %label
+              商品名
+            %span
+              必須
+          .exhibition-content__product--name--form
             = f.text_field :product_name, placeholder: "40字まで", maxlength: "40", class: "exhibition__product--name"
+        -# ここにエラーメッセージを挿入
         .exhibition-content__product--description
-          %label
-            商品の説明
-          %span
-            必須
-          = f.text_area :product_information, class: "exhibition--description--text", rows: "8", placeholder: "商品の説明 (必須 1,000文字以内)\n (色、素材、重さ、定価、注意点など)\n\n例) 2010年頃に1万円でこうにゅうしたジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
-          .exhibition--description--text--counter
-            %span.counter 0/1000
-          .alert
+          .exhibition-content__product--description--title
+            %label
+              商品の説明
+            %span
+              必須
+          .exhibition-content__product--description--form
+            = f.text_area :product_information, class: "exhibition--description--text", rows: "8", placeholder: "商品の説明 (必須 1,000文字以内)\n (色、素材、重さ、定価、注意点など)\n\n例) 2010年頃に1万円でこうにゅうしたジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+            .exhibition--description--text--counter
+              %span.counter 0/1000
+            .alert
+          -# ここにエラーメッセージを挿入
       .exhibition-content__details
         %p.exhibition-content__details--heading
           商品の詳細
@@ -63,31 +65,41 @@
               商品の状態
             %span
               必須
-          = f.select :product_condition, [["新品、未使用", "0"], ["未使用に近い", "1"], ["目立った傷や汚れなし", "2"], ["やや傷や汚れあり", "3"], ["傷や汚れあり", "4"], ["全体的に状態が悪い", "5"]], {prompt: "選択してください"}, class: "exhibition-content__details--Status--form"
-       
+          .exhibition-content__details--Status--form
+            = f.select :product_condition, [["新品、未使用", "0"], ["未使用に近い", "1"], ["目立った傷や汚れなし", "2"], ["やや傷や汚れあり", "3"], ["傷や汚れあり", "4"], ["全体的に状態が悪い", "5"]], {prompt: "選択してください"}, class: "product_condition--form"
+          -# ここにエラーメッセージを挿入
       .exhibition-content__delivery
         %p.exhibition-content__delivery--heading
           配送について
           = link_to "#" do
             %i.far.fa-question-circle
-        .exhibition-content__delivery--burden--title
-          %label
-            配送料の負担
-          %span
-            必須
-        = f.select :shipping_charge, [["送料込み（出品者負担）", "0"], ["着払い（購入者負担）", "1"]], {prompt: "選択してください"}, class: "exhibition-content__delivery--burden--form"
-        .exhibition-content__delivery--area--title
-          %label
-            発送元の地域
-          %span
-            必須
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, class: "exhibition-content__delivery--area--form"
-        .exhibition-content__delivery--days--title
-          %label
-            発送までの日数
-          %span
-            必須
-        = f.select :days_of_ship, [["1~2日で発送", "0"], ["2~3日で発送", "1"], ["4~7日で発送", "2"]], {prompt: "選択してください"}, class: "exhibition-content__delivery--days--form"
+        .exbition-content__delivery--burden
+          .exhibition-content__delivery--burden--title
+            %label
+              配送料の負担
+            %span
+              必須
+          .exhibition-content__delivery--burden--form
+            = f.select :shipping_charge, [["送料込み（出品者負担）", "0"], ["着払い（購入者負担）", "1"]], {prompt: "選択してください"}, class: "shipping_charge--form"
+          -# ここにエラーメッセージを挿入
+        .exbition-content__delivery--area
+          .exhibition-content__delivery--area--title
+            %label
+              発送元の地域
+            %span
+              必須
+          .exhibition-content__delivery--area--form
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, class: "shipping_area--form"
+          -# ここにエラーメッセージを挿入
+        .exhibition-content__delivery--days
+          .exhibition-content__delivery--days--title
+            %label
+              発送までの日数
+            %span
+              必須
+          .exhibition-content__delivery--days--form
+            = f.select :days_of_ship, [["1~2日で発送", "0"], ["2~3日で発送", "1"], ["4~7日で発送", "2"]], {prompt: "選択してください"}, class: "days_of_ship--form"
+          -# ここにエラーメッセージを挿入
       .exhibition-content__price
         %p.exhibition-content__price--heading
           価格 (￥300~9,999,999)
@@ -103,6 +115,7 @@
               %span
                 ¥
               = f.number_field :price, class: "exhibition-content__price--selling--form", max: 9999999, min: 300, placeholder: 0
+            -# ここにエラーメッセージを挿入
           .exhibition-content__price--fee
             .exhibition-content__price--fee-label
               販売手数料 (10%)
@@ -114,7 +127,8 @@
             %span.exhibion-content__price--revenue-value
               ー
           .exhibition-content__price--listing
-            = f.submit '出品する', class: 'button'
+            .button
+              出品する
           .exhibition-content__price--return
             = link_to root_path do
               %button{type: "button"}

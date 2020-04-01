@@ -4,15 +4,25 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    # Buildメソッドを用いて@itemにproduct_imageの情報を入れることのできるインスタンスを生成
+    # @itemにproduct_imageの情報を入れることのできるインスタンスを5つ生成
     5.times{
       @item.product_image.build
     }
   end
   
   def create
-    Item.create!(item_params)
-    redirect_to verification_items_path
+    @item = Item.new(item_params)
+    respond_to do |format|
+      # バリデーションチェックが通ればフォーム記載内容をデータベースに保存する
+      # また、バリデーションチェックした際のエラーメッセージをjson形式にてnew_item.jsへ返す
+      if @item.valid? 
+        @item.save
+        format.html { redirect_to root_path }
+        format.json { render json: @item.errors.messages }
+      else
+        format.json { render json: @item.errors.messages }
+      end
+    end
   end
 
   def verification
@@ -39,6 +49,6 @@ class ItemsController < ApplicationController
       product_image_attributes: [:id, 
                                  :image,
                                  :item],)
-      # ).merge(seller_id: current_user.id)
+      # .merge(seller_id: current_user.id)
   end
 end

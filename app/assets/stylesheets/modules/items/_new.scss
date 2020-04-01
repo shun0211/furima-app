@@ -76,11 +76,6 @@
             padding: 45px 0 8px;
             font-size: 20px;
           }
-          p{
-            font-size: 12px;
-            font-weight: 500;
-            line-height: 1.4;
-          }
           &--default{
            display: none; 
           }
@@ -117,6 +112,10 @@
           }
         }
       }
+      .images--empty{
+        color: red;
+        padding-top: 20px;
+      }
     }
     .exhibition-content__product {
       max-width: 650px;
@@ -127,54 +126,79 @@
       border-width: 1px;
       border-bottom-style: solid;
       border-color: rgb(204, 204, 204);
-      label {
-        font-size: 14px;
-        font-weight: 600;
-      }
-      span {
-        padding: 1.5px 4px;
-        font-size: 12px;
-        font-weight: 600;
-        color: $white;
-        background-color: red;
-      }
-      &--form {
-        padding-top: 15px;
-        .exhibition__product--name {
-          border: 1px solid $lightgray;
-          border-radius: 4px;
-          box-sizing: border-box;
-          font-family: inherit;
-          font-size: inherit;
-          height: 48px;
-          margin: 0 0 20px 0;
-          outline: none;
-          padding: 0 16px;
-          width: 100%;
+      &--name{
+        label {
+          font-size: 14px;
+          font-weight: 600;
         }
+        span {
+          padding: 1.5px 4px;
+          font-size: 12px;
+          font-weight: 600;
+          color: $white;
+          background-color: red;
+        }
+        &--form {
+          padding-top: 15px;
+          .exhibition__product--name {
+            border: 1px solid $lightgray;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: inherit;
+            height: 48px;
+            margin: 0 0 20px 0;
+            outline: none;
+            padding: 0 16px;
+            width: 100%;
+          }
+        }
+      }
+      .product_name--empty{
+        color: red;
+        padding-bottom: 20px;
       }
       .exhibition-content__product--description{
         padding-top: 20px;
-        .exhibition--description--text {
-          border: 1px solid $lightgray;
-          border-radius: 4px;
-          outline: none;
-          display: block;
-          width: 100%;
-          margin-top: 15px; 
-          padding: 13px 16px;
+        .exhibition-content__product--description--title{
+          label {
+            font-size: 14px;
+            font-weight: 600;
+          }
+          span {
+            padding: 1.5px 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: $white;
+            background-color: red;
+          }
         }
-        .exhibition--description--text--counter {
-          text-align: end;
-          .counter {
-            font-size: 8px;
-            font-weight: 500;
-            color: black;
-            background-color: $white;
+        .exhibition-content__product--description--form{
+          .exhibition--description--text {
+            border: 1px solid $lightgray;
+            border-radius: 4px;
+            outline: none;
+            display: block;
+            width: 100%;
+            margin-top: 15px; 
+            padding: 13px 16px;
           }
-          .count_over{
-            color: red;
+          .exhibition--description--text--counter {
+            text-align: end;
+            .counter {
+              font-size: 8px;
+              font-weight: 500;
+              color: black;
+              background-color: $white;
+            }
+            .count_over{
+              color: red;
+            }
           }
+        }
+        .product_information--empty{
+          color: red;
+          padding-bottom: 20px;
         }
         .exhibition-content__product--description--alert{
           color: red;
@@ -242,7 +266,13 @@
         }
       &--Status{
         &--form{
+          .product_condition--form{
           @include input_form
+          }
+        }
+        .product_condition--empty{
+          color: red;
+          padding-bottom: 20px;
         }
       }
 
@@ -278,13 +308,31 @@
           background-color: red;
         }
       &--burden--form{
-        @include input_form
+        .shipping_charge--form{
+          @include input_form
+        }
+      }
+      .shipping_charge--empty{
+        color: red;
+        padding-bottom: 20px;
       }
       &--area--form{
-        @include input_form
+        .shipping_area--form{
+          @include input_form
+        }
+      }
+      .prefecture_id--empty{
+        color: red;
+        padding-bottom: 20px;
       }
       &--days--form{
-        @include input_form
+        .days_of_ship--form{
+          @include input_form
+        }
+      }
+      .days_of_ship--empty{
+        color: red;
+        padding-bottom: 20px;
       }
     }
     .exhibition-content__price {
@@ -320,9 +368,6 @@
           color: $white;
           background-color: red;
         }
-        // span{
-        //   float: right;
-        // }
         .exhibition-content__price--selling--unity {
           float: right;
           .exhibition-content__price--selling--form{
@@ -334,6 +379,11 @@
             text-align: end;
             outline: none;
           }
+        }
+        .price--error{
+          color: red;
+          padding-bottom: 20px;
+          text-align: right;
         }
       }
       &--fee {
