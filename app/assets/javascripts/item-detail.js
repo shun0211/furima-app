@@ -1,3 +1,4 @@
+// 選択した画像がメインに表示されるようにする機能
 $(function(){
 	$("img.item-change-photo").click(function(){
 		var ImgSrc = $(this).attr("src");
