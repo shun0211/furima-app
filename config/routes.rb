@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       get :credit
     end
   end
-  resources :users, only: [:index, :new] do
+  resources :users, only: [:show, :new] do
     collection do
       get :sms
       get :sms_input

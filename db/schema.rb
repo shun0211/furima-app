@@ -71,11 +71,17 @@ ActiveRecord::Schema.define(version: 20200314043753) do
     t.string   "product_condition",                 null: false
     t.integer  "shipping_charge",                   null: false
     t.string   "days_of_ship",                      null: false
+    t.integer  "seller_id",                         null: false
+    t.integer  "buyer_id",                          null: false
     t.string   "brand"
     t.string   "size"
+    t.integer  "category_id",                       null: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.index ["buyer_id"], name: "index_items_on_buyer_id", using: :btree
+    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["product_name"], name: "index_items_on_product_name", using: :btree
+    t.index ["seller_id"], name: "index_items_on_seller_id", using: :btree
   end
 
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -125,7 +131,7 @@ ActiveRecord::Schema.define(version: 20200314043753) do
     t.string   "familyname",                                        null: false
     t.string   "firstname_kana",                                    null: false
     t.string   "familyname_kana",                                   null: false
-    t.integer  "phone_number",                                      null: false
+    t.integer  "phone_number"
     t.string   "profile_image"
     t.string   "nickname",                                          null: false
     t.text     "profile_text",           limit: 65535
@@ -144,6 +150,8 @@ ActiveRecord::Schema.define(version: 20200314043753) do
   add_foreign_key "credit_cards", "users"
   add_foreign_key "evaluations", "items"
   add_foreign_key "evaluations", "users"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
   add_foreign_key "product_images", "items"
