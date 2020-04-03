@@ -39,7 +39,6 @@
                   - @item.product_images.each.with_index do |image, index|
                     %li
                       = image_tag(image.image, size: "140x87", class: "item-change-photo" )
-
           .item-box__price
             %span.price 
               ¥#{@item.price}
@@ -48,6 +47,7 @@
                 (税込)
               %span
                 送料込み
+          = render partial: "items/shared/item-buy-button"
           .item-box--text 
             = @item.product_information
           .item-box__table
@@ -55,7 +55,8 @@
               %tbody
                 %tr
                   %th 出品者
-                  %td hoge
+                  %td 
+                    hoge
                 %tr
                   %th カテゴリー
                   %td 
@@ -101,42 +102,40 @@
                 = link_to  "＃" do
                   %i.fa.fa-flag
                   不適切な商品の通報
-      -if user_signed_in?
-        -if @product.seller_id == current_user.id
           = render partial: "items/shared/item-edit-delete"
-          .comment-box
-            %ul.comment-box__content
-            %form.new_comment
-              %input{name: "", type: "hidden", value: ""}
-              %textarea.comment-body
-              %p.notice-message
-                相手のことを考え丁寧なコメントを心がけましょう。
-                %br
-                不快な言葉遣いなどは利用制限や退会処分となることがあります。
-              %br
-              %button.comment-button{name: "button", type: "submit"}
-                %i.fa.fa-comment
-                コメントする
-        %ul.links
-          %li
-            = link_to  "＃" do
-              %i.fa.fa-angle-left
-                %span 前の商品
-          %li
-            = link_to  "＃" do
-              %span 後ろの商品
-              %i.fa.fa-angle-right
-        .related-items
+      .comment-box
+        %ul.comment-box__content
+        %form.new_comment
+          %input{name: "", type: "hidden", value: ""}
+          %textarea.comment-body
+          %p.notice-message
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %br
+          %button.comment-button{name: "button", type: "submit"}
+            %i.fa.fa-comment
+            コメントする
+      %ul.links
+        %li
           = link_to  "＃" do
-            レディースをもっと見る
-  %aside.app-banner
-    .inner
-      %h2.inner__title だれでもかんたん、人生を変えるフリマアプリ
-      %p.inner__text 今すぐ無料ダウンロード！
-      .inner__icon
-      = link_to image_tag("sozai-02.png", class: "app-button", width: "180"), "＃"
-      = link_to image_tag("sozai-05.png", class: "google-button", width: "180"), "＃"
-  .footer
-    = render partial: "items/shared/item-detail-footer"
-  .purchase-button
-    = render partial: "items/shared/purchase-button"
+            %i.fa.fa-angle-left
+              %span 前の商品
+        %li
+          = link_to  "＃" do
+            %span 後ろの商品
+            %i.fa.fa-angle-right
+      .related-items
+        = link_to  "＃" do
+          レディースをもっと見る
+%aside.app-banner
+  .inner
+    %h2.inner__title だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text 今すぐ無料ダウンロード！
+    .inner__icon
+    = link_to image_tag("sozai-02.png", class: "app-button", width: "180"), "＃"
+    = link_to image_tag("sozai-05.png", class: "google-button", width: "180"), "＃"
+.footer
+  = render partial: "items/shared/item-detail-footer"
+.purchase-button
+  = render partial: "items/shared/purchase-button"

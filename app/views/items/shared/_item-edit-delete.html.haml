@@ -1,6 +1,8 @@
-.item-edit-change-box
-  %button.btn-default.btn-blue{type: "button"}
-    商品の編集
-  %p.text-center or
-  %button.btn-default.btn-gray{type: "button"}
-    この商品を削除する
+-if user_signed_in?
+  -if @item.seller_id == current_user.id
+    .item-change
+      .item-change--button.btn-blue
+        = link_to "商品の編集", edit_item_path(@item.id)
+      %p.text-center or
+      .item-change--button.btn-gray
+        = link_to "この商品を削除する", item_path(@item.id), method: :delete

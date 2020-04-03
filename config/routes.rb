@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :items, only: [:index, :new, :show] do
+  resources :items, only: [:index, :new, :show, :edit, :destroy] do
     collection do
       get :verification
     end
