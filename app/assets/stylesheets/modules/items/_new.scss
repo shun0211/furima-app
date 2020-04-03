@@ -353,90 +353,93 @@
         .far {
           color: #0095ee;
         }
-      &--selling--title {
-        padding-bottom: 20px;
-        line-height: 50px;
-        label {
-          padding-right: 6px;
-          font-size: 14px;
-          font-weight: 600;
-        }
-        .selling-span {
-          padding: 1.5px 4px;
-          font-size: 12px;
-          font-weight: 600;
-          color: $white;
-          background-color: red;
-        }
-        .exhibition-content__price--selling--unity {
-          float: right;
-          .exhibition-content__price--selling--form{
-            width: 270px;
-            height: 48px;
-            padding: 0 16px;
-            border: 1px solid $lightgray;
-            border-radius: 4px;
-            text-align: end;
-            outline: none;
+      &--selling{
+        &--title {
+          padding-bottom: 20px;
+          line-height: 50px;
+          label {
+            padding-right: 6px;
+            font-size: 14px;
+            font-weight: 600;
+          }
+          .selling-span {
+            padding: 1.5px 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: $white;
+            background-color: red;
+          }
+          .exhibition-content__price--selling--unity {
+            float: right;
+            .price--form{
+              width: 270px;
+              height: 48px;
+              padding: 0 16px;
+              border: 1px solid $lightgray;
+              border-radius: 4px;
+              text-align: end;
+              outline: none;
+            }
+          }
+          .price--error{
+            color: red;
+            padding-bottom: 20px;
+            text-align: right;
           }
         }
-        .price--error{
-          color: red;
-          padding-bottom: 20px;
-          text-align: right;
+        .exhibition-content__price--fee {
+          line-height: 48px;
+          padding: 10px 0;
+          border-bottom: 1px solid rgb(204, 204, 204);
+          display: flex;
+          justify-content: space-between;
         }
-      }
-      &--fee {
-        line-height: 48px;
-        padding: 10px 0;
-        border-bottom: 1px solid rgb(204, 204, 204);
-        display: flex;
-        justify-content: space-between;
-      }
-      &--revenue {
-        line-height: 48px;
-        padding: 10px 0;
-        display: flex;
-        justify-content: space-between;
-      }
-      .exhibition-content__price--listing {
-        padding-top: 30px;
-        line-height: 48px;
-        text-align: center;
-        .button {
-          width: 53%;
-          height: 48px;
-          padding: 0 24px;
-          margin-bottom: 24px;
-          font-size: 17px;
-          font-weight: 600;
-          border: 1px solid $lightgray;
-          border-radius: 4px;
-          color: $white;
-          background-color: red;
+        .exhibition-content__price--revenue {
+          line-height: 48px;
+          padding: 10px 0;
+          display: flex;
+          justify-content: space-between;
         }
-      }
-      .exhibition-content__price--return {
-        line-height: 48px;
-        text-align: center;
-        button {
-          width: 53%;
-          height: 48px;
-          padding: 0 24px;
-          margin-bottom: 24px;
-          font-size: 17px;
-          font-weight: 600;
-          border: 1px solid $lightgray;
-          border-radius: 4px;
-          color: $white;
-          background-color: red;
+        .exhibition-content__price--listing {
+          padding-top: 30px;
+          line-height: 48px;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          .button {
+            width: 53%;
+            height: 48px;
+            margin-bottom: 24px;
+            font-size: 17px;
+            font-weight: 600;
+            border: 1px solid $lightgray;
+            border-radius: 4px;
+            color: $white;
+            background-color: red;
+          }
         }
-      }
-      .exhibition-content__price--caution {
-        font-size: 12px;
-        a {
-          text-decoration: none;
-          color: #0095ee;
+        .exhibition-content__price--return {
+          line-height: 48px;
+          text-align: center;
+          button {
+            width: 53%;
+            height: 48px;
+            padding: 0 24px;
+            margin-bottom: 24px;
+            font-size: 17px;
+            font-weight: 600;
+            border: 1px solid $lightgray;
+            border-radius: 4px;
+            color: $white;
+            background-color: red;
+          }
+        }
+        .exhibition-content__price--caution {
+          font-size: 12px;
+          a {
+            text-decoration: none;
+            color: #0095ee;
+          }
         }
       }
     }

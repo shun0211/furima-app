@@ -180,4 +180,13 @@ $(function(){
       }
     })
   })
+  // 販売手数料と販売履歴を表示
+  $('.price--form').on('keyup', function(){
+    $('.exhibition-content__price--fee-value').empty();
+    var sales_commission = Number($('.price--form').val()) * 0.1;
+    $('.exhibition-content__price--fee-value').text('¥' + sales_commission);
+    $('.exhibion-content__price--revenue-value').empty();
+    var sales_profit = Number($('.price--form').val()) - sales_commission;
+    $('.exhibion-content__price--revenue-value').text('¥' + sales_profit);
+  })
 })
