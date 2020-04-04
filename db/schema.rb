@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20200315105720) do
     t.string   "days_of_ship",                      null: false
     t.integer  "seller_id"
     t.integer  "buyer_id"
+
     t.string   "brand"
     t.string   "size"
     t.integer  "category_id",                       null: false
