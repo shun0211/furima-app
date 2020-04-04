@@ -2,6 +2,8 @@
 @import "singin";
 @import "password";
 @import "singup";
+@import "sms_input";
+@import "completed";
 @import "sms";
 @import "presingup";
 @import "modules/items";
@@ -12,5 +14,7 @@
 @import "users";
 @import "modules/items/new";
 @import "modules/items/verification";
+@import "modules/items/verification_address";
+@import "modules/items/credit";
 @import "modules/users/header";
 @import "modules/users/footer";

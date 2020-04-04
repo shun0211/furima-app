@@ -3,5 +3,32 @@
 .sms-input-contents
   .sms-input-contents__header
     %h2 電話番号認証
+  .sms-input-contents__body
+    .sms-input-contents__body__sms-form
+      = form_for @user do |f|
+        .field
+          = f.label :認証番号
+          .form-number
+          = f.text_field :phone_number, class: "forms", placeholder: '認証番号を入力してください'
+          %p SMSで届いた認証番号を入力してください
+        .sms-submit
+          = f.submit "認証して完了", class: "sms-submit__btn"
+    .sms-input-contents__body__tell
+      .sms-input-contents__body__tell__text
+        %h3 30分たっても認証番号が届かない方へ
+        %h4 電話で認証番号を確認することができます。
+    .sms-input-contents__body__tell__btn
+      = link_to "#", class: "" do
+        電話で認証番号をきく（通話無料）
+  .sms-input-contents__bottom
+    .sms-input-contents__bottom__text
+      %h3 認証番号が再送することができます。もう一度電話番号を入力してください。
+      = link_to "#", class: "link" do
+        電話番号を再入力する
+      .sms-input-contents__bottom__text__retry
+        %p 
+        ※SMSが届かない場合は
+        =link_to "SMS受信設定"
+        を確認して、もう一度電話番号を入力してください。
 .sms-input-footer
   = render partial: 'users/shared/user_footer'

@@ -3,13 +3,15 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :new, :show, :edit, :destroy] do
     collection do
       get :verification
+      get :verification_address
+      get :credit
     end
   end
   resources :users, only: [:index, :new] do
     collection do
-      get 'sms'
-      get 'sms_input'
-      get 'completed'
+      get :sms
+      get :sms_input
+      get :completed
     end
   end
   root "items#index"
