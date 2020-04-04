@@ -21,11 +21,9 @@ $(function(){
   })
   // 画像を複数投稿を可能にする記述
   $('.exhibition-content__caption--image--default').change(function(){
-    console.log(this);
     // 選択したファイル情報を取得し変数に格納
     // var file = $('.exhibition-content__caption--image--default').prop('files')[0];
     $.each(this.files, function(i, file){
-      console.log(file);
       // FileReaderオブジェクトを生成
       var fileReader = new FileReader();
       // 何枚目のファイルかを示す
@@ -116,7 +114,6 @@ $(function(){
     .done(function(data){
       // エラーメッセージが返ってきていない場合、トップページへ遷移する
       var key = Object.keys(data).length;
-      console.log(key);
       if (key == 0){
         window.location.href = '/';
       }else{
