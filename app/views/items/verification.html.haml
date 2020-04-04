@@ -1,7 +1,6 @@
 .verification-wrapper
-  .verification-header
-    .verification-header__icon
-      = image_tag("logo.png")
+  .verification_header
+    = render partial: 'items/shared/verification_header'
   .verification-content
     .verification-content__item
       %h2.verification-content__item__title
@@ -33,7 +32,7 @@
               .verification-form--payment__body
                 %h3
                   支払い方法
-                = link_to "#" do
+                = link_to credit_items_path do
                   %i.fas.fa-plus-circle
                   %span
                     登録してください
@@ -41,7 +40,7 @@
               .verification-form__address__body
                 %h3
                   配送先
-                = link_to "#" do
+                = link_to verification_address_items_path do
                   %i.fas.fa-plus-circle
                   %span
                     登録してください
@@ -49,16 +48,5 @@
               = link_to "#" do
                 %button{type: "button"}
                   購入する
-  .verification-footer__information
-    %ul.verification-footer__information--lists
-      %li.verification-footer__information--list
-        = link_to "プライバシーポリシー"
-      %li.verification-footer__information--list
-        = link_to "フリマ利用規約"
-      %li.verification-footer__information--list
-        = link_to "特定商取引に関する表記"
-    .verification-footer__information__logo
-      = link_to image_tag("logo-white.png")
-      %p
-        ©︎ FURIMA
-
+  .verification_footer
+    = render partial: 'items/shared/verification_footer'

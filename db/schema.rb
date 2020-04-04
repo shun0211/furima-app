@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 20200321020450) do
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["prefecture_id"], name: "index_items_on_prefecture_id", using: :btree
     t.index ["product_name"], name: "index_items_on_product_name", using: :btree
-    t.index ["seller_id"], name: "index_items_on_seller_id", using: :btree
   end
 
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -138,6 +137,8 @@ ActiveRecord::Schema.define(version: 20200321020450) do
     t.integer  "birth_year",                                        null: false
     t.integer  "birth_month",                                       null: false
     t.integer  "birth_day",                                         null: false
+    t.integer  "credit_card_id"
+    t.index ["credit_card_id"], name: "index_users_on_credit_card_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -148,9 +149,11 @@ ActiveRecord::Schema.define(version: 20200321020450) do
   add_foreign_key "credit_cards", "users"
   add_foreign_key "evaluations", "items"
   add_foreign_key "evaluations", "users"
+
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
+
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
   add_foreign_key "product_images", "items"
@@ -158,4 +161,5 @@ ActiveRecord::Schema.define(version: 20200321020450) do
   add_foreign_key "purchase_histories", "users"
   add_foreign_key "sell_histories", "items"
   add_foreign_key "sell_histories", "users"
+  add_foreign_key "users", "credit_cards"
 end

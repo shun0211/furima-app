@@ -1,0 +1,30 @@
+.user-footer{
+  background-color: #333;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 250px;
+  text-align: center;
+  &__inner{
+    li {
+      padding-top: 16px;
+      font-size: 12px;
+      display: inline-block;
+      margin-left: 15px;
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .footer-logo {
+      width: 160px;
+      height: 46.3px;
+      margin: 40px auto 0;
+    }
+    p{
+      margin-top: 8px;
+      color: #fff;
+      font-size: 13px;
+    }
+  }
+}
