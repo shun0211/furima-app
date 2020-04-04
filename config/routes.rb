@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :items, only: [:index, :new, :create, :show] do
+  resources :items, only: [:index, :new, :create, :show, :edit, :destroy] do
     collection do
       get :verification
       get :verification_address

@@ -35,6 +35,15 @@ class ItemsController < ApplicationController
   end
   
   def show
+    @item = Item.find(params[:id])
+    @images = @item.product_images
+    @image = @images.first #保存した画像の1番目を表示するためのインスタンス変数
+  end
+
+  def edit
+  end
+
+  def destroy
   end
   
   private
@@ -57,4 +66,5 @@ class ItemsController < ApplicationController
                                  :item],)
       # .merge(seller_id: current_user.id)
   end
+
 end
