@@ -9,8 +9,7 @@ Rails.application.routes.draw do
     get "sign_out", :to => "users/sessions#destroy" 
   end
 
-
-  resources :items, only: [:index, :new, :show, :edit, :destroy] do
+  resources :items, only: [:index, :new, :create, :show, :edit, :destroy] do
     collection do
       get :verification
       get :verification_address

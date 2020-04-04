@@ -1,0 +1,14 @@
+json.id @item.id
+json.product_name @item.product_name
+json.product_information @item.product_information
+json.product_status @item.product_status
+json.price @item.price
+json.product_condition @item.product_condition
+json.shipping_charge @item.shipping_charge
+json.seller_id @item.seller_id
+json.buyer_id @item.buyer_id
+json.brand @item.brand
+json.size @item.size
+json.prefecture_id @item.prefecture_id
+json.category_id @item.category_id
+json.created_at @item.created_at
