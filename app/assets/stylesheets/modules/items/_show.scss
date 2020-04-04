@@ -89,15 +89,35 @@
             margin: 0 10px 0 0;
           }
         }
+
+        &__buy-button {
+          display: block;
+          margin-top: 16px;
+          background: $blue;
+          font-size: 14px;
+          line-height: 56px;
+          text-align: center;
+
+          a {
+          display:block;
+          text-decoration: none;
+          font-size: 24px;
+          line-height: 60px;
+          font-weight: 600;
+          color: #fff;
+
+          }
+        }
       
 
         &__price-detail {
           font-size: 16px;
         }
 
-        &--title {
+        &--text {
           line-height: 1.5;
           font-size: 18px;
+          padding-top: 32px;
           margin-bottom: 30px;
         }
 
@@ -187,6 +207,49 @@
           }
         }
       }
+
+      
+        .item-change {
+          margin: 24px 0 24px 0;
+          background: #fff;
+          padding: 20px 16px 20px 16px;
+
+                    
+          &--button {
+            display: block;
+            width: 100%;
+            line-height: 48px;
+            font-size: 14px;
+            text-align: center;
+
+
+            a {
+              display:block;
+              text-decoration: none;
+              color: #fff;
+            }
+          }
+          
+          .btn-blue {
+            background: $blue;
+            border: 1px solid $blue;
+            text-decoration: none;
+
+          }
+
+          .btn-gray {
+            background: #aaa;
+            border: 1px solid #aaa;
+            color: #fff;
+          }
+
+          .text-center {
+            text-align: center;
+          }
+        }
+      
+
+
 
       .comment-box {
         padding: 24px;
