@@ -30,33 +30,33 @@
     .item-content
       .item-content__top
         .item-box
-          %h2.item-box--name product1
+          %h2.item-box--name #{@item.product_name}
           .item-box__body
             %ul
-              %li
-                = image_tag("curry.png", size: "560x346")
+              %li 
+                = image_tag @image.image, size: "560x346", class: "item-main-photo" 
                 %ul
-                  %li
-                    = image_tag("curry.png", size: "140x87")
-                  %li
-                    = image_tag("eggplant.png", size: "140x87")
-                  %li
-                    = image_tag("yosenabe.png", size: "140x87")
+                  - @item.product_images.each.with_index do |image, index|
+                    %li
+                      = image_tag(image.image, size: "140x87", class: "item-change-photo" )
           .item-box__price
-            %span.price
-              ¥10000
+            %span.price 
+              ¥#{@item.price}
             .item-box__price-detail
               %span
                 (税込)
               %span
                 送料込み
-          .item-box--title product1
+          = render partial: "items/shared/item-buy-button"
+          .item-box--text 
+            = @item.product_information
           .item-box__table
             %table
               %tbody
                 %tr
                   %th 出品者
-                  %td hoge
+                  %td 
+                    hoge
                 %tr
                   %th カテゴリー
                   %td 
@@ -76,10 +76,12 @@
                   %td
                 %tr.item-condition
                   %th 商品の状態
-                  %td 新品/未使用
+                  %td
+                    = @item.product_condition
                 %tr.item-shipping-cost
                   %th 配送料の負担
-                  %td 送料込み（出品者負担）
+                  %td
+                    = @item.shipping_charge
                 %tr.item-shipping-origin
                   %th 発送元の地域
                   %td
@@ -87,7 +89,8 @@
                       青森県
                 %tr.item-shipping-day
                   %th 発送日の目安
-                  %td 1-2日で発送
+                  %td
+                    = @item.days_of_ship
           .optional-area
             %ul.optional-area__contents
               %li.like-button
@@ -99,19 +102,20 @@
                 = link_to  "＃" do
                   %i.fa.fa-flag
                   不適切な商品の通報
-        .comment-box
-          %ul.comment-box__content
-          %form.new_comment
-            %input{name: "", type: "hidden", value: ""}
-            %textarea.comment-body
-            %p.notice-message
-              相手のことを考え丁寧なコメントを心がけましょう。
-              %br
-              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          = render partial: "items/shared/item-edit-delete"
+      .comment-box
+        %ul.comment-box__content
+        %form.new_comment
+          %input{name: "", type: "hidden", value: ""}
+          %textarea.comment-body
+          %p.notice-message
+            相手のことを考え丁寧なコメントを心がけましょう。
             %br
-            %button.comment-button{name: "button", type: "submit"}
-              %i.fa.fa-comment
-              コメントする
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %br
+          %button.comment-button{name: "button", type: "submit"}
+            %i.fa.fa-comment
+            コメントする
       %ul.links
         %li
           = link_to  "＃" do

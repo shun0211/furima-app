@@ -1,0 +1,8 @@
+-if user_signed_in?
+  -if @item.seller_id == current_user.id
+    .item-change
+      .item-change--button.btn-blue
+        = link_to "商品の編集", edit_item_path(@item.id)
+      %p.text-center or
+      .item-change--button.btn-gray
+        = link_to "この商品を削除する", item_path(@item.id), method: :delete
