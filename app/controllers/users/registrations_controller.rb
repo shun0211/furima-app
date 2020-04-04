@@ -60,7 +60,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super(resource)
   end
 
-  private
+  # private
 
   # def user_params
   #   params.permit(:sign_up, keys: [:nickname, :email, :password, :familyname, :firstname, :firstname_kana, :familyname_kana, :birth_year, :birth_month, :birth_day])
