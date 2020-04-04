@@ -15,10 +15,15 @@
           カテゴリー
         %li.top-header--items-left--item-second
           ブランド
-      %ul.top-header--items-right
-        %li.top-header--items-right--login
-          = link_to "/users/sign_in" do
-            ログイン
-        %li.top-header--items-right--new
-          = link_to "/users/new" do
-            新規会員登録
+      - if user_signed_in?
+        %ul.top-header--items-right
+          %li.top-header--items-right--login
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
+      - else
+        %ul.top-header--items-right
+          %li.top-header--items-right--login
+            = link_to "/users/sign_in" do
+              ログイン
+          %li.top-header--items-right--new
+            = link_to "/users/new" do
+              新規会員登録
