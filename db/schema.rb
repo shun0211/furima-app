@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 20200321020450) do
     t.integer  "buyer_id"
     t.integer  "seller_id",                         null: false
     t.integer  "buyer_id",                          null: false
+    t.integer  "seller_id",                         null: false
+    t.integer  "buyer_id",                          null: false
     t.string   "brand"
     t.string   "size"
     t.datetime "created_at",                                    null: false
@@ -89,6 +91,7 @@ ActiveRecord::Schema.define(version: 20200321020450) do
     t.integer  "category_id",                       null: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.integer  "prefecture_id"
     t.integer  "prefecture_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id", using: :btree
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
