@@ -145,11 +145,6 @@ describe User do
       user.valid?
       expect(user.errors[:birth_day][0]).to include("is too long (maximum is 2 characters)")
     end
-    # it "telが空だと登録不可 " do
-    #   user = build(:user, tel: "")
-    #   user.valid?
-    #   expect(user.errors[:tel][0]).to include("を入力してください")
-    # end
     it "すべて満たしていれば登録可" do
       user = build(:user)
       expect(user).to be_valid
