@@ -70,15 +70,30 @@ ActiveRecord::Schema.define(version: 20200321020450) do
     t.integer  "product_condition",                             null: false
     t.integer  "shipping_charge",                               null: false
     t.integer  "days_of_ship",                                  null: false
+    t.string   "product_name",                      null: false
+    t.text     "product_information", limit: 65535, null: false
+    t.string   "product_status",                    null: false
+    t.integer  "price",                             null: false
+    t.string   "product_condition",                 null: false
+    t.integer  "shipping_charge",                   null: false
+    t.string   "days_of_ship",                      null: false
     t.integer  "seller_id"
     t.integer  "buyer_id"
-
+    t.integer  "seller_id",                         null: false
+    t.integer  "buyer_id",                          null: false
+    t.integer  "seller_id",                         null: false
+    t.integer  "buyer_id",                          null: false
     t.string   "brand"
     t.string   "size"
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
     t.integer  "prefecture_id"
     t.integer  "category_id"
+    t.integer  "category_id",                       null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "prefecture_id"
+    t.integer  "prefecture_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id", using: :btree
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["prefecture_id"], name: "index_items_on_prefecture_id", using: :btree
@@ -109,7 +124,7 @@ ActiveRecord::Schema.define(version: 20200321020450) do
 
   create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "image",      null: false
-    t.integer  "item_id"
+    t.integer  "item_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_product_images_on_item_id", using: :btree
@@ -152,7 +167,7 @@ ActiveRecord::Schema.define(version: 20200321020450) do
     t.integer  "birth_year",                                        null: false
     t.integer  "birth_month",                                       null: false
     t.integer  "birth_day",                                         null: false
-    t.integer  "credit_card_id",                                    null: false
+    t.integer  "credit_card_id"
     t.index ["credit_card_id"], name: "index_users_on_credit_card_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
