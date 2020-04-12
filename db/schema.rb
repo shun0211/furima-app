@@ -81,8 +81,10 @@ ActiveRecord::Schema.define(version: 20200411115009) do
     t.integer  "category_id",                       null: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.integer  "prefecture_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id", using: :btree
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["prefecture_id"], name: "index_items_on_prefecture_id", using: :btree
     t.index ["product_name"], name: "index_items_on_product_name", using: :btree
     t.index ["seller_id"], name: "index_items_on_seller_id", using: :btree
   end
@@ -134,13 +136,13 @@ ActiveRecord::Schema.define(version: 20200411115009) do
     t.string   "familyname",                                        null: false
     t.string   "firstname_kana",                                    null: false
     t.string   "familyname_kana",                                   null: false
-    t.integer  "phone_number"
+    t.integer  "phone_number",                                      null: false
     t.string   "profile_image"
     t.string   "nickname"
     t.text     "profile_text",           limit: 65535
-    t.integer  "birth_year"
-    t.integer  "birth_month"
-    t.integer  "birth_day"
+    t.integer  "birth_year",                                        null: false
+    t.integer  "birth_month",                                       null: false
+    t.integer  "birth_day",                                         null: false
     t.integer  "credit_card_id"
     t.index ["credit_card_id"], name: "index_users_on_credit_card_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

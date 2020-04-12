@@ -27,14 +27,17 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
-    @images = @item.product_images
-    @image = @images.first #保存した画像の1番目を表示するためのインスタンス変数
+    @images = @item.product_image
+    @image = @images.first 
   end
 
   def edit
   end
 
   def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to root_path
   end
   
   private
