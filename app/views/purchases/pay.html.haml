@@ -1,0 +1,36 @@
+-# 購入機能用です(今後実装予定です)
+.verification-wrapper
+  .verification_header
+    = render partial: 'items/shared/verification_header'
+  .verification-content
+    .verification-content__item
+      %h2.verification-content__item__title
+        購入内容の確認
+      %sectonc.verification-content__item__body
+        .verification-content__item__body__caption
+          .verification-content__item__body__caption--center
+            .verification-content__item__image
+              = image_tag("sozai-09.png")
+            .verification-content__item__detail
+              %p.verification-content__item__detail__name
+                星
+              %p.verification-content__item__detail__price
+                %span
+                  ￥1,000
+                %span
+                  (税込) 送料込み
+      %section.verification-content__item--payment
+        .verification-content__item--payment-body
+          .verification-form
+            %ul.verification-form__content
+              %li.verification-form__content__list
+                .verification-form__content__list__title
+                  支払い金額
+                .verification-form__content__list__price
+                  %span
+                    ￥1,000
+            %section.verification-form__button
+              = form_tag(buy_purchase_path, method: :post) do
+                %button 購入する
+  .verification_footer
+    = render partial: 'items/shared/verification_footer'

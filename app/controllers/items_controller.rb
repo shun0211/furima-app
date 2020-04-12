@@ -24,15 +24,6 @@ class ItemsController < ApplicationController
       end
     end
   end
-
-  def verification
-  end
-
-  def verification_address
-  end
-
-  def credit
-  end
   
   def show
     @item = Item.find(params[:id])
