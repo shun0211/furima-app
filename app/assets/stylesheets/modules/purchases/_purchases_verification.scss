@@ -1,4 +1,4 @@
-.credit-card-wrapper {
+.verification-address-wrapper {
   height: 100%;
   background-color: #f2f2f2;
   .verification-header {
@@ -8,11 +8,12 @@
       width: 180px;
     }
   }
-  .credit-content {
+  .verification-address-content {
     &__item {
       max-width: 650px;
       margin: 0 auto;
       &__title {
+        max-width: 650px;
         height: 20%;
         margin: 0 auto;
         padding: 15px;
@@ -26,11 +27,11 @@
       }
     }
   }
-  .credit-content__product {
+  .verification-address-content__product {
     max-width: 650px;
     margin: 0 auto;
     background-color: $white;
-    &__title {
+    .verification-address-content__product--title {
       padding: 30px 145px 5px;
       label {
         font-size: 14px;
@@ -44,11 +45,14 @@
         color:$white;
         background-color: red;
       }
-    }
-    .credit-content__product--form {
-      max-width: 350px;
-      margin: 0 auto;
-      input {
+      .any {
+        color: $white;
+        background-color: $lightgray;
+      }
+    } 
+    .verification-address-content__product--form {
+      text-align: center;
+      .verification-address__product--last-name {
         border: 1px solid $lightgray;
         border-radius: 4px;
         box-sizing: border-box;
@@ -58,36 +62,25 @@
         margin: 0 0 8px 0;
         outline: none;
         padding: 0 16px;
-        width: 100%;
+        width: 55%;
       }
-      .credit__producd__card-image {
-        display: flex;
-        li {
-          padding-right: 8px;
-        }
+      .verification-address__product--first-name {
+        border: 1px solid $lightgray;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: inherit;
+        height: 48px;
+        margin: 0 0 8px 0;
+        outline: none;
+        padding: 0 16px;
+        width: 55%;
       }
-    }
-    .credit-content__product--title {
-      padding: 30px 145px 5px;
-      label {
-        font-size: 14px;
-        font-weight: 600;
-        background-color:$white;
-      }
-      span {
-        padding: 1.5px 4px;
-        font-size: 12px;
-        font-weight: 600;
-        color:$white;
-        background-color: red;
-      }
-    }
-    .credit-content__product--form {
       select {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        width: 38%;
+        width: 55%;
         height: 48px;
         margin-bottom: 20px;
         padding: 7px 30px 7px 10px;
@@ -102,42 +95,23 @@
         background-size: 20px;
         background-position: right 10px center;
       }
-      span {
-        padding: 10px;
-        font-size: 14px;
-      }
     }
-    .credit-content__product--title {
-      padding: 30px 145px 5px;
-      label {
-        font-size: 14px;
+    .verification-address-content__register {
+       padding: 30px 0;
+       text-align: center;
+      .button {
+        width: 55%;
+        height: 48px;
+        padding: 0 24px;
+        margin-bottom: 24px;
+        font-size: 17px;
         font-weight: 600;
-        background-color: $white;
-      }
-      span {
-        padding: 1.5px 4px;
-        font-size: 12px;
-        font-weight: 600;
+        border: 1px solid $lightgray;
+        border-radius: 4px;
         color: $white;
-        background-color: red;
+        background-color: $blue
       }
     }
-    .credit-content__register {
-      padding: 30px 0;
-      text-align: center;
-     button {
-       width: 55%;
-       height: 48px;
-       padding: 0 24px;
-       margin-bottom: 24px;
-       font-size: 17px;
-       font-weight: 600;
-       border: 1px solid $lightgray;
-       border-radius: 4px;
-       color: $white;
-       background-color: $blue;
-     }
-   }
   }
   .verification-footer__information {
     padding: 40px 0;

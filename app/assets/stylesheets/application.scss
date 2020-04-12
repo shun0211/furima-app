@@ -13,8 +13,13 @@
 @import "items";
 @import "users";
 @import "modules/items/new";
-@import "modules/items/verification";
-@import "modules/items/verification_address";
-@import "modules/items/credit";
+@import "modules/purchases/show";
+@import "modules/purchases/verification_address";
+@import "modules/purchases/purchases_verification";
+@import "modules/purchases/pay";
+@import "modules/credit_cards/new";
+@import "modules/credit_cards/index";
+@import "modules/credit_cards/add_card";
 @import "modules/users/header";
 @import "modules/users/footer";
+@import "layouts/error_messages";

@@ -28,25 +28,13 @@
                 .verification-form__content__list__price
                   %span
                     ￥1,000
-            %section.verification-form--payment
-              .verification-form--payment__body
-                %h3
-                  支払い方法
-                = link_to credit_items_path do
-                  %i.fas.fa-plus-circle
-                  %span
-                    登録してください
             %section.verification-form__address
               .verification-form__address__body
                 %h3
                   配送先
-                = link_to verification_address_items_path do
+                = link_to verification_address_purchases_path do
                   %i.fas.fa-plus-circle
                   %span
                     登録してください
-            %section.verification-form__button
-              = link_to "#" do
-                %button{type: "button"}
-                  購入する
   .verification_footer
     = render partial: 'items/shared/verification_footer'

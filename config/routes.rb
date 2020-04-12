@@ -8,14 +8,9 @@ Rails.application.routes.draw do
     get "sign_in", :to => "users/sessions#new"
     get "sign_out", :to => "users/sessions#destroy" 
   end
-
-  resources :items, only: [:index, :new, :create, :show, :edit, :destroy] do
-    collection do
-      get :verification
-      get :verification_address
-      get :credit
-    end
-  end
+  
+  resources :items, only: [:index, :new, :create, :show, :edit, :destroy]
+  
   resources :users, only: [:show, :new] do
     collection do
       get :sms
@@ -23,6 +18,23 @@ Rails.application.routes.draw do
       get :completed
     end
   end
+  
+  resources :purchases, only: [:show, :create] do
+    collection do
+      get :verification_address
+      get :purchases_verification
+    end
+    member do
+      get "pay", to: "purchases#pay"
+      post "buy", to: "purchases#buy"
+    end
+  end
+  resources :credit_cards, only: [:index, :new, :create] do
+    collection do
+      post "delete", to: "credit_cards#delete"
+    end
+  end
+
   root "items#index"
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
