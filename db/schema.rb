@@ -10,17 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200321020450) do
+ActiveRecord::Schema.define(version: 20200411115009) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "postal_code",   null: false
-    t.string   "prefectures",   null: false
-    t.string   "municipality",  null: false
-    t.string   "address",       null: false
-    t.string   "building_name", null: false
-    t.integer  "user_id",       null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "postal_code",     null: false
+    t.string   "prefectures",     null: false
+    t.string   "municipality",    null: false
+    t.string   "address",         null: false
+    t.string   "building_name",   null: false
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "firstname"
+    t.string   "familyname"
+    t.string   "firstname_kana"
+    t.string   "familyname_kana"
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
@@ -43,12 +47,11 @@ ActiveRecord::Schema.define(version: 20200321020450) do
   end
 
   create_table "credit_cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "number",          null: false
-    t.integer  "expiration_date", null: false
-    t.integer  "security_code",   null: false
-    t.integer  "user_id",         null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "card_id",     null: false
+    t.string   "customer_id", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id", using: :btree
   end
 
@@ -71,8 +74,8 @@ ActiveRecord::Schema.define(version: 20200321020450) do
     t.string   "product_condition",                 null: false
     t.integer  "shipping_charge",                   null: false
     t.string   "days_of_ship",                      null: false
-    t.integer  "seller_id",                         null: false
-    t.integer  "buyer_id",                          null: false
+    t.integer  "seller_id"
+    t.integer  "buyer_id"
     t.string   "brand"
     t.string   "size"
     t.integer  "category_id",                       null: false
@@ -122,8 +125,8 @@ ActiveRecord::Schema.define(version: 20200321020450) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email",                                default: "", null: false
-    t.string   "encrypted_password",                   default: "", null: false
+    t.string   "email",                                default: ""
+    t.string   "encrypted_password",                   default: ""
     t.string   "firstname",                                         null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -135,7 +138,7 @@ ActiveRecord::Schema.define(version: 20200321020450) do
     t.string   "familyname_kana",                                   null: false
     t.integer  "phone_number"
     t.string   "profile_image"
-    t.string   "nickname",                                          null: false
+    t.string   "nickname"
     t.text     "profile_text",           limit: 65535
     t.integer  "birth_year",                                        null: false
     t.integer  "birth_month",                                       null: false
