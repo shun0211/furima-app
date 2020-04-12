@@ -42,11 +42,11 @@ class CreditCardsController < ApplicationController
     else
       # トークンが正常に発行されていたら、顧客情報をPAY.JPに登録します。
       customer = Payjp::Customer.create(
-        card: params["payjp_token"],     # 直前のnewアクションで発行され、送られてくるトークンをここで顧客に紐付けて永久保存します。
+        card: params["payjp_token"]     # 直前のnewアクションで発行され、送られてくるトークンをここで顧客に紐付けて永久保存します。
       )
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to pay_credit_card_path(current_user.id)
+        redirect_to pay_purchase_path(current_user.id)
       else
         redirect_to action: "create"
       end
@@ -57,10 +57,10 @@ class CreditCardsController < ApplicationController
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
-    if @card.delete     # 削除に成功した時にポップアップを表示します。
-      redirect_to action: "index", notice: "削除しました"
-    else     # 削除に失敗した時にアラートを表示します。
-      redirect_to action: "index", alert: "削除できませんでした"
+    if @card.delete
+      redirect_to action: "index"
+    else
+      redirect_to action: "index"
     end
   end
 

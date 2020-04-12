@@ -24,11 +24,10 @@ Rails.application.routes.draw do
       get :verification_address
       get :purchases_verification
     end
-    # 購入機能用です
-    # member do
-    #   get "pay", to: "purchases#pay"
-    #   post "buy", to: "purchases#buy"
-    # end
+    member do
+      get "pay", to: "purchases#pay"
+      post "buy", to: "purchases#buy"
+    end
   end
   resources :credit_cards, only: [:index, :new, :create] do
     collection do
