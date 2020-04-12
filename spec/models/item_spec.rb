@@ -94,5 +94,12 @@ describe Item do
       expect(item).to be_valid
     end
     
+    it "商品画像（image）がない場合は登録できないこと" do
+      item = build(:item)
+      item.product_images.clear
+      item.valid?
+      expect(item.errors[:product_image]).to include("product_images are blank")
+    end
+
   end
 end

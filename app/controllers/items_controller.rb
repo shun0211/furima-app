@@ -4,10 +4,8 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    # @itemにproduct_imageの情報を入れることのできるインスタンスを5つ生成
-    5.times{
-      @item.product_image.build
-    }
+    # @itemにproduct_imagesの情報を入れることのできるインスタンスを生成
+    @item.product_images.build
   end
   
   def create
@@ -60,10 +58,10 @@ class ItemsController < ApplicationController
       :brand,
       :size,
       # :category_id,
-      # attributesを用いてparamsの中にproduct_imageの情報が入ることを許可
-      product_image_attributes: [:id, 
+      # attributesを用いてparamsの中にproduct_imagesの情報が入ることを許可
+      product_images_attributes: [:id, 
                                  :image,
-                                 :item],)
+                                 :item_id],)
       # .merge(seller_id: current_user.id)
   end
 

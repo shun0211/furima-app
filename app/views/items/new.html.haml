@@ -15,10 +15,11 @@
         .exhibition-content__caption--image--box
           .exhibition-content__caption--image
             = icon('fas', 'camera')
-          = f.fields_for :product_image do |s|
-            = s.file_field :image, class: 'exhibition-content__caption--image--default'
+          = f.fields_for :product_images do |s|
+            .input_box
+              = s.file_field :image, class: 'exhibition-content__caption--image--default'
             -# ここにプレビューのコードを挿入
-        -# ここにエラーメッセージを挿　入
+        -# ここにエラーメッセージを挿入
       .exhibition-content__product
         .exhibition-content__product--name
           .exhibition-content__product--name--title
