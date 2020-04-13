@@ -5,5 +5,4 @@ FactoryBot.define do
       # アソシエーションはbelong_toの関係にある方に記載する
       association :item, factory: :item
   end
-# end
 end
