@@ -1,5 +1,4 @@
 $(function(){
-  var number = $('.item-image').length;
 
 // 商品説明にテキストを入力時、現在の入力文字数を出力する機能
   $('.exhibition--description--text').on('keyup', function(){
@@ -19,13 +18,11 @@ $(function(){
 // 出品画像ボックスをクリックした際、s.file_fieldsメソッドを実行する記述
   $('.exhibition-content__caption--image').on('click', function(){
     var number = $('.item-image').length;
-    console.log(number);
     $(`#item_product_images_attributes_${number}_image`).click();
   })
   // 画像を複数投稿を可能にする記述
   $(document).on('change', '.exhibition-content__caption--image--default', function(){
     var number = $('.item-image').length;
-    console.log(number);
     // 何枚目のファイルかを示す
     var num = $('.item-image').length + 1;
     var new_image_input = `<input class = "exhibition-content__caption--image--default" type = "file" id ="item_product_images_attributes_${num}_image" name = "item[product_images_attributes][${num}][image]">`
@@ -63,7 +60,6 @@ $(function(){
       var all_image_id = $(image_id).data('image_id');
       input_list.push(all_image_id);
     })
-    console.log("input_list" + input_list);
 
     // プレビュー画像を削除
     var target_image = $(this).parent().parent();
@@ -75,14 +71,12 @@ $(function(){
     }
     // 削除したプレビュー画像のカスタムデータ属性を取得
     var image_id = $(this).parent().parent().data('image_id');
-    console.log("image_id" + image_id);
     // すべてのプレビュー画像のimage_idを取得
     var image_list = [];
     $('.item-image').each(function(index, image_id){
       var image_id_2 = $(image_id).data('image_id');
       image_list.push(image_id_2);
     })
-    console.log("image_list" + image_list);
     $.each(image_list, function(index, image_id_2){
       if (image_id_2 > image_id){
         // プレビュー画像のカスタムデータ属性修正
@@ -100,7 +94,6 @@ $(function(){
     $(`#item_product_images_attributes_${image_id}_image`).remove();
     // 空のインプットタグを取得
     var input_max = Math.max.apply(null, input_list) + 1;
-    console.log(input_max);
     // 空のインプットタグのid及びnameを修正
     $(`#item_product_images_attributes_${input_max}_image`).attr('name', function(){return "item[product_images_attributes][" + (input_max - 1) + "][image]"})
     $(`#item_product_images_attributes_${input_max}_image`).attr('id', function(){return "item_product_images_attributes_" + (input_max - 1) + "_image"})
@@ -140,13 +133,11 @@ $(function(){
     var product_condition = $('.product_condition--form').val();
     var shipping_charge = $('.shipping_charge--form').val();
     var prefecture_id = $('.shipping_area--form').val();
-    console.log(prefecture_id);
     var days_of_ship = $('.days_of_ship--form').val();
     var price = $('.price--form').val();
     var images = $('.exhibition-content__caption--image--default').val();
     e.preventDefault();
     var form_data = document.forms.new_item;
-    console.log(form_data);
     var formData = new FormData(form_data);
     $.ajax({
       url: "/items",
@@ -158,7 +149,6 @@ $(function(){
     })
     // コントローラーから情報が返ってきたあとの処理
     .done(function(data){
-      console.log(data);
       // エラーメッセージが返ってきていない場合、トップページへ遷移する
       var key = Object.keys(data).length;
       if (key == 0){
@@ -202,7 +192,6 @@ $(function(){
         }
         if (prefecture_id == ''){
           var prefecture_id_err = `<div class = "prefecture_id--empty">選択してください</div>`
-          console.log(prefecture_id);
           if ($('.prefecture_id--empty').length){
           }else{
           $('.exhibition-content__delivery--area--form').after(prefecture_id_err);
@@ -210,7 +199,6 @@ $(function(){
         }
         if (price == '' || price <= 300 || price >= 9999999){
           var price_err = `<div class = "price--error">300以上9999999以下で入力してください</div>`
-          console.log(price);
           if ($('.price--error').length){
           }else{
           $('.exhibition-content__price--selling--unity').after(price_err);
