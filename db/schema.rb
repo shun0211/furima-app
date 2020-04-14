@@ -72,13 +72,17 @@ ActiveRecord::Schema.define(version: 20200413154915) do
     t.integer  "product_condition",                             null: false
     t.integer  "shipping_charge",                               null: false
     t.integer  "days_of_ship",                                  null: false
-    t.integer  "seller_id"
-    t.integer  "buyer_id"
+    t.integer  "seller_id",                                     null: false
+    t.integer  "buyer_id",                                      null: false
     t.string   "brand"
     t.string   "size"
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
+    t.integer  "prefecture_id"
+    t.integer  "category_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id", using: :btree
+    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["prefecture_id"], name: "index_items_on_prefecture_id", using: :btree
     t.index ["product_name"], name: "index_items_on_product_name", using: :btree
     t.index ["seller_id"], name: "index_items_on_seller_id", using: :btree
   end
