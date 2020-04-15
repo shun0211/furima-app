@@ -31,7 +31,7 @@ class CreditCardsController < ApplicationController
 
   def new     # カードの登録画面。送信ボタンを押すとcreateアクションへ。
     @card = CreditCard.where(user_id: current_user.id).first
-    redirect_to action: "index" if @card.present?
+    redirect_to "/purchases/pay" if @card.present?
   end
 
    def create     # PayjpとCardのデータベースを作成
