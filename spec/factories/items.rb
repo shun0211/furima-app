@@ -12,11 +12,11 @@ FactoryBot.define do
     category_id {1}
     
     after(:create) do |item|
-    item.product_images << create(:product_image, item: item)
+      item.product_images << create(:product_image, item: item)
     end
 
     after(:build) do |item|
-    item.product_images << build(:product_image, item: item)
+      item.product_images << build(:product_image, item: item)
     end
   end
 end
