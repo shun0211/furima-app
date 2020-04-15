@@ -2,10 +2,10 @@ class Item < ApplicationRecord
   belongs_to :buyer, class_name: "User", optional: true
   belongs_to :seller, class_name: "User", optional: true
   # dependent: :destroyオプション → 親レコードを削除した際、子レコードも同時に削除する。
-  has_many :product_image, dependent: :destroy
+  has_many :product_images, dependent: :destroy
   # accepts_nested_attributes_forメソッドより、親モデルを通じてネストしたモデルの関連レコードの登録・更新を可能にする
   # allow_destroy: true → 親レコードに関連した子レコードを削除することができる。
-  accepts_nested_attributes_for :product_image, allow_destroy: true
+  accepts_nested_attributes_for :product_images, allow_destroy: true
   has_many :likes
   has_many :comments
   has_one :purchase_history
@@ -19,6 +19,15 @@ class Item < ApplicationRecord
   validates :product_name, length: { maximum: 40 }
   validates :product_information, length: { maximum: 1000 }
   validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+  validates_associated :product_images
+  validate :product_images_number
+
+  private
+  def product_images_number
+    if product_images.size < 1 
+      errors.add(:product_image, "product_images are blank")
+    end
+  end
 
 end
 
