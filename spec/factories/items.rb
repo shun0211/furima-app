@@ -9,6 +9,7 @@ FactoryBot.define do
     shipping_charge {1}
     days_of_ship {1}
     prefecture_id {1}
+    category_id {1}
     
     after(:create) do |item|
     item.product_images << create(:product_image, item: item)

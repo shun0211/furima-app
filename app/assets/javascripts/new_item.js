@@ -7,11 +7,11 @@ $(function(){
     // 文字数が1000文字以上なら入力文字数を赤文字にし、エラーメッセージがでるJavascript
     if(count > 1000){
       $('.counter').addClass('count_over');
-      $('.alert').addClass('exhibition-content__product--description--alert').text('1000文字以下で入力してください。');
+      $('.product_information_alert').addClass('exhibition-content__product--description--alert').text('1000文字以下で入力してください。');
     }else{
       $('.counter').removeClass('count_over');
-      $('.alert').empty();
-      $('.alert').removeClass('exhibition-content__product--description--alert');
+      $('.product_information_alert').empty();
+      $('.product_information_alert').removeClass('exhibition-content__product--description--alert');
     }
   })
   

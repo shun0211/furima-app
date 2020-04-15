@@ -14,10 +14,12 @@ class ItemsController < ApplicationController
       # バリデーションチェックが通ればフォーム記載内容をデータベースに保存する
       # また、バリデーションチェックした際のエラーメッセージをjson形式にてnew_item.jsへ返す
       if @item.valid? 
+        # binding.pry
         @item.save
         format.html { redirect_to root_path }
         format.json { render json: @item.errors.messages }
       else
+        # binding.pry
         format.json { render json: @item.errors.messages }
       end
     end
@@ -51,7 +53,7 @@ class ItemsController < ApplicationController
       :days_of_ship, 
       :brand,
       :size,
-      # :category_id,
+      :category_id,
       # attributesを用いてparamsの中にproduct_imagesの情報が入ることを許可
       product_images_attributes: [:id, 
                                  :image,
