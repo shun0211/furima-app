@@ -10,17 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200407130036) do
+ActiveRecord::Schema.define(version: 20200413154915) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "postal_code",   null: false
-    t.string   "prefectures",   null: false
-    t.string   "municipality",  null: false
-    t.string   "address",       null: false
-    t.string   "building_name", null: false
-    t.integer  "user_id",       null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "postal_code",     null: false
+    t.string   "prefectures",     null: false
+    t.string   "municipality",    null: false
+    t.string   "address",         null: false
+    t.string   "building_name",   null: false
+    t.integer  "user_id",         null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "firstname",       null: false
+    t.string   "familyname",      null: false
+    t.string   "firstname_kana",  null: false
+    t.string   "familyname_kana", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
@@ -41,13 +45,11 @@ ActiveRecord::Schema.define(version: 20200407130036) do
   end
 
   create_table "credit_cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "number",          null: false
-    t.integer  "expiration_date", null: false
-    t.integer  "security_code",   null: false
-    t.integer  "user_id",         null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "customer_id",     null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "customer_id", null: false
+    t.string   "card_id",     null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id", using: :btree
   end
 
@@ -70,8 +72,8 @@ ActiveRecord::Schema.define(version: 20200407130036) do
     t.integer  "product_condition",                             null: false
     t.integer  "shipping_charge",                               null: false
     t.integer  "days_of_ship",                                  null: false
-    t.integer  "seller_id"
-    t.integer  "buyer_id"
+    t.integer  "seller_id",                                     null: false
+    t.integer  "buyer_id",                                      null: false
     t.string   "brand"
     t.string   "size"
     t.datetime "created_at",                                    null: false
@@ -96,7 +98,7 @@ ActiveRecord::Schema.define(version: 20200407130036) do
 
   create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "image",      null: false
-    t.integer  "item_id",    null: false
+    t.integer  "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_product_images_on_item_id", using: :btree
@@ -132,7 +134,7 @@ ActiveRecord::Schema.define(version: 20200407130036) do
     t.string   "familyname",                                        null: false
     t.string   "firstname_kana",                                    null: false
     t.string   "familyname_kana",                                   null: false
-    t.integer  "phone_number",                                      null: false
+    t.integer  "phone_number"
     t.string   "profile_image"
     t.string   "nickname",                                          null: false
     t.text     "profile_text",           limit: 65535
