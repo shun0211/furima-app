@@ -162,5 +162,4 @@ ActiveRecord::Schema.define(version: 20200413154915) do
   add_foreign_key "purchase_histories", "users"
   add_foreign_key "sell_histories", "items"
   add_foreign_key "sell_histories", "users"
-  add_foreign_key "users", "credit_cards"
 end

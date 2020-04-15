@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :user
 
   # バリデーション
   validates :postal_code, :prefectures, :municipality, :address, :firstname, :familyname, :firstname_kana, :familyname_kana, presence: true
