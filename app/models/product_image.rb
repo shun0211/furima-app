@@ -1,9 +1,9 @@
-class ProductImage < ApplicationRecord
+class ProductImage  < ApplicationRecord
 
   belongs_to :item, optional: true
-  mount_uploader :Product_image, ImageUploader
+  mount_uploader :image, ImageUploader
 
   # バリデーション
-  validates :Product_image, presence: true
+  validates :image, presence: true
 
 end

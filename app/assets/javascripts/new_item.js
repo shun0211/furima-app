@@ -1,4 +1,5 @@
 $(function(){
+
 // 商品説明にテキストを入力時、現在の入力文字数を出力する機能
   $('.exhibition--description--text').on('keyup', function(){
     var count = $('.exhibition--description--text').val().replace(/\s+/g, '').length;
@@ -6,60 +7,96 @@ $(function(){
     // 文字数が1000文字以上なら入力文字数を赤文字にし、エラーメッセージがでるJavascript
     if(count > 1000){
       $('.counter').addClass('count_over');
-      $('.alert').addClass('exhibition-content__product--description--alert').text('1000文字以下で入力してください。');
+      $('.product_information_alert').addClass('exhibition-content__product--description--alert').text('1000文字以下で入力してください。');
     }else{
       $('.counter').removeClass('count_over');
-      $('.alert').empty();
-      $('.alert').removeClass('exhibition-content__product--description--alert');
+      $('.product_information_alert').empty();
+      $('.product_information_alert').removeClass('exhibition-content__product--description--alert');
     }
   })
   
 // 出品画像ボックスをクリックした際、s.file_fieldsメソッドを実行する記述
   $('.exhibition-content__caption--image').on('click', function(){
     var number = $('.item-image').length;
-    $(`#item_product_image_attributes_${number}_image`).click();
+    $(`#item_product_images_attributes_${number}_image`).click();
   })
   // 画像を複数投稿を可能にする記述
-  $('.exhibition-content__caption--image--default').change(function(){
+  $(document).on('change', '.exhibition-content__caption--image--default', function(){
+    var number = $('.item-image').length;
+    // 何枚目のファイルかを示す
+    var num = $('.item-image').length + 1;
+    var new_image_input = `<input class = "exhibition-content__caption--image--default" type = "file" id ="item_product_images_attributes_${num}_image" name = "item[product_images_attributes][${num}][image]">`
+    $('.input_box').append(new_image_input)
     // 選択したファイル情報を取得し変数に格納
-    // var file = $('.exhibition-content__caption--image--default').prop('files')[0];
-    $.each(this.files, function(i, file){
-      // FileReaderオブジェクトを生成
-      var fileReader = new FileReader();
-      // 何枚目のファイルかを示す
-      var num = $('.item-image').length + 1;
-      console.log(num);
-      // 指定されたファイルを読み込み
-      fileReader.readAsDataURL(file);
-      // 読み込みが完了すると、srcにfileのURLを格納
-      fileReader.onloadend = function(){
-        var src = fileReader.result;
-        var html = `<div class = 'item-image' >
-                      <div class = 'item-image__content' >
-                        <div class = 'item-image__content--icon' >
-                          <img src = ${src} width = "113" height = "80" />
-                        </div>
+    var file = $(`#item_product_images_attributes_${number}_image`).prop('files')[0];
+    // FileReaderオブジェクトを生成
+    var fileReader = new FileReader();
+    // 指定されたファイルを読み込み
+    fileReader.readAsDataURL(file);
+    // 読み込みが完了すると、srcにfileのURLを格納
+    fileReader.onloadend = function(){
+      var src = fileReader.result;
+      var html = `<div class = 'item-image' id = 'image-${number}' data-image_id = "${number}" >
+                    <div class = 'item-image__content' >
+                      <div class = 'item-image__content--icon' >
+                        <img src = ${src} width = "113" height = "80" />
                       </div>
-                      <div class = 'item-image__operation' >
-                        <div class = 'item-image__operation--delete'>削除</div>
-                      </div>
-                    </div>`
-        // exhibition-content__caption--image要素の前に上記のHTMLを差し込む
-        $('.exhibition-content__caption--image').after(html);
-      }
-      $('.item-image').attr('id', `image-${num}`)
-      if (num == 5){
-        $('.exhibition-content__caption--image').css('display', 'none');
-      }
-    })
+                    </div>
+                    <div class = 'item-image__operation' >
+                      <div class = 'item-image__operation--delete'>削除</div>
+                    </div>
+                  </div>`
+      // exhibition-content__caption--image要素の前に上記のHTMLを差し込む
+      $('.exhibition-content__caption--image').after(html);
+    }
+    if (number == 5){
+      $('.exhibition-content__caption--image').css('display', 'none');
+    }
   })
   $(document).on("click", ".item-image__operation--delete", function(){
-    var num = $('.item-image').length;
-    if (num == 5){
+    // インプットタグ修正する消すための準備
+    var input_list = [];
+    $('.item-image').each(function(index, image_id){
+      var all_image_id = $(image_id).data('image_id');
+      input_list.push(all_image_id);
+    })
+
+    // プレビュー画像を削除
+    var target_image = $(this).parent().parent();
+    target_image.remove();
+    // プレビュー画像が4枚以下になった場合、画像選択画面が再び現れる
+    var number = $('.item-image').length;
+    if (number == 4){
       $('.exhibition-content__caption--image').css('display', 'block');
     }
-    var target_image = $(this).parent().parent()
-    target_image.remove();
+    // 削除したプレビュー画像のカスタムデータ属性を取得
+    var image_id = $(this).parent().parent().data('image_id');
+    // すべてのプレビュー画像のimage_idを取得
+    var image_list = [];
+    $('.item-image').each(function(index, image_id){
+      var image_id_2 = $(image_id).data('image_id');
+      image_list.push(image_id_2);
+    })
+    $.each(image_list, function(index, image_id_2){
+      if (image_id_2 > image_id){
+        // プレビュー画像のカスタムデータ属性修正
+        $(`#image-${image_id_2}`).attr('data-image_id', function(){return (image_id_2 - 1)});
+        $(`#image-${image_id_2}`).data('image_id', function(){return (image_id_2 - 1)});
+        // インプットタグのname属性を修正
+        $(`#item_product_images_attributes_${image_id_2}_image`).attr('name', function(){return "item[product_images_attributes][" + (image_id_2 - 1) + "][image]"})
+        // インプットタグのid修正
+        $(`#item_product_images_attributes_${image_id_2}_image`).attr('id', function(){return "item_product_images_attributes_" + (image_id_2 - 1) + "_image"})
+        // プレビュー画像のid修正
+        $(`#image-${image_id_2}`).attr('id', function(){return "image-" + (image_id_2 - 1)});
+      }
+    })
+    // インプットタグを削除
+    $(`#item_product_images_attributes_${image_id}_image`).remove();
+    // 空のインプットタグを取得
+    var input_max = Math.max.apply(null, input_list) + 1;
+    // 空のインプットタグのid及びnameを修正
+    $(`#item_product_images_attributes_${input_max}_image`).attr('name', function(){return "item[product_images_attributes][" + (input_max - 1) + "][image]"})
+    $(`#item_product_images_attributes_${input_max}_image`).attr('id', function(){return "item_product_images_attributes_" + (input_max - 1) + "_image"})
   })
 
 // 入力した際、エラーメッセージを消す機能
@@ -81,7 +118,7 @@ $(function(){
   $('.exhibition-content__delivery--days--form').on('change', function(){
     $('.days_of_ship--empty').remove();
   })
-  $('.exhibition-content__price--selling--form').on('keyup', function(){
+  $('.price--form').on('keyup', function(){
     $('.price--error').remove();
   })
   $('.exhibition-content__caption--image--default').on('change', function(){
@@ -93,14 +130,14 @@ $(function(){
     // それぞれのフォーム情報を取得
     var product_name = $('.exhibition__product--name').val();
     var product_information = $('.exhibition--description--text').val();
-    var product_condition = $('.exhibition-content__details--Status--form').val();
-    var shipping_charge = $('.exhibition-content__delivery--burden--form').val();
-    var prefecture_id = $('.exhibition-content__delivery--area--form').val();
-    var days_of_ship = $('.exhibition-content__delivery--days--form').val();
-    var price = $('.exhibition-content__price--selling--form').val();
+    var product_condition = $('.product_condition--form').val();
+    var shipping_charge = $('.shipping_charge--form').val();
+    var prefecture_id = $('.shipping_area--form').val();
+    var days_of_ship = $('.days_of_ship--form').val();
+    var price = $('.price--form').val();
     var images = $('.exhibition-content__caption--image--default').val();
     e.preventDefault();
-    var form_data = document.forms.new_item
+    var form_data = document.forms.new_item;
     var formData = new FormData(form_data);
     $.ajax({
       url: "/items",
@@ -160,7 +197,7 @@ $(function(){
           $('.exhibition-content__delivery--area--form').after(prefecture_id_err);
           }
         }
-        if (price == '' || price >= 300 || price <= 9999999){
+        if (price == '' || price <= 300 || price >= 9999999){
           var price_err = `<div class = "price--error">300以上9999999以下で入力してください</div>`
           if ($('.price--error').length){
           }else{

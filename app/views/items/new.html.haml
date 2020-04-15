@@ -15,10 +15,11 @@
         .exhibition-content__caption--image--box
           .exhibition-content__caption--image
             = icon('fas', 'camera')
-          = f.fields_for :product_image do |s|
-            = s.file_field :image, class: 'exhibition-content__caption--image--default'
+          = f.fields_for :product_images do |s|
+            .input_box
+              = s.file_field :image, class: 'exhibition-content__caption--image--default'
             -# ここにプレビューのコードを挿入
-        -# ここにエラーメッセージを挿　入
+        -# ここにエラーメッセージを挿入
       .exhibition-content__product
         .exhibition-content__product--name
           .exhibition-content__product--name--title
@@ -39,7 +40,7 @@
             = f.text_area :product_information, class: "exhibition--description--text", rows: "8", placeholder: "商品の説明 (必須 1,000文字以内)\n (色、素材、重さ、定価、注意点など)\n\n例) 2010年頃に1万円でこうにゅうしたジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
             .exhibition--description--text--counter
               %span.counter 0/1000
-            .alert
+            .product_information_alert
           -# ここにエラーメッセージを挿入
       .exhibition-content__details
         %p.exhibition-content__details--heading
