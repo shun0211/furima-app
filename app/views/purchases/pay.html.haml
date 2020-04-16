@@ -11,12 +11,15 @@
           .verification-content__item__body__caption--center
             .verification-content__item__image
               = image_tag("sozai-09.png")
+              -# = image_tag(@image.image, size: "80x80")
             .verification-content__item__detail
               %p.verification-content__item__detail__name
                 星
+                -# = @item.product_name
               %p.verification-content__item__detail__price
                 %span
                   ￥1,000
+                  -# = number_to_currency(@item.price, unit: "￥", precision: 0)
                 %span
                   (税込) 送料込み
       %section.verification-content__item--payment
@@ -29,6 +32,7 @@
                 .verification-form__content__list__price
                   %span
                     ￥1,000
+                    -# = number_to_currency(@item.price, unit: "￥", precision: 0)
             %section.verification-form__button
               = form_tag(buy_purchase_path, method: :post) do
                 %button 購入する
