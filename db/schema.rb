@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200413154915) do
+ActiveRecord::Schema.define(version: 20200415070624) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "postal_code",     null: false
@@ -29,9 +29,11 @@ ActiveRecord::Schema.define(version: 20200413154915) do
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "category"
+    t.integer  "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -98,7 +100,7 @@ ActiveRecord::Schema.define(version: 20200413154915) do
 
   create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "image",      null: false
-    t.integer  "item_id",    null: false
+    t.integer  "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_product_images_on_item_id", using: :btree
@@ -134,7 +136,7 @@ ActiveRecord::Schema.define(version: 20200413154915) do
     t.string   "familyname",                                        null: false
     t.string   "firstname_kana",                                    null: false
     t.string   "familyname_kana",                                   null: false
-    t.integer  "phone_number",                                      null: false
+    t.integer  "phone_number"
     t.string   "profile_image"
     t.string   "nickname",                                          null: false
     t.text     "profile_text",           limit: 65535
