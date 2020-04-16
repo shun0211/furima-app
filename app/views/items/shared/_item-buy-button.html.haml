@@ -3,4 +3,4 @@
     = link_to "購入画面に進む", new_user_session_path
 -else user_signed_in? || @item.seller_id != current_user.id
   .item-box__buy-button
-    = link_to "購入画面に進む", verification_items_path
+    = link_to "購入画面に進む", purchase_path
