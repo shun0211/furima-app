@@ -36,9 +36,9 @@
               %li 
                 = image_tag @image.image, size: "560x346", class: "item-main-photo" 
                 %ul
-                  - @item.product_image.each.with_index do |image, index|
+                  - @images.each.with_index do |image, index|
                     %li
-                      = image_tag(image.image, size: "140x87", class: "item-change-photo" )
+                      = image_tag image.image, size: "140x87", class: "item-change-photo"
           .item-box__price
             %span.price 
               ¥#{@item.price}

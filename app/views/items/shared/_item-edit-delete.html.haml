@@ -1,18 +1,33 @@
--if user_signed_in?
-  -if @item.seller_id == current_user.id
-    .item-change
-      .item-change--button.btn-blue
-        = link_to "商品の編集", edit_item_path(@item.id)
-      %p.text-center or
-      #modal-open.btn-gray  この商品を削除する 
-      = link_to "", item_path(@item.id), method: :delete, id: "item-delete"
-      #overlay
-        #modal-window
-          .modal-message-box
-            %div.bold 確認
-            %div 削除すると二度と復活できません。
-            %div 本当に削除しますか？
-          #modal-close 
-            = link_to "キャンセル" , item_path(@item.id)
-          #delete-comformation 
-            = link_to "削除する", root_path
+:javascript
+  document.addEventListener(
+    "DOMContentLoaded", e => {
+      let modal_open = document.getElementById("modal-open");
+      modal_open.onclick = function () {
+        $('#overlay').fadeIn();
+        document.getElementById('modal-close').onclick = function () {
+          $('#overlay').fadeOut();
+        };
+        document.getElementById("delete-comformation").onclick = function () {
+          document.getElementById("item-delete").click();
+        };
+      };
+    },
+    false
+  );
+.item-change
+  .item-change--button.btn-blue
+    = link_to "商品の編集", edit_item_path(@item.id)
+  %p.text-center or
+  #modal-open.btn-gray  この商品を削除する 
+  = link_to "", item_path(@item.id), method: :delete, id: "item-delete"
+  #overlay
+    #modal-window
+      .modal-message-box
+        %div.bold 確認
+        %div 削除すると二度と復活できません。
+        %div 本当に削除しますか？
+      #modal-close 
+        = link_to "キャンセル" , item_path(@item.id)
+      #delete-comformation 
+        = link_to "削除する", root_path
+
