@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    # カテゴリーの親を取得
+    @category = Category.where(ancestry: "")
     # @itemにproduct_imagesの情報を入れることのできるインスタンスを生成
     @item.product_images.build
   end
@@ -14,17 +16,27 @@ class ItemsController < ApplicationController
       # バリデーションチェックが通ればフォーム記載内容をデータベースに保存する
       # また、バリデーションチェックした際のエラーメッセージをjson形式にてnew_item.jsへ返す
       if @item.valid? 
-        # binding.pry
         @item.save
         format.html { redirect_to root_path }
         format.json { render json: @item.errors.messages }
       else
-        # binding.pry
         format.json { render json: @item.errors.messages }
       end
     end
   end
   
+  def get_category_children
+    @children = Category.find(params[:parent_id]).children
+    respond_to do |format|
+      format.html
+      format.json { render json: @children }
+    end
+  end
+
+  # def get_category_grandchildren
+  #   @grandchildren = Category.find(params[:])
+
+
   def show
     @item = Item.find(params[:id])
     @images = @item.product_image
