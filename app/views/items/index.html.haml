@@ -94,104 +94,75 @@
           %h3.title
             新規投稿商品
       .top-main__pickupcategory--lists
-        .top-main__pickupcategory--lists-list
-          %figure.top-main__pickupcategory--lists-list--image
-            = link_to image_tag("sozai-01.png")
-          .top-main__pickupcategory--lists-list--text
-            %h3.name
-              ネズミ達
-            .details
-              %ul
-                %li 
-                  1000円
-                %li
-                  %i.fa.fa-star.likeIcon
-                    0
-              %p
-                (税込)
-        .top-main__pickupcategory--lists-list
-          %figure.top-main__pickupcategory--lists-list--image
-            = link_to image_tag("sozai-01.png")
-          .top-main__pickupcategory--lists-list--text
-            %h3.name
-              ネズミ達
-            .details
-              %ul
-                %li 
-                  1000円
-                %li
-                  %i.fa.fa-star.likeIcon
-                    0
-              %p
-                (税込)
-        .top-main__pickupcategory--lists-list
-          %figure.top-main__pickupcategory--lists-list--image
-            = link_to image_tag("sozai-01.png")
-          .top-main__pickupcategory--lists-list--text
-            %h3.name
-              ネズミ達
-            .details
-              %ul
-                %li 
-                  1000円
-                %li
-                  %i.fa.fa-star.likeIcon
-                    0
-              %p
-                (税込)
-  %section.top-main__pickupcategory
-    %h2.top-main__pickupcategory-title
-      ピックアップブランド
-    .top-main__pickupcategory--box
-      .top-main__pickupcategory--box-title
-        = link_to "#" do
-          %h3.title
-            アーカイバ
-      .top-main__pickupcategory--lists
-        .top-main__pickupcategory--lists-list
-          %figure.top-main__pickupcategory--lists-list--image
-            = link_to image_tag("sozai-01.png")
-          .top-main__pickupcategory--lists-list--text
-            %h3.name
-              ネズミ達
-            .details
-              %ul
-                %li 
-                  1000円
-                %li
-                  %i.fa.fa-star.likeIcon
-                    0
-              %p
-                (税込)
-        .top-main__pickupcategory--lists-list
-          %figure.top-main__pickupcategory--lists-list--image
-            = link_to image_tag("sozai-01.png")
-          .top-main__pickupcategory--lists-list--text
-            %h3.name
-              ネズミ達
-            .details
-              %ul
-                %li 
-                  1000円
-                %li
-                  %i.fa.fa-star.likeIcon
-                    0
-              %p
-                (税込)
-        .top-main__pickupcategory--lists-list
-          %figure.top-main__pickupcategory--lists-list--image
-            = link_to image_tag("sozai-01.png")
-          .top-main__pickupcategory--lists-list--text
-            %h3.name
-              ネズミ達
-            .details
-              %ul
-                %li 
-                  1000円
-                %li
-                  %i.fa.fa-star.likeIcon
-                    0
-              %p
-                (税込)
-  .top_app__content
-    = render partial: 'items/shared/top_footer'
+        - @items.each do |item|
+          .top-main__pickupcategory--lists-list
+            %figure.top-main__pickupcategory--lists-list--image
+              = link_to image_tag("sozai-01.png")
+            .top-main__pickupcategory--lists-list--text
+              %h3.name
+                = item.product_name
+              .details
+                %ul
+                  %li 
+                    = item.price
+                  %li
+                    %i.fa.fa-star.likeIcon
+                      0
+                %p
+                  (税込)
+    %section.top-main__pickupcategory
+      %h2.top-main__pickupcategory-title
+        ピックアップブランド
+      .top-main__pickupcategory--box
+        .top-main__pickupcategory--box-title
+          = link_to "#" do
+            %h3.title
+              アーカイバ
+        .top-main__pickupcategory--lists
+          .top-main__pickupcategory--lists-list
+            %figure.top-main__pickupcategory--lists-list--image
+              = link_to image_tag("sozai-01.png")
+            .top-main__pickupcategory--lists-list--text
+              %h3.name
+                ネズミ達
+              .details
+                %ul
+                  %li 
+                    1000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                      0
+                %p
+                  (税込)
+          .top-main__pickupcategory--lists-list
+            %figure.top-main__pickupcategory--lists-list--image
+              = link_to image_tag("sozai-01.png")
+            .top-main__pickupcategory--lists-list--text
+              %h3.name
+                ネズミ達
+              .details
+                %ul
+                  %li 
+                    1000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                      0
+                %p
+                  (税込)
+          .top-main__pickupcategory--lists-list
+            %figure.top-main__pickupcategory--lists-list--image
+              = link_to image_tag("sozai-01.png")
+            .top-main__pickupcategory--lists-list--text
+              %h3.name
+                ネズミ達
+              .details
+                %ul
+                  %li 
+                    1000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                      0
+                %p
+                  (税込)
+    .top_app__content
+      = render partial: 'items/shared/top_footer'

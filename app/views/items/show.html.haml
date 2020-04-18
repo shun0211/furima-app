@@ -128,14 +128,4 @@
       .related-items
         = link_to  "＃" do
           レディースをもっと見る
-%aside.app-banner
-  .inner
-    %h2.inner__title だれでもかんたん、人生を変えるフリマアプリ
-    %p.inner__text 今すぐ無料ダウンロード！
-    .inner__icon
-    = link_to image_tag("sozai-02.png", class: "app-button", width: "180"), "＃"
-    = link_to image_tag("sozai-05.png", class: "google-button", width: "180"), "＃"
-.footer
-  = render partial: "items/shared/item-detail-footer"
-.purchase-button
-  = render partial: "items/shared/purchase-button"
+  = render partial: "items/shared/top_footer"
