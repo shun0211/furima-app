@@ -50,9 +50,10 @@
       }
       .top-header--items-right {
         display: flex;
-        a { 
+        a {
           text-decoration: none;
           color: #333;
+          margin-right: 16px;
         }
         &--new {
           padding-left: 16px;
