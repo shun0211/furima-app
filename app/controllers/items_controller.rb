@@ -11,7 +11,6 @@ class ItemsController < ApplicationController
   end
   
   def create
-    binding.pry
     @item = Item.new(item_params)
     respond_to do |format|
       # バリデーションチェックが通ればフォーム記載内容をデータベースに保存する

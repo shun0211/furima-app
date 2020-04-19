@@ -124,6 +124,15 @@ $(function(){
   $('.exhibition-content__caption--image--default').on('change', function(){
     $('.images--empty').remove();
   })
+  $('#parent-category').on('change', function(){
+    $('.parent_category--empty').remove();
+  })
+  $(document).on('change', '#child-category', function(){
+    $('.child_category--empty').remove();
+  })
+  $(document).on('change', '#grandchild-category', function(){
+    $('.grandchild_category--empty').remove();
+  })
 
   // 「出品する」を押したとき、コントローラーへajax通信でフォーム情報を送信
   $('.button').on('click', function(e){
@@ -136,6 +145,9 @@ $(function(){
     var days_of_ship = $('.days_of_ship--form').val();
     var price = $('.price--form').val();
     var images = $('.exhibition-content__caption--image--default').val();
+    var parent_category = $('#parent-category').val();
+    var child_category = $('#child-category').val();
+    var grandchild_category = $('#grandchild-category').val();
     e.preventDefault();
     var form_data = document.forms.new_item;
     var formData = new FormData(form_data);
@@ -211,6 +223,27 @@ $(function(){
           $('.exhibition-content__caption--image--box').after(images_err);
           }
         }
+        if (parent_category == ''){
+          var parent_category_err = `<div class = "parent_category--empty">選択してください</div>`
+          if ($('.parent_category--empty').length){
+          }else{
+            $('.exhibition-content__details--category').after(parent_category_err);
+          }
+        }
+        if (child_category == ''){
+          var child_category_err = `<div class = "child_category--empty">選択してください</div>`
+          if ($('.child_category--empty').length){
+          }else{
+            $('#children_wrapper').after(child_category_err);
+          }
+        }
+        if (grandchild_category == ''){
+          var grandchild_category_err = `<div class = "grandchild_category--empty">選択してください</div>`
+          if ($('.grandchild_category--empty').length){
+          }else{
+            $('#grandchildren_wrapper').after(grandchild_category_err);
+          }
+        }
       }
     })
   })
@@ -255,6 +288,8 @@ $(function(){
   $("#parent-category").on("change", function(){
     var parent_category_id = $("#parent-category").val();
     console.log(parent_category_id);
+    // 親IDのname属性削除
+    $('#parent-category').removeAttr('name');
     $.ajax({
       url: "/items/get_category_children",
       type: "GET",
@@ -263,20 +298,17 @@ $(function(){
       contentType: false
     })
     .done(function(children){
-      console.log(children);
       $('#children_wrapper').remove();
       var insertHTML = "";
       children.forEach(function(child){
         insertHTML += appendOption(child);
       })
-      console.log(insertHTML);
       appendChildrenBox(insertHTML);
     })
   })
   // 小カテゴリーが選択されたとき発火
   $(document).on("change", "#child-category", function(){
     var child_category_id = $("#child-category").val();
-    console.log(child_category_id);
     $.ajax({
       url: "/items/get_category_grandchildren",
       type: "GET",
@@ -292,9 +324,5 @@ $(function(){
       })
       appendGrandchildrenBox(insertHTML)
     })
-  })
-  // 親IDのname属性削除
-  $(document).on("change", "grandchild-category", function(){
-    $('#parent-category').removeAtrr('name')
   })
 })

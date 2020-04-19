@@ -256,6 +256,18 @@
           background-position: right 10px center;
         }
       }
+      .parent_category--empty{
+        color: red;
+        padding-bottom: 20px;
+      }
+      .child_category--empty{
+        color: red;
+        padding-bottom: 20px;
+      }
+      .grandchild_category--empty{
+        color: red;
+        padding-bottom: 20px;
+      }
       .exhibition-content__details--brand{
         .exhibition-content__details--brand--form{
           @include input_form
