@@ -286,8 +286,6 @@ $(function(){
 
   // 親カテゴリーが選択されたとき発火
   $("#parent-category").on("change", function(){
-    var parent_category_id = $("#parent-category").val();
-    console.log(parent_category_id);
     // 親IDのname属性削除
     $('#parent-category').removeAttr('name');
     $.ajax({
