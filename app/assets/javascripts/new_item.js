@@ -243,7 +243,7 @@ $(function(){
   // 挿入する孫カテゴリーのブロックを作成
   function appendGrandchildrenBox(insertHTML){
     var grandchildSelectHtml =`<div class = 'child__category--form' id = 'grandchildren_wrapper' >
-                                 <select class = 'exhibition-content__details--category--form' id = 'grandchild-category'>
+                                 <select class = 'exhibition-content__details--category--form' id = 'grandchild-category' name = 'item[category_id]'>
                                    <option value>選択してください</option>
                                    ${insertHTML}
                                  </select>
@@ -292,5 +292,9 @@ $(function(){
       })
       appendGrandchildrenBox(insertHTML)
     })
+  })
+  // 親IDのname属性削除
+  $(document).on("change", "grandchild-category", function(){
+    $('#parent-category').removeAtrr('name')
   })
 })
