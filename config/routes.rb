@@ -22,19 +22,24 @@ Rails.application.routes.draw do
       get :sms_input
       get :completed
     end
+    member do
+      get "/credit_cards/:id/new" => "credit_card#new"
+    end
   end
   
-  resources :purchases, only: [:show, :create] do
-    collection do
-      get :verification_address
-      get :purchases_verification
-    end
+  resources :purchases, only: [:show] do
     member do
+      get :verification_address
+      post :create
+      get "purchases_verification", to: "purchases#purchases_verification"
       get "pay", to: "purchases#pay"
       post "buy", to: "purchases#buy"
     end
   end
-  resources :credit_cards, only: [:index, :new, :create] do
+  resources :credit_cards, only: [:index, :create] do
+    member do
+      get "new"
+    end
     collection do
       post "delete", to: "credit_cards#delete"
     end

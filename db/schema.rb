@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 20200418091714) do
     t.string   "familyname",                                        null: false
     t.string   "firstname_kana",                                    null: false
     t.string   "familyname_kana",                                   null: false
-    t.integer  "phone_number"
+    t.string   "phone_number"
     t.string   "profile_image"
     t.string   "nickname",                                          null: false
     t.text     "profile_text",           limit: 65535
