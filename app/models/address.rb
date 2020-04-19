@@ -8,8 +8,8 @@ class Address < ApplicationRecord
               with: /\A\d{3}[-]\d{4}$|^\d{3}[-]\d{2}$|^\d{3}\z/
             }
   validates :firstname_kana, :familyname_kana,
-            format: {
-              with: /\A[\p{katakana} ー－&&[^ -~｡-ﾟ]]+\z/,
-              message: "全角カタカナのみで入力して下さい"
-            }
+              format: {
+                with: /\A[\p{katakana} ー－&&[^ -~｡-ﾟ]]+\z/,
+                  message: "全角カタカナのみで入力して下さい"
+              }
 end
