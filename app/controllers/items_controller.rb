@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
-    @images = @item.product_image
+    @images = @item.product_images
     @image = @images.first 
   end
 
@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
       product_images_attributes: [:id, 
                                  :image,
                                  :item_id],)
-      # .merge(seller_id: current_user.id)
+      .merge(seller_id: current_user.id)
   end
 
 end
