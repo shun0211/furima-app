@@ -21,7 +21,7 @@
             %li.top-header--items-right--login
               = link_to "ログアウト", destroy_user_session_path, method: :delete
             %li.top-header--items-right--login
-              = link_to "/users/current_user.id" do
+              = link_to "/users/current_user" do
                 マイページ
           - else
             %li.top-header--items-right--login
