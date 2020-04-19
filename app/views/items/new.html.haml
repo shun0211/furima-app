@@ -52,7 +52,7 @@
             %span
               必須
           -# 下はancestoryのGemを導入したあと、変更予定
-          = f.collection_select :category_id, @category, :id, :name, {prompt: "選択してください"}, class: "exhibition-content__details--category--form"
+          = f.collection_select :category_id, @category, :id, :name, {prompt: "選択してください"}, class: "exhibition-content__details--category--form", id: "parent-category"
         .exhibition-content__details--brand
           .exhibition-content__details--brand--title
             %label

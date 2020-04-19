@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     # カテゴリーの親を取得
-    @category = Category.where(ancestry: "")
+    @category = Category.where(ancestry: nil)
     # @itemにproduct_imagesの情報を入れることのできるインスタンスを生成
     @item.product_images.build
   end
@@ -26,16 +26,20 @@ class ItemsController < ApplicationController
   end
   
   def get_category_children
-    @children = Category.find(params[:parent_id]).children
+    @children = Category.find(params[:parent_category_id]).children
     respond_to do |format|
       format.html
       format.json { render json: @children }
     end
   end
 
-  # def get_category_grandchildren
-  #   @grandchildren = Category.find(params[:])
-
+  def get_category_grandchildren
+    @grandchildren = Category.find(params[:child_category_id]).children
+    respond_to do |format|
+      format.html
+      format.json { render json: @grandchildren }
+    end
+  end
 
   def show
     @item = Item.find(params[:id])
