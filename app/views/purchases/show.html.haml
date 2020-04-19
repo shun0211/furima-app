@@ -37,14 +37,6 @@
                   %i.fas.fa-plus-circle
                   %span
                     登録してください
-            -# %section.verification-form--payment
-            -#   .verification-form--payment__body
-            -#     %h3
-            -#       支払い方法
-            -#     = link_to credit_card_path(@item) do
-            -#       %i.fas.fa-plus-circle
-            -#       %span
-            -#         登録してください
             %section.verification-form__button
               = form_tag(buy_purchase_path, method: :post) do
                 %button 購入する
