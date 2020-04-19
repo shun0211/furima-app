@@ -20,6 +20,7 @@ class User < ApplicationRecord
   validates :firstname, presence: true, length: { maximum: 10 }, format: { with: kanji }
   validates :firstname_kana, presence: true, length: { maximum: 15 }, format: { with: kana }
   validates :familyname_kana, presence: true, length: { maximum: 15 }, format: { with: kana }
+  validates :phone_number, presence: true, length: { maximum: 11 }
   validates :password, presence: true, length: { in: 7..20 }
   validates :birth_year, presence: true, length: { maximum: 4 }
   validates :birth_month, presence: true, length: { maximum: 2 }

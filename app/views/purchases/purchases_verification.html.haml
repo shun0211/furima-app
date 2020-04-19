@@ -9,16 +9,13 @@
         .verification-content__item__body__caption
           .verification-content__item__body__caption--center
             .verification-content__item__image
-              = image_tag("sozai-09.png")
-              -# = image_tag(@image.image, size: "80x80")
+              = image_tag(@image.image, size: "80x80")
             .verification-content__item__detail
               %p.verification-content__item__detail__name
-                星
-                -# = @item.product_name
+                = @item.product_name
               %p.verification-content__item__detail__price
                 %span
-                  ¥1,000
-                  -# = number_to_currency(@item.price, unit: "￥", precision: 0)     # number_to_currencyはメソッド名です。unitは通貨単位を指定してます。(デフォルトは$です) precisionは少数以下の桁の指定です。(今回は小数点以下は切り捨てたいので0です)
+                  = number_to_currency(@item.price, unit: "￥", precision: 0)     # number_to_currencyはメソッド名です。unitは通貨単位を指定してます。(デフォルトは$です) precisionは少数以下の桁の指定です。(今回は小数点以下は切り捨てたいので0です)
                 %span
                   (税込) 送料込み
       %section.verification-content__item--payment
@@ -30,13 +27,12 @@
                   支払い金額
                 .verification-form__content__list__price
                   %span
-                    ¥1,000
-                    -# = number_to_currency(@item.price, unit: "￥", precision: 0)
+                    = number_to_currency(@item.price, unit: "￥", precision: 0)
             %section.verification-form--payment
               .verification-form--payment__body
                 %h3
                   支払い方法
-                = link_to new_credit_card_path(current_user.id) do
+                = link_to credit_card_path(@item) do
                   %i.fas.fa-plus-circle
                   %span
                     登録してください
