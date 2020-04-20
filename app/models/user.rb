@@ -15,12 +15,14 @@ class User < ApplicationRecord
   has_many :evaliations
   has_one :address
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :nickname, presence: true, length: { maximum: 25 }
   validates :familyname, presence: true, length: { maximum: 10 }, format: { with: kanji }
   validates :firstname, presence: true, length: { maximum: 10 }, format: { with: kanji }
   validates :firstname_kana, presence: true, length: { maximum: 15 }, format: { with: kana }
   validates :familyname_kana, presence: true, length: { maximum: 15 }, format: { with: kana }
-  validates :phone_number, presence: true, length: { maximum: 11 }
+  validates :phone_number, presence: true, length: { is: 11 }
   validates :password, presence: true, length: { in: 7..20 }
   validates :birth_year, presence: true, length: { maximum: 4 }
   validates :birth_month, presence: true, length: { maximum: 2 }

@@ -52,9 +52,6 @@ describe User do
       user.valid?
       expect(user.errors[:password][0]).to include("is too long (maximum is 20 characters)")
     end
-
-
-
     it "firstnameが空だと登録不可" do
       user = build(:user, firstname: nil)
       user.valid?
