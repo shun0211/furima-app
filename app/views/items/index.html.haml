@@ -174,119 +174,107 @@
           = link_to image_tag("sozai-05.png")
     %section.top-main__introduction-features
       %h2.top-main__introduction-title
-        会員数日本一位
-      %p.top-main__introduction-text
-        FURIMAは、フリマアプリで最も人気。
-        %br
-        出品・購入回数も業界最多です!
-        %br
-        ほしかったあの商品に出会えるかもしれません。
-      .top-main__introduction-button
-        = link_to image_tag("sozai-02.png")
-        = link_to image_tag("sozai-05.png")
-  %section.top-main__introduction-features
-    %h2.top-main__introduction-title
-      FURIMAの特徴
-    .top-main__introduction-items
-      %section.top-main__item
-        %figure.top-main__item-image
-          = image_tag "icon-01.png"
-        %h3.top-main__item-subtitle
-          簡単に売り買いできる
-        %p.top-main__item-text
-          スマホひとつで、いつでもどこでも簡単に出品・購入が可能!
-      %section.top-main__item
-        %figure.top-main__item-image
-          = image_tag "icon-03.png"
-        %h3.top-main__item-subtitle
-          売上金は即日振込に対応
-        %p.top-main__item-text
-          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
-      %section.top-main__item
-        %figure.top-main__item-image
-          = image_tag "icon-04.png"
-        %h3.top-main__item-subtitle
-          様々な支払いに対応
-        %p.top-main__item-text
-          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
-  %section.top-main__pickupcategory
-    %h2.top-main__pickupcategory-title
-      ピックアップカテゴリー
-    .top-main__pickupcategory--box
-      .top-main__pickupcategory--box-title
-        = link_to "#" do
-          %h3.title
-            新規投稿商品
-      .top-main__pickupcategory--lists
-        - @items.each do |item|
-          .top-main__pickupcategory--lists-list
-            %figure.top-main__pickupcategory--lists-list--image
-              = link_to image_tag("sozai-01.png")
-            .top-main__pickupcategory--lists-list--text
-              %h3.name
-                = item.product_name
-              .details
-                %ul
-                  %li 
-                    = item.price
-                  %li
-                    %i.fa.fa-star.likeIcon
-                      0
-                %p
-                  (税込)
+        FURIMAの特徴
+      .top-main__introduction-items
+        %section.top-main__item
+          %figure.top-main__item-image
+            = image_tag "icon-01.png"
+          %h3.top-main__item-subtitle
+            簡単に売り買いできる
+          %p.top-main__item-text
+            スマホひとつで、いつでもどこでも簡単に出品・購入が可能!
+        %section.top-main__item
+          %figure.top-main__item-image
+            = image_tag "icon-03.png"
+          %h3.top-main__item-subtitle
+            売上金は即日振込に対応
+          %p.top-main__item-text
+            午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+        %section.top-main__item
+          %figure.top-main__item-image
+            = image_tag "icon-04.png"
+          %h3.top-main__item-subtitle
+            様々な支払いに対応
+          %p.top-main__item-text
+            お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
     %section.top-main__pickupcategory
       %h2.top-main__pickupcategory-title
-        ピックアップブランド
+        ピックアップカテゴリー
       .top-main__pickupcategory--box
         .top-main__pickupcategory--box-title
           = link_to "#" do
             %h3.title
-              アーカイバ
+              新規投稿商品
         .top-main__pickupcategory--lists
-          .top-main__pickupcategory--lists-list
-            %figure.top-main__pickupcategory--lists-list--image
-              = link_to image_tag("sozai-01.png")
-            .top-main__pickupcategory--lists-list--text
-              %h3.name
-                ネズミ達
-              .details
-                %ul
-                  %li 
-                    1000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                      0
-                %p
-                  (税込)
-          .top-main__pickupcategory--lists-list
-            %figure.top-main__pickupcategory--lists-list--image
-              = link_to image_tag("sozai-01.png")
-            .top-main__pickupcategory--lists-list--text
-              %h3.name
-                ネズミ達
-              .details
-                %ul
-                  %li 
-                    1000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                      0
-                %p
-                  (税込)
-          .top-main__pickupcategory--lists-list
-            %figure.top-main__pickupcategory--lists-list--image
-              = link_to image_tag("sozai-01.png")
-            .top-main__pickupcategory--lists-list--text
-              %h3.name
-                ネズミ達
-              .details
-                %ul
-                  %li 
-                    1000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                      0
-                %p
-                  (税込)
-    .top_app__content
-      = render partial: 'items/shared/top_footer'
+          - @items.each do |item|
+            .top-main__pickupcategory--lists-list
+              %figure.top-main__pickupcategory--lists-list--image
+                = link_to image_tag("sozai-01.png")
+              .top-main__pickupcategory--lists-list--text
+                %h3.name
+                  = item.product_name
+                .details
+                  %ul
+                    %li 
+                      = item.price
+                    %li
+                      %i.fa.fa-star.likeIcon
+                        0
+                  %p
+                    (税込)
+      %section.top-main__pickupcategory
+        %h2.top-main__pickupcategory-title
+          ピックアップブランド
+        .top-main__pickupcategory--box
+          .top-main__pickupcategory--box-title
+            = link_to "#" do
+              %h3.title
+                アーカイバ
+          .top-main__pickupcategory--lists
+            .top-main__pickupcategory--lists-list
+              %figure.top-main__pickupcategory--lists-list--image
+                = link_to image_tag("sozai-01.png")
+              .top-main__pickupcategory--lists-list--text
+                %h3.name
+                  ネズミ達
+                .details
+                  %ul
+                    %li 
+                      1000円
+                    %li
+                      %i.fa.fa-star.likeIcon
+                        0
+                  %p
+                    (税込)
+            .top-main__pickupcategory--lists-list
+              %figure.top-main__pickupcategory--lists-list--image
+                = link_to image_tag("sozai-01.png")
+              .top-main__pickupcategory--lists-list--text
+                %h3.name
+                  ネズミ達
+                .details
+                  %ul
+                    %li 
+                      1000円
+                    %li
+                      %i.fa.fa-star.likeIcon
+                        0
+                  %p
+                    (税込)
+            .top-main__pickupcategory--lists-list
+              %figure.top-main__pickupcategory--lists-list--image
+                = link_to image_tag("sozai-01.png")
+              .top-main__pickupcategory--lists-list--text
+                %h3.name
+                  ネズミ達
+                .details
+                  %ul
+                    %li 
+                      1000円
+                    %li
+                      %i.fa.fa-star.likeIcon
+                        0
+                  %p
+                    (税込)
+      .top_app__content
+        = render partial: 'items/shared/top_footer'
