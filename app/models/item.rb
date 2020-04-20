@@ -21,6 +21,7 @@ class Item < ApplicationRecord
   validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validates_associated :product_images
   validate :product_images_number
+  validates :category_id, presence: true
 
   private
   def product_images_number
