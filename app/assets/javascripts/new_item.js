@@ -124,6 +124,15 @@ $(function(){
   $('.exhibition-content__caption--image--default').on('change', function(){
     $('.images--empty').remove();
   })
+  $('#parent-category').on('change', function(){
+    $('.parent_category--empty').remove();
+  })
+  $(document).on('change', '#child-category', function(){
+    $('.child_category--empty').remove();
+  })
+  $(document).on('change', '#grandchild-category', function(){
+    $('.grandchild_category--empty').remove();
+  })
 
   // 「出品する」を押したとき、コントローラーへajax通信でフォーム情報を送信
   $('.button').on('click', function(e){
@@ -136,6 +145,9 @@ $(function(){
     var days_of_ship = $('.days_of_ship--form').val();
     var price = $('.price--form').val();
     var images = $('.exhibition-content__caption--image--default').val();
+    var parent_category = $('#parent-category').val();
+    var child_category = $('#child-category').val();
+    var grandchild_category = $('#grandchild-category').val();
     e.preventDefault();
     var form_data = document.forms.new_item;
     var formData = new FormData(form_data);
@@ -211,6 +223,27 @@ $(function(){
           $('.exhibition-content__caption--image--box').after(images_err);
           }
         }
+        if (parent_category == ''){
+          var parent_category_err = `<div class = "parent_category--empty">選択してください</div>`
+          if ($('.parent_category--empty').length){
+          }else{
+            $('.exhibition-content__details--category').after(parent_category_err);
+          }
+        }
+        if (child_category == ''){
+          var child_category_err = `<div class = "child_category--empty">選択してください</div>`
+          if ($('.child_category--empty').length){
+          }else{
+            $('#children_wrapper').after(child_category_err);
+          }
+        }
+        if (grandchild_category == ''){
+          var grandchild_category_err = `<div class = "grandchild_category--empty">選択してください</div>`
+          if ($('.grandchild_category--empty').length){
+          }else{
+            $('#grandchildren_wrapper').after(grandchild_category_err);
+          }
+        }
       }
     })
   })
@@ -222,5 +255,72 @@ $(function(){
     $('.exhibion-content__price--revenue-value').empty();
     var sales_profit = Number($('.price--form').val()) - sales_commission;
     $('.exhibion-content__price--revenue-value').text('¥' + sales_profit);
+  })
+
+  // 挿入するHTMLを定義
+  // 挿入するオプション（選択肢）を定義
+  function appendOption(category){
+    var html = `<option value = "${category.id}">${category.name}</option>`;
+    return html;
+  }
+  // 挿入する小カテゴリーのブロックを作成
+  function appendChildrenBox(insertHTML){
+    var childSelectHtml =`<div class = 'child__category--form' id = 'children_wrapper' >
+                            <select class = 'exhibition-content__details--category--form' id = 'child-category'>
+                              <option value>選択してください</option>
+                              ${insertHTML}
+                            </select>
+                          </div>` 
+    $('.exhibition-content__details--category--form').after(childSelectHtml)
+  }
+  // 挿入する孫カテゴリーのブロックを作成
+  function appendGrandchildrenBox(insertHTML){
+    var grandchildSelectHtml =`<div class = 'child__category--form' id = 'grandchildren_wrapper' >
+                                 <select class = 'exhibition-content__details--category--form' id = 'grandchild-category' name = 'item[category_id]'>
+                                   <option value>選択してください</option>
+                                   ${insertHTML}
+                                 </select>
+                               </div>` 
+    $('#children_wrapper').after(grandchildSelectHtml);
+  }
+
+  // 親カテゴリーが選択されたとき発火
+  $("#parent-category").on("change", function(){
+    // 親IDのname属性削除
+    $('#parent-category').removeAttr('name');
+    $.ajax({
+      url: "/items/get_category_children",
+      type: "GET",
+      data: { parent_category_id: parent_category_id },
+      dataType: 'json',
+      contentType: false
+    })
+    .done(function(children){
+      $('#children_wrapper').remove();
+      var insertHTML = "";
+      children.forEach(function(child){
+        insertHTML += appendOption(child);
+      })
+      appendChildrenBox(insertHTML);
+    })
+  })
+  // 小カテゴリーが選択されたとき発火
+  $(document).on("change", "#child-category", function(){
+    var child_category_id = $("#child-category").val();
+    $.ajax({
+      url: "/items/get_category_grandchildren",
+      type: "GET",
+      data: { child_category_id: child_category_id },
+      dataType: 'json',
+      contentType: false
+    })
+    .done(function(grandchildren){
+      $('#grandchildren_wrapper').remove();
+      var insertHTML = "";
+      grandchildren.forEach(function(grandchild){
+        insertHTML += appendOption(grandchild);
+      })
+      appendGrandchildrenBox(insertHTML)
+    })
   })
 })
