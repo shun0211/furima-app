@@ -29,7 +29,12 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @images = @item.product_images
-    @image = @images.first 
+    @image = @images.first
+    @user = User.find(@item.seller_id)
+    @prefecture = Prefecture.find(@item.prefecture_id)
+    @condition = @item.product_condition
+    @days_of_ship = @item.days_of_ship
+    @charge = @item.shipping_charge
   end
 
   def edit
