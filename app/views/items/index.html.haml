@@ -97,7 +97,8 @@
         - @items.each do |item|
           .top-main__pickupcategory--lists-list
             %figure.top-main__pickupcategory--lists-list--image
-              = link_to image_tag("sozai-01.png")
+              = link_to item_path(item) do
+                = image_tag item.product_images[0].image
             .top-main__pickupcategory--lists-list--text
               %h3.name
                 = item.product_name
