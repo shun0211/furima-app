@@ -13,42 +13,166 @@
       .top-content__button
         = link_to image_tag("sozai-02.png")
         = link_to image_tag("sozai-05.png")
-  %section.top-main__introduction
-    %h2.top-main__introduction-subtitle
-      FURIMAが選ばれる3つの理由
-    %ul.top-main__lists
-      %li.top-main__lists-list--first
-        .top-list__picture
-          %span.top-number
-            1
-          = image_tag "pict-reason-01.jpg"
-        %h3.top-list__text
-          %span 3分
-          ですぐに出品
-        %p.top-list__description
-          スマホで入力するだけで簡単に出品できる!
-      %li.top-main__lists-list--second
-        .top-list__picture
-          %span.top-number
-            2
-          = image_tag "pict-reason-02.jpg"
-        %h3.top-list__text
-          %span シンプル
-          で使いやすい
-        %p.top-list__description
-          めんどくさい入力は必要なく、検索も購入もスムーズ!
-      %li.top-main__lists-list--last
-        .top-list__picture
-          %span.top-number
-            3
-          = image_tag "pict-reason-03.jpg"
-        %h3.top-list__text
-          手数料
-          %span 業界最安
-        %p.top-list__description
-          最大3%でお得に出品&購入!
-  %section.top-main__introduction-link
-    .top-main__introduction-content
+  - if user_signed_in?
+    %section.top-main__pickupcategory
+      %h2.top-main__pickupcategory-title
+        ピックアップカテゴリー
+      .top-main__pickupcategory--box
+        .top-main__pickupcategory--box-title
+          = link_to "#" do
+            %h3.title
+              新規投稿商品
+        .top-main__pickupcategory--lists
+          .top-main__pickupcategory--lists-list
+            %figure.top-main__pickupcategory--lists-list--image
+              = link_to image_tag("sozai-01.png")
+            .top-main__pickupcategory--lists-list--text
+              %h3.name
+                ネズミ達
+              .details
+                %ul
+                  %li 
+                    1000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                      0
+                %p
+                  (税込)
+          .top-main__pickupcategory--lists-list
+            %figure.top-main__pickupcategory--lists-list--image
+              = link_to image_tag("sozai-01.png")
+            .top-main__pickupcategory--lists-list--text
+              %h3.name
+                ネズミ達
+              .details
+                %ul
+                  %li 
+                    1000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                      0
+                %p
+                  (税込)
+          .top-main__pickupcategory--lists-list
+            %figure.top-main__pickupcategory--lists-list--image
+              = link_to image_tag("sozai-01.png")
+            .top-main__pickupcategory--lists-list--text
+              %h3.name
+                ネズミ達
+              .details
+                %ul
+                  %li 
+                    1000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                      0
+                %p
+                  (税込)
+    %section.top-main__pickupcategory
+      %h2.top-main__pickupcategory-title
+        ピックアップブランド
+      .top-main__pickupcategory--box
+        .top-main__pickupcategory--box-title
+          = link_to "#" do
+            %h3.title
+              アーカイバ
+        .top-main__pickupcategory--lists
+          .top-main__pickupcategory--lists-list
+            %figure.top-main__pickupcategory--lists-list--image
+              = link_to image_tag("sozai-01.png")
+            .top-main__pickupcategory--lists-list--text
+              %h3.name
+                ネズミ達
+              .details
+                %ul
+                  %li 
+                    1000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                      0
+                %p
+                  (税込)
+          .top-main__pickupcategory--lists-list
+            %figure.top-main__pickupcategory--lists-list--image
+              = link_to image_tag("sozai-01.png")
+            .top-main__pickupcategory--lists-list--text
+              %h3.name
+                ネズミ達
+              .details
+                %ul
+                  %li 
+                    1000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                      0
+                %p
+                  (税込)
+          .top-main__pickupcategory--lists-list
+            %figure.top-main__pickupcategory--lists-list--image
+              = link_to image_tag("sozai-01.png")
+            .top-main__pickupcategory--lists-list--text
+              %h3.name
+                ネズミ達
+              .details
+                %ul
+                  %li 
+                    1000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                      0
+                %p
+                  (税込)
+    .top_app__content
+      = render partial: 'items/shared/top_footer'
+  - else
+    %section.top-main__introduction
+      %h2.top-main__introduction-subtitle
+        FURIMAが選ばれる3つの理由
+      %ul.top-main__lists
+        %li.top-main__lists-list--first
+          .top-list__picture
+            %span.top-number
+              1
+            = image_tag "pict-reason-01.jpg"
+          %h3.top-list__text
+            %span 3分
+            ですぐに出品
+          %p.top-list__description
+            スマホで入力するだけで簡単に出品できる!
+        %li.top-main__lists-list--second
+          .top-list__picture
+            %span.top-number
+              2
+            = image_tag "pict-reason-02.jpg"
+          %h3.top-list__text
+            %span シンプル
+            で使いやすい
+          %p.top-list__description
+            めんどくさい入力は必要なく、検索も購入もスムーズ!
+        %li.top-main__lists-list--last
+          .top-list__picture
+            %span.top-number
+              3
+            = image_tag "pict-reason-03.jpg"
+          %h3.top-list__text
+            手数料
+            %span 業界最安
+          %p.top-list__description
+            最大3%でお得に出品&購入!
+    %section.top-main__introduction-link
+      .top-main__introduction-content
+        %h2.top-main__introduction-title
+          会員数日本一位
+        %p.top-main__introduction-text
+          FURIMAは、フリマアプリで最も人気。
+          %br
+          出品・購入回数も業界最多です!
+          %br
+          ほしかったあの商品に出会えるかもしれません。
+        .top-main__introduction-button
+          = link_to image_tag("sozai-02.png")
+          = link_to image_tag("sozai-05.png")
+    %section.top-main__introduction-features
       %h2.top-main__introduction-title
         会員数日本一位
       %p.top-main__introduction-text

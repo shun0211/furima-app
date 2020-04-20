@@ -17,8 +17,15 @@
           ブランド
       - if user_signed_in?
         %ul.top-header--items-right
-          %li.top-header--items-right--login
-            = link_to "ログアウト", destroy_user_session_path, method: :delete
+          - if current_page?(root_url)
+            %li.top-header--items-right--login
+              = link_to "ログアウト", destroy_user_session_path, method: :delete
+            %li.top-header--items-right--login
+              = link_to "/users/current_user" do
+                マイページ
+          - else
+            %li.top-header--items-right--login
+              = link_to "ログアウト", destroy_user_session_path, method: :delete
       - else
         %ul.top-header--items-right
           %li.top-header--items-right--login
