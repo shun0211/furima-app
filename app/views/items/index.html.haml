@@ -23,55 +23,26 @@
             %h3.title
               新規投稿商品
         .top-main__pickupcategory--lists
-          .top-main__pickupcategory--lists-list
-            %figure.top-main__pickupcategory--lists-list--image
-              = link_to image_tag("sozai-01.png")
-            .top-main__pickupcategory--lists-list--text
-              %h3.name
-                ネズミ達
-              .details
-                %ul
-                  %li 
-                    1000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                      0
-                %p
-                  (税込)
-          .top-main__pickupcategory--lists-list
-            %figure.top-main__pickupcategory--lists-list--image
-              = link_to image_tag("sozai-01.png")
-            .top-main__pickupcategory--lists-list--text
-              %h3.name
-                ネズミ達
-              .details
-                %ul
-                  %li 
-                    1000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                      0
-                %p
-                  (税込)
-          .top-main__pickupcategory--lists-list
-            %figure.top-main__pickupcategory--lists-list--image
-              = link_to item_path(item) do
-                = image_tag item.product_images[0].image
-              -if item.buyer_id.present?
-                .sold-out 
-                .sold-out-font SOLD
-            .top-main__pickupcategory--lists-list--text
-              %h3.name
-                ネズミ達
-              .details
-                %ul
-                  %li 
-                    1000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                      0
-                %p
-                  (税込)
+          - @items.each do |item|
+            .top-main__pickupcategory--lists-list
+              %figure.top-main__pickupcategory--lists-list--image
+                = link_to item_path(item) do
+                  = image_tag item.product_images[0].image
+                -if item.buyer_id.present?
+                  .sold-out 
+                  .sold-out-font SOLD
+              .top-main__pickupcategory--lists-list--text
+                %h3.name
+                  = item.product_name
+                .details
+                  %ul
+                    %li 
+                      = item.price
+                    %li
+                      %i.fa.fa-star.likeIcon
+                        0
+                  %p
+                    (税込)
     %section.top-main__pickupcategory
       %h2.top-main__pickupcategory-title
         ピックアップブランド
@@ -213,7 +184,11 @@
           - @items.each do |item|
             .top-main__pickupcategory--lists-list
               %figure.top-main__pickupcategory--lists-list--image
-                = link_to image_tag("sozai-01.png")
+                = link_to item_path(item) do
+                  = image_tag item.product_images[0].image
+                -if item.buyer_id.present?
+                  .sold-out 
+                  .sold-out-font SOLD
               .top-main__pickupcategory--lists-list--text
                 %h3.name
                   = item.product_name
