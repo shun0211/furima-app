@@ -286,41 +286,48 @@ $(function(){
 
   // 親カテゴリーが選択されたとき発火
   $("#parent-category").on("change", function(){
+    // 小カテゴリーと孫カテゴリー削除
+    $('#children_wrapper').remove();
+    $('#grandchildren_wrapper').remove();
     // 親IDのname属性削除
     $('#parent-category').removeAttr('name');
-    $.ajax({
-      url: "/items/get_category_children",
-      type: "GET",
-      data: { parent_category_id: parent_category_id },
-      dataType: 'json',
-      contentType: false
-    })
-    .done(function(children){
-      $('#children_wrapper').remove();
-      var insertHTML = "";
-      children.forEach(function(child){
-        insertHTML += appendOption(child);
+    var parent_category_id = $('#parent-category').val();
+    if (parent_category_id.length > 1){
+      $.ajax({
+        url: "/items/get_category_children",
+        type: "GET",
+        data: { parent_category_id: parent_category_id },
+        dataType: 'json',
+        contentType: false
       })
-      appendChildrenBox(insertHTML);
-    })
+      .done(function(children){
+        var insertHTML = "";
+        children.forEach(function(child){
+          insertHTML += appendOption(child);
+        })
+        appendChildrenBox(insertHTML);
+      })
+    }
   })
   // 小カテゴリーが選択されたとき発火
   $(document).on("change", "#child-category", function(){
+    $('#grandchildren_wrapper').remove();
     var child_category_id = $("#child-category").val();
-    $.ajax({
-      url: "/items/get_category_grandchildren",
-      type: "GET",
-      data: { child_category_id: child_category_id },
-      dataType: 'json',
-      contentType: false
-    })
-    .done(function(grandchildren){
-      $('#grandchildren_wrapper').remove();
-      var insertHTML = "";
-      grandchildren.forEach(function(grandchild){
-        insertHTML += appendOption(grandchild);
+    if (child_category_id.length > 1){
+      $.ajax({
+        url: "/items/get_category_grandchildren",
+        type: "GET",
+        data: { child_category_id: child_category_id },
+        dataType: 'json',
+        contentType: false
       })
-      appendGrandchildrenBox(insertHTML)
-    })
+      .done(function(grandchildren){
+        var insertHTML = "";
+        grandchildren.forEach(function(grandchild){
+          insertHTML += appendOption(grandchild);
+        })
+        appendGrandchildrenBox(insertHTML)
+      })
+    }
   })
 })
