@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+  # ログイン中のユーザーのみ実行可能にする（トップページと商品詳細ページは除く）
+  before_action :authenticate_user!, {only: [:new, :create, :edit, :destroy]}
+
   def index
     @items = Item.limit(3).order('created_at DESC')
   end
