@@ -56,41 +56,55 @@
                 %tr
                   %th 出品者
                   %td 
-                    hoge
+                    = @user.nickname
                 %tr
                   %th カテゴリー
                   %td 
-                    = link_to  "＃" do
-                      レディース
-                    %br
-                    = link_to  "＃" do
-                      トップス
-                    %br
-                    = link_to  "＃" do
-                      Tシャツ/カットソー(半袖/袖なし)
                 %tr.item-brand
                   %th ブランド
-                  %td
+                  %td 
+                    - if @item.brand.present?
+                      = @item.brand
                 %tr.item-size
                   %th 商品のサイズ
                   %td
+                    - if @item.size.present?
+                      = @item.size
                 %tr.item-condition
                   %th 商品の状態
                   %td
-                    = @item.product_condition
+                    -if (@condition == 0)
+                      新品、未使用
+                    -if (@condition == 1)
+                      未使用に近い
+                    -if (@condition == 2)
+                      目立った傷や汚れなし
+                    -if (@condition == 3)
+                      やや傷や汚れあり
+                    -if (@condition == 4)
+                      傷や汚れあり
+                    -if (@condition == 5)
+                      全体的に状態が悪い
                 %tr.item-shipping-cost
                   %th 配送料の負担
                   %td
-                    = @item.shipping_charge
+                    -if (@charge == 0)
+                      送料込み（出品者負担）
+                    -if (@charge == 1)
+                      着払い（購入者負担）
                 %tr.item-shipping-origin
                   %th 発送元の地域
                   %td
-                    = link_to  "＃" do
-                      青森県
+                    = @prefecture.name
                 %tr.item-shipping-day
                   %th 発送日の目安
                   %td
-                    = @item.days_of_ship
+                    -if (@days_of_ship == 0)
+                      1~2日で発送
+                    -if (@days_of_ship == 1)
+                      2~3日で発送
+                    -if (@days_of_ship == 2)
+                      4~7日で発送
           .optional-area
             %ul.optional-area__contents
               %li.like-button

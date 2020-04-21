@@ -100,3 +100,23 @@
     }
   }
 }
+
+.sold-out {
+  border-top: 80px solid #ea352d;
+  border-right: 80px solid transparent;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  }
+  .sold-out-font {
+    transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    color: #fff;
+    position: absolute;
+    top: 17px;
+    left: 2px;
+    z-index: 150;
+    font-size: 1.4rem;
+  }
