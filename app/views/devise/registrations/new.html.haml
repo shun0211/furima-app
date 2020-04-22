@@ -4,6 +4,7 @@
   .singup-main__header
     %h2 会員情報入力
     .singup-main__form
+      = render 'layouts/error_messages', model:@user
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         .field
           = f.label 'ニックネーム'
@@ -25,8 +26,11 @@
           %h1.field_caution 必須
           %br/
           = f.password_field :password, class: "forms", autocomplete: "new-password", placeholder: "7文字以上の半角英数字"
-          .field-check
-            パスワードを表示する
+        .field
+          = f.label 'パスワード確認'
+          %h1.field_caution 必須
+          %br/
+          = f.password_field :password_confirmation,  class: "forms", autocomplete: "new-password", placeholder: "もう一度パスワードを入力"
           %a 本人確認
           .field-text
             安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
