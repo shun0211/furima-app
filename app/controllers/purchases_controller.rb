@@ -1,9 +1,11 @@
 class PurchasesController < ApplicationController
   require "payjp"
-  before_action :set_item, only: [:show, :verification_address, :create, :purchases_verification, :pay, :buy]
+  # before_action :set_item, only: [:show, :verification_address, :create, :purchases_verification, :pay, :buy]
+  before_action :set_item
   before_action :set_card
   
   def show
+    @address = Address.new
   end
   
   def verification_address

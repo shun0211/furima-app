@@ -34,7 +34,7 @@
 #     it "familyname_kanaにカタカナ以外がある場合は登録できないこと " do
 #       address = build(:address, familyname_kana: "カナa")
 #       address.valid?
-#       expect(address.errors[:familyname_kana][0]).to include("is invalid")
+#       expect(address.errors[:familyname_kana][0]).to include("全角カタカナのみで入力して下さい")
 #     end
 
 #     it "postal_codeがない場合は登録できないこと" do
@@ -46,7 +46,7 @@
 #     it "postal_codeにハイフンがあり7桁であれば登録できること" do
 #       address = build(:address, postal_code: "1234567")
 #       address.valid?
-#       expect(address.errors[:postal_code]).to include()
+#       expect(address.errors[:postal_code]).to include("is invalid")
 #     end
 
 #     it "prefecturesがない場合は登録できないこと" do

@@ -1,4 +1,6 @@
 class CreditCardsController < ApplicationController
+  # 元のやつ
+  
   require "payjp"
   before_action :set_item, only: [:new, :create]
   before_action :set_card
@@ -49,14 +51,11 @@ class CreditCardsController < ApplicationController
         card: params["payjp_token"]     # 直前のnewアクションで発行され、送られてくるトークンをここで顧客に紐付けて永久保存します。
       )
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-      @card.save
-        # ここはおkじゃない
-        if @card.present? && @address.present?
-          redirect_to pay_purchase_path(@item.id) 
-        # if @card.present? && @address.empty??
-        #   redirect_to users_path 
-        else
-          redirect_to root_path
+      if @card.save
+        # ここはおk
+        redirect_to pay_purchase_path(@item.id)
+      else
+        redirect_to root_path
       end
     end
   end
