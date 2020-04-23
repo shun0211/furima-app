@@ -2,43 +2,44 @@
   = render "layouts/flash_messages"
   .verification_header
     = render partial: 'items/shared/verification_header'
-  .verification-content
-    .verification-content__item
-      %h2.verification-content__item__title
-        購入内容の確認
-      %sectonc.verification-content__item__body
-        .verification-content__item__body__caption
-          .verification-content__item__body__caption--center
-            .verification-content__item__image
-              = image_tag(@image.image, size: "80x80")
-            .verification-content__item__detail
-              %p.verification-content__item__detail__name
-                = @item.product_name
-              %p.verification-content__item__detail__price
-                %span
-                  = number_to_currency(@item.price, unit: "￥", precision: 0)
-                %span
-                  (税込) 送料込み
-      %section.verification-content__item--payment
-        .verification-content__item--payment-body
-          .verification-form
-            %ul.verification-form__content
-              %li.verification-form__content__list
-                .verification-form__content__list__title
-                  支払い金額
-                .verification-form__content__list__price
+    .verification-content
+      .verification-content__item
+        %h2.verification-content__item__title
+          購入内容の確認
+        %sectonc.verification-content__item__body
+          .verification-content__item__body__caption
+            .verification-content__item__body__caption--center
+              .verification-content__item__image
+                = image_tag(@image.image, size: "80x80")
+              .verification-content__item__detail
+                %p.verification-content__item__detail__name
+                  = @item.product_name
+                %p.verification-content__item__detail__price
                   %span
                     = number_to_currency(@item.price, unit: "￥", precision: 0)
-            %section.verification-form__address
-              .verification-form__address__body
-                %h3
-                  配送先
-                = link_to verification_address_purchase_path do
-                  %i.fas.fa-plus-circle
                   %span
-                    登録してください
-            %section.verification-form__button
-              = form_tag(buy_purchase_path, method: :post) do
-                %button 購入する
-  .verification_footer
-    = render partial: 'items/shared/verification_footer'
+                    (税込) 送料込み
+        %section.verification-content__item--payment
+          .verification-content__item--payment-body
+            .verification-form
+              %ul.verification-form__content
+                %li.verification-form__content__list
+                  .verification-form__content__list__title
+                    支払い金額
+                  .verification-form__content__list__price
+                    %span
+                      = number_to_currency(@item.price, unit: "￥", precision: 0)
+              %section.verification-form__address
+                .verification-form__address__body
+                  %h3
+                    配送先
+                  = link_to verification_address_purchase_path do
+                    %i.fas.fa-plus-circle
+                    %span
+                      登録してください
+              %section.verification-form__button
+              -# -if @address.present? && @card.present?
+                = form_tag(buy_purchase_path, method: :post) do
+                  %button 購入する
+    .verification_footer
+      = render partial: 'items/shared/verification_footer'

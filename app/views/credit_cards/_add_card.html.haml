@@ -1,6 +1,4 @@
 .credit-card-add_card-wrapper
-  .verification_header
-    = render partial: 'items/shared/verification_header'
   .credit-content
     .credit-content__item
       %h2.credit-content__item__title
@@ -11,11 +9,9 @@
             %h3.sub__head クレジットカード一覧
         .add__card
           .payment__list__content
-            = link_to new_credit_card_path, class: "red__btn" do
+            = link_to credit_card_path(current_user.id), class: "red__btn" do
               %i
               = icon('fas', 'credit-card', class: "card__icon")
               クレジットカードを追加する
         .how__not__regist
           = link_to "支払い方法について" 
-  .verification_footer
-    = render partial: 'items/shared/verification_footer'

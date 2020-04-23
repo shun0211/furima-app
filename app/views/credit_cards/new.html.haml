@@ -5,7 +5,9 @@
     .credit-content__item
       %h2.credit-content__item__title
         支払い方法
-  = form_tag(credit_cards_path, method: @card, id: 'charge-form', name: "inputForm", class: "credit-content__products") do
+  -# = form_tag(credit_cards_path, method: @card, id: 'charge-form', name: "inputForm", class: "credit-content__products") do
+  -# = form_tag(credit_cards_path, method: :post, id: 'charge-form', name: "inputForm", class: "credit-content__products") do
+  = form_tag(credit_card_path(@item), method: :post, id: 'charge-form', name: "inputForm", class: "credit-content__products") do
     .credit-content__product
       .credit-content__product__title
         %label
