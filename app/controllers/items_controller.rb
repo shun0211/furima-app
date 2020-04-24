@@ -54,6 +54,9 @@ class ItemsController < ApplicationController
     @condition = @item.product_condition
     @days_of_ship = @item.days_of_ship
     @charge = @item.shipping_charge
+    @grandchildren = Category.find(@item.category_id)
+    @children = @grandchildren.parent
+    @parent = @children.parent
   end
 
   def edit

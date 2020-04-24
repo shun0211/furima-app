@@ -8,22 +8,19 @@
     %li
       %i.fa.fa-angle-right
     %li
-      = link_to  "＃" do
-        レディース
+      = link_to  @parent.name, "" 
     %li
       %i.fa.fa-angle-right
     %li
-      = link_to "＃" do
-        トップス
+      = link_to @children.name, "" 
     %li
       %i.fa.fa-angle-right
     %li
-      = link_to "＃" do
-        Tシャツ/カットソー(半袖/袖なし)
+      = link_to @grandchildren.name, ""
     %li
       %i.fa.fa-angle-right
     %li
-      %p product1
+      %p #{@item.product_name}
 
 .item-detail
   .item-detail__main
@@ -60,6 +57,11 @@
                 %tr
                   %th カテゴリー
                   %td 
+                    = link_to  @parent.name, "#"
+                    %br
+                    = link_to  @children.name, "#"
+                    %br
+                    = link_to  @grandchildren.name, "#"
                 %tr.item-brand
                   %th ブランド
                   %td 
@@ -141,5 +143,5 @@
             %i.fa.fa-angle-right
       .related-items
         = link_to  "＃" do
-          レディースをもっと見る
+          #{@parent.name}をもっと見る
   = render partial: "items/shared/top_footer"

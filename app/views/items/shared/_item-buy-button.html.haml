@@ -1,6 +1,9 @@
--if not user_signed_in?
+-if @item.product_status == 2
+  .item-box__buy-button
+    = link_to "売り切れました", ""
+-elsif not user_signed_in? 
   .item-box__buy-button
     = link_to "購入画面に進む", new_user_session_path
--if user_signed_in? && @item.seller_id != current_user.id
+-elsif user_signed_in? && @item.seller_id != current_user.id
   .item-box__buy-button
     = link_to "購入画面に進む", purchase_path(@item.id)
