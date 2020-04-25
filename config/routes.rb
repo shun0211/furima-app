@@ -23,7 +23,6 @@ Rails.application.routes.draw do
       get :completed
     end
     member do
-      #これいらないかも↓
       get "/credit_cards/:id/new" => "credit_card#new"
     end
   end
@@ -32,23 +31,17 @@ Rails.application.routes.draw do
     member do
       get :verification_address
       post :create
-      get "purchases_verification", to: "purchases#purchases_verification"
       post "/credit_cards/:id/create" => "credit_card#create"
       get "pay", to: "purchases#pay"
       post "buy", to: "purchases#buy"
     end
   end
   resources :credit_cards, only: [:index] do
-  # resources :credit_cards do
     member do
-      # get :index
       get :new
       post :create
       post "delete", to: "credit_cards#delete"
     end
-    # collection do
-    #   post "delete", to: "credit_cards#delete"
-    # end
   end
 
   root "items#index"

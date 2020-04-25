@@ -15,7 +15,8 @@
                 = @item.product_name
               %p.verification-content__item__detail__price
                 %span
-                  = number_to_currency(@item.price, unit: "￥", precision: 0)     # number_to_currencyはメソッド名です。unitは通貨単位を指定してます。(デフォルトは$です) precisionは少数以下の桁の指定です。(今回は小数点以下は切り捨てたいので0です)
+                  ¥
+                  = number_to_currency(@item.price, precision: 0)     # number_to_currencyはメソッド名です。unitは通貨単位を指定してます。(デフォルトは$です) precisionは少数以下の桁の指定です。(今回は小数点以下は切り捨てたいので0です)
                 %span
                   (税込) 送料込み
       %section.verification-content__item--payment
@@ -27,7 +28,8 @@
                   支払い金額
                 .verification-form__content__list__price
                   %span
-                    = number_to_currency(@item.price, unit: "￥", precision: 0)
+                    ¥
+                    = number_to_currency(@item.price, precision: 0)
             %section.verification-form--payment
               .verification-form--payment__body
                 %h3
