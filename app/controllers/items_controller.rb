@@ -52,6 +52,29 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    @images = @item.product_images
+    @parent_category = @item.category.parent.parent.siblings
+    @child_category = @item.category.parent.siblings
+    @grandchild_category = @item.category.siblings
+  end
+
+  def image_delete
+    @image = ProductImage.find(params[:product_image_id])
+    @image.destroy
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    respond_to do |format|
+      if @item.valid? 
+        @item.update(item_params)
+        format.html { redirect_to root_path }
+        format.json { render json: @item.errors.messages }
+      else
+        format.json { render json: @item.errors.messages }
+      end
+    end
   end
 
   def destroy

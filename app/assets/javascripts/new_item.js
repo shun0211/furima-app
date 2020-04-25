@@ -47,7 +47,7 @@ $(function(){
                     </div>
                   </div>`
       // exhibition-content__caption--image要素の前に上記のHTMLを差し込む
-      $('.exhibition-content__caption--image').after(html);
+      $('.exhibition-content__caption--image').before(html);
     }
     if (number == 5){
       $('.exhibition-content__caption--image').css('display', 'none');
@@ -57,10 +57,10 @@ $(function(){
     // インプットタグ修正する消すための準備
     var input_list = [];
     $('.item-image').each(function(index, image_id){
-      var all_image_id = $(image_id).data('image_id');
+      // var all_image_id = $(image_id).data('image_id');
+      var all_image_id = $(image_id).attr('data-image_id');
       input_list.push(all_image_id);
     })
-
     // プレビュー画像を削除
     var target_image = $(this).parent().parent();
     target_image.remove();
@@ -74,7 +74,8 @@ $(function(){
     // すべてのプレビュー画像のimage_idを取得
     var image_list = [];
     $('.item-image').each(function(index, image_id){
-      var image_id_2 = $(image_id).data('image_id');
+      // var image_id_2 = $(image_id).data('image_id');
+      var image_id_2 = $(image_id).attr('data-image_id');
       image_list.push(image_id_2);
     })
     $.each(image_list, function(index, image_id_2){
@@ -84,14 +85,17 @@ $(function(){
         $(`#image-${image_id_2}`).data('image_id', function(){return (image_id_2 - 1)});
         // インプットタグのname属性を修正
         $(`#item_product_images_attributes_${image_id_2}_image`).attr('name', function(){return "item[product_images_attributes][" + (image_id_2 - 1) + "][image]"})
+        $(`#item_product_images_attributes_${image_id_2}_id`).attr('name', function(){return "item[product_images_attributes][" + (image_id_2 - 1) + "][id]"})
         // インプットタグのid修正
         $(`#item_product_images_attributes_${image_id_2}_image`).attr('id', function(){return "item_product_images_attributes_" + (image_id_2 - 1) + "_image"})
+        $(`#item_product_images_attributes_${image_id_2}_id`).attr('id', function(){return "item_product_images_attributes_" + (image_id_2 - 1) + "_id"})
         // プレビュー画像のid修正
         $(`#image-${image_id_2}`).attr('id', function(){return "image-" + (image_id_2 - 1)});
       }
     })
     // インプットタグを削除
     $(`#item_product_images_attributes_${image_id}_image`).remove();
+    $(`#item_product_images_attributes_${image_id}_id`).remove();
     // 空のインプットタグを取得
     var input_max = Math.max.apply(null, input_list) + 1;
     // 空のインプットタグのid及びnameを修正

@@ -2,8 +2,10 @@
   .exhibition-header
     .exhibition-header__icon
       = image_tag("logo.png")
-  = form_for @item, html: {name: 'new_item'} do |f|
+  = form_for @item, html: {name: 'new_item', id: 'item_form'} do |f|
     .exhibition-contents
+      .item-edit-title
+        商品情報の編集
       .exhibition-content__caption
         .exhibition-content__caption--title
           %label
@@ -13,12 +15,22 @@
         %p.exhibition-content__caption--text
           最大５枚までアップロードできます
         .exhibition-content__caption--image--box
-          = f.fields_for :product_images do |s|
-            .input_box
-              = s.file_field :image, class: 'exhibition-content__caption--image--default'
-            -# ここにプレビューのコードを挿入
+          - @item.product_images.each_with_index do |image, i|
+            .item-image{ id: "image-#{i}", "data-image_id": "#{i}", "data-product_image_id": image.id }
+              .item-image__content
+                .item-image__content--icon
+                  = image_tag image.image, size: "113x80", class: 'item-image__content--icon'
+              .item-image__operation
+                .item-image__operation--delete
+                  削除
           .exhibition-content__caption--image
             = icon('fas', 'camera')
+          .input_box                  
+            = f.fields_for :product_images do |s|
+              = s.file_field :image, class: 'exhibition-content__caption--image--default'
+            - image_number = @item.product_images.length
+            %input.exhibition-content__caption--image--default{type: 'file', name: "item[product_images_attributes][#{image_number}][image]", id: "item_product_images_attributes_#{image_number}_image"}
+            -# ここにプレビューのコードを挿入
         -# ここにエラーメッセージを挿入
       .exhibition-content__product
         .exhibition-content__product--name
@@ -52,7 +64,9 @@
             %span
               必須
           -# 下はancestoryのGemを導入したあと、変更予定
-          = f.collection_select :category_id, @category, :id, :name, {prompt: "選択してください"}, class: "exhibition-content__details--category--form", id: "parent-category"
+          = f.collection_select :category_id, @parent_category, :id, :name, { selected: @item.category.parent.parent[:id] }, class: "exhibition-content__details--category--form", id: "parent-category"
+          = f.collection_select :category_id, @child_category, :id, :name, { selected: @item.category.parent[:id]}, class: "exhibition-content__details--category--form", id: "child-category"
+          = f.collection_select :category_id, @grandchild_category, :id, :name, { selected: @item.category[:id] }, class: "exhibition-content__details--category--form", id: "grandchild-category"
         .exhibition-content__details--brand
           .exhibition-content__details--brand--title
             %label
@@ -128,8 +142,8 @@
             %span.exhibion-content__price--revenue-value
               ー
           .exhibition-content__price--listing
-            .button
-              出品する
+            .edit_button
+              変更する
           .exhibition-content__price--return
             = link_to root_path do
               %button{type: "button"}

@@ -1,0 +1,15 @@
+// 途中までnew.html.hamlとedit.html.hamlのviewのcssを共通にしてつくっていたので、かなり可読性が悪くなっています。
+// 時間があればnew.html.haml用のcssとedit.html.haml用のcssを分けて書き直したいところですが、現状できてません。
+.edit_button{
+  width: 53%;
+  height: 48px;
+  margin-bottom: 24px;
+  font-size: 17px;
+  font-weight: 600;
+  border: 1px solid $lightgray;
+  border-radius: 4px;
+  color: $white;
+  background-color: red;
+  cursor: pointer;
+
+}
