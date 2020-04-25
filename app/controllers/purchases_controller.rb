@@ -13,19 +13,14 @@ class PurchasesController < ApplicationController
   end
   
   def create
-    # binding.pry
     @address = Address.new(address_params)
     if @address.save
-      # redirect_to  purchases_verification_purchase_path(@item.id)
       redirect_to pay_purchase_path(@item.id)
     else
       render "verification_address"
     end
   end
   
-  # def purchases_verification
-  # end
-
   def pay
   end
 

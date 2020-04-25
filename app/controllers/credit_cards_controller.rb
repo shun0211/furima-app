@@ -32,7 +32,6 @@ class CreditCardsController < ApplicationController
 
   def new     # カードの登録画面。送信ボタンを押すとcreateアクションへ。
     @card = CreditCard.where(user_id: current_user.id).first
-    #ここはおk
     redirect_to pay_purchase_path(@item.id) if @card.present?
   end
 
