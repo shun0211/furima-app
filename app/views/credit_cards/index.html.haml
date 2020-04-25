@@ -26,6 +26,8 @@
               %input{ type: "hidden", name: "card_id", value: "" }
               %button.delete__button 削除する
           .how__not__regist
+            = link_to user_path(current_user) do
+              戻る
             = link_to "支払い方法について"
   - else
     .credit-card-add_card-wrapper
