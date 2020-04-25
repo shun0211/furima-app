@@ -15,7 +15,8 @@
                 = @item.product_name
               %p.verification-content__item__detail__price
                 %span
-                  = number_to_currency(@item.price, unit: "￥", precision: 0)
+                  ¥
+                  = number_to_currency(@item.price, precision: 0)
                 %span
                   (税込) 送料込み
       %section.verification-content__item--payment
@@ -27,7 +28,8 @@
                   支払い金額
                 .verification-form__content__list__price
                   %span
-                    = number_to_currency(@item.price, unit: "￥", precision: 0)
+                    ¥
+                    = number_to_currency(@item.price, precision: 0)
             %section.verification-form__button
               = form_tag(buy_purchase_path, method: :post) do
                 %button 購入する

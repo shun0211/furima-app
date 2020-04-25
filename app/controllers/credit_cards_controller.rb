@@ -37,26 +37,21 @@ class CreditCardsController < ApplicationController
   end
 
    def create     # PayjpとCardのデータベースを作成
-    # binding.pry
     @address = Address.new
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
 
     if params["payjp_token"].blank?
-      redirect_to "new"
+      redirect_to credit_card_path
     else
       # トークンが正常に発行されていたら、顧客情報をPAY.JPに登録します。
       customer = Payjp::Customer.create(
         card: params["payjp_token"]     # 直前のnewアクションで発行され、送られてくるトークンをここで顧客に紐付けて永久保存します。
       )
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-      @card.save
-        # ここはおkじゃない
-        if @card.present? && @address.present?
-          redirect_to pay_purchase_path(@item.id) 
-        # if @card.present? && @address.empty??
-        #   redirect_to users_path 
-        else
-          redirect_to root_path
+      if @card.save
+        redirect_to root_path
+      else
+        redirect_to root_path
       end
     end
   end
