@@ -1,5 +1,5 @@
 .credit-card-show-wrapper {
-  height: 100%;
+  height: 100vh;
   background-color: #f2f2f2;
   .verification-header {
     padding: 30px 0 ;
@@ -73,6 +73,7 @@
       border-top-style: solid;
       border-color: $gray204;
       a {
+        padding-left: 20px;
         color: $blue;
         text-decoration: none;
       }
