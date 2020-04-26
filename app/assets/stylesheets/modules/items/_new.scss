@@ -32,6 +32,19 @@
     }
   }
   .exhibition-contents {
+    .item-edit-title{
+      font-size: 22px;
+      padding: 32px 16px;
+      width: 650px;
+      margin: 0 auto;
+      text-align: center;
+      background-color: $white;
+      border-width: 1px;
+      border-bottom-style: solid;
+      border-color: rgb(204, 204, 204);
+      font-weight: 550;
+
+    }
     .exhibition-content__caption {
       max-width: 650px;
       height: 40%;
@@ -61,7 +74,7 @@
       }
       .exhibition-content__caption--image--box {
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         .exhibition-content__caption--image{
           height:23vh;
           border-width: 1px;

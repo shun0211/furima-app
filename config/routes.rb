@@ -9,10 +9,12 @@ Rails.application.routes.draw do
     get "sign_out", :to => "users/sessions#destroy" 
   end
   
-  resources :items, only: [:index, :new, :create, :show, :edit, :destroy] do
+  resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     collection do
       get 'get_category_children', defaults: {format: 'json'}
       get 'get_category_grandchildren', defaults: {format: 'json'}
+      # 商品編集の際に画像を削除した際、動くメソッドを定義
+      delete 'image_delete', defoults: {format: 'json'}
     end
   end
   

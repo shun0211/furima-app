@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   # ログイン中のユーザーのみ実行可能にする（トップページと商品詳細ページは除く）
   before_action :authenticate_user!, {only: [:new, :create, :edit, :destroy]}
+  before_action :set_item, only:['edit', 'update']
 
   def index
     @items = Item.limit(3).order('id DESC')
@@ -60,6 +61,28 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @images = @item.product_images
+    @parent_category = @item.category.parent.parent.siblings
+    @child_category = @item.category.parent.siblings
+    @grandchild_category = @item.category.siblings
+  end
+
+  def image_delete
+    @image = ProductImage.find(params[:product_image_id])
+    @image.destroy
+  end
+
+  def update
+    respond_to do |format|
+      if @item.update(item_params)
+        @item.valid? 
+        format.html { redirect_to root_path }
+        format.json { render json: @item.errors.messages }
+      else
+        @item.valid? 
+        format.json { render json: @item.errors.messages }
+      end
+    end
   end
 
   def destroy
@@ -87,6 +110,10 @@ class ItemsController < ApplicationController
                                  :image,
                                  :item_id],)
       .merge(seller_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
