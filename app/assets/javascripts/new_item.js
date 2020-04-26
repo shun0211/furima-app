@@ -296,7 +296,7 @@ $(function(){
     // 親IDのname属性削除
     $('#parent-category').removeAttr('name');
     var parent_category_id = $('#parent-category').val();
-    if (parent_category_id.length > 1){
+    if (parent_category_id.length > 0){
       $.ajax({
         url: "/items/get_category_children",
         type: "GET",
@@ -317,7 +317,7 @@ $(function(){
   $(document).on("change", "#child-category", function(){
     $('#grandchildren_wrapper').remove();
     var child_category_id = $("#child-category").val();
-    if (child_category_id.length > 1){
+    if (child_category_id.length > 0){
       $.ajax({
         url: "/items/get_category_grandchildren",
         type: "GET",

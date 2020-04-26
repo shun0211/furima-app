@@ -66,11 +66,12 @@ class ItemsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @item.valid? 
-        @item.update(item_params)
+      if @item.update(item_params)
+        @item.valid? 
         format.html { redirect_to root_path }
         format.json { render json: @item.errors.messages }
       else
+        @item.valid? 
         format.json { render json: @item.errors.messages }
       end
     end
