@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   # ログイン中のユーザーのみ実行可能にする（トップページと商品詳細ページは除く）
   before_action :authenticate_user!, {only: [:new, :create, :edit, :destroy]}
+  before_action :set_item, only:['edit', 'update']
 
   def index
     @items = Item.limit(3).order('created_at DESC')
@@ -52,7 +53,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
     @images = @item.product_images
     @parent_category = @item.category.parent.parent.siblings
     @child_category = @item.category.parent.siblings
@@ -65,7 +65,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
     respond_to do |format|
       if @item.valid? 
         @item.update(item_params)
@@ -102,6 +101,10 @@ class ItemsController < ApplicationController
                                  :image,
                                  :item_id],)
       .merge(seller_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
