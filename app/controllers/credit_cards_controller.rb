@@ -1,6 +1,6 @@
 class CreditCardsController < ApplicationController
   require "payjp"
-  before_action :set_item, only: [:new, :create]
+  # before_action :set_item, only: [:new, :create]
   before_action :set_card
 
   def index #CardのデータをPayjpに送って情報を取り出す
@@ -32,7 +32,7 @@ class CreditCardsController < ApplicationController
 
   def new     # カードの登録画面。送信ボタンを押すとcreateアクションへ。
     @card = CreditCard.where(user_id: current_user.id).first
-    redirect_to pay_purchase_path(@item.id) if @card.present?
+    # redirect_to pay_purchase_path(@item.id) if @card.present?
   end
 
    def create     # PayjpとCardのデータベースを作成
@@ -40,7 +40,8 @@ class CreditCardsController < ApplicationController
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
 
     if params["payjp_token"].blank?
-      redirect_to credit_card_path
+      redirect_to new_credit_card_path
+      # redirect_to credit_card_path
     else
       # トークンが正常に発行されていたら、顧客情報をPAY.JPに登録します。
       customer = Payjp::Customer.create(
@@ -68,11 +69,11 @@ class CreditCardsController < ApplicationController
 
   private
 
-  def set_item
-    @item = Item.find(params[:id])
-    @images = @item.product_images
-    @image = @images.first 
-  end
+  # def set_item
+  #   @item = Item.find(params[:id])
+  #   @images = @item.product_images
+  #   @image = @images.first 
+  # end
 
   def set_card
     @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?

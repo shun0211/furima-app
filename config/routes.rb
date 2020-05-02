@@ -24,9 +24,9 @@ Rails.application.routes.draw do
       get :sms_input
       get :completed
     end
-    member do
-      get "/credit_cards/:id/new" => "credit_card#new"
-    end
+    # member do
+    #   get "/credit_cards/:id/new" => "credit_card#new"
+    # end
   end
   
   resources :purchases, only: [:show] do
@@ -38,10 +38,10 @@ Rails.application.routes.draw do
       post "buy", to: "purchases#buy"
     end
   end
-  resources :credit_cards, only: [:index] do
+  resources :credit_cards, only: [:index, :new, :create] do
     member do
-      get :new
-      post :create
+      # get :new
+      # post :create
       post "delete", to: "credit_cards#delete"
     end
   end
