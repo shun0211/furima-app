@@ -14,8 +14,9 @@
             %form.card__payment__content
             .card__list
               .card__list__picture
-                = @card_brand
-                -# = image_tag "images/#{@card_src}", width: '26', height: '20', alt: @card_brand, id: "card_image"
+                -# = @card_brand
+                -# = image_tag "assets/#{@card_src}", width: '26', height: '20', alt: @card_brand, id: "card_image"
+                = image_tag "#{@card_src}", width: '50', height: '30', alt: @card_brand
             .card__number 
               = "**** **** **** " + @card_information.last4
             .expire__date 
