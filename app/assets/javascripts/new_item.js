@@ -269,30 +269,26 @@ $(function(){
   }
   // 挿入する小カテゴリーのブロックを作成
   function appendChildrenBox(insertHTML){
-    var childSelectHtml =`<div class = 'child__category--form' id = 'children_wrapper' >
-                            <select class = 'exhibition-content__details--category--form' id = 'child-category'>
-                              <option value>選択してください</option>
-                              ${insertHTML}
-                            </select>
-                          </div>` 
+    var childSelectHtml =`<select class = 'exhibition-content__details--category--form' id = 'child-category'>
+                            <option value>選択してください</option>
+                            ${insertHTML}
+                          </select>`
     $('.exhibition-content__details--category--form').after(childSelectHtml)
   }
   // 挿入する孫カテゴリーのブロックを作成
   function appendGrandchildrenBox(insertHTML){
-    var grandchildSelectHtml =`<div class = 'child__category--form' id = 'grandchildren_wrapper' >
-                                 <select class = 'exhibition-content__details--category--form' id = 'grandchild-category' name = 'item[category_id]'>
-                                   <option value>選択してください</option>
-                                   ${insertHTML}
-                                 </select>
-                               </div>` 
-    $('#children_wrapper').after(grandchildSelectHtml);
+    var grandchildSelectHtml =`<select class = 'exhibition-content__details--category--form' id = 'grandchild-category' name = 'item[category_id]'>
+                                 <option value>選択してください</option>
+                                 ${insertHTML}
+                               </select>` 
+    $('#child-category').after(grandchildSelectHtml);
   }
 
   // 親カテゴリーが選択されたとき発火
   $("#parent-category").on("change", function(){
     // 小カテゴリーと孫カテゴリー削除
-    $('#children_wrapper').remove();
-    $('#grandchildren_wrapper').remove();
+    $('#child-category').remove();
+    $('#grandchild-category').remove();
     // 親IDのname属性削除
     $('#parent-category').removeAttr('name');
     var parent_category_id = $('#parent-category').val();
@@ -315,7 +311,7 @@ $(function(){
   })
   // 小カテゴリーが選択されたとき発火
   $(document).on("change", "#child-category", function(){
-    $('#grandchildren_wrapper').remove();
+    $('#grandchild-category').remove();
     var child_category_id = $("#child-category").val();
     if (child_category_id.length > 0){
       $.ajax({
